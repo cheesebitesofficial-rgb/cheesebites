@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowRight } from 'lucide-react';
 import type { Category } from '../../types';
 
 interface CategoryCardProps {
@@ -48,6 +49,11 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
 
         {/* Golden Shimmer Ring */}
         <div className="absolute inset-0 border-2 border-amber-400/0 group-hover:border-amber-400/40 rounded-3xl transition-colors duration-500 pointer-events-none" />
+
+        {/* Themed Hover Arrow Indicator */}
+        <div className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 via-orange-500 to-amber-400 text-gray-950 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-3 group-hover:translate-x-0 shadow-[0_0_20px_rgba(245,158,11,0.7)] border border-amber-200">
+          <ArrowRight className="w-4 h-4 text-gray-950" strokeWidth={3} />
+        </div>
 
         {/* Text Content */}
         <div className="absolute bottom-4 left-4 right-4 z-10">

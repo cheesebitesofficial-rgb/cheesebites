@@ -130,10 +130,12 @@ export const Home: React.FC = () => {
 
                 <Link
                   to="/menu"
-                  className="text-white hover:text-[#FF6B00] font-black text-xs uppercase tracking-wider flex items-center gap-2 group transition-colors cursor-pointer py-3 px-2"
+                  className="px-6 py-4 rounded-full text-xs font-black uppercase tracking-wider text-amber-300 hover:text-white bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 flex items-center gap-2.5 group transition-all duration-300 hover:scale-105 shadow-md cursor-pointer"
                 >
                   <span>{t('home.seeMenu')}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform text-[#FF6B00]" />
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-orange-500 text-gray-950 flex items-center justify-center group-hover:translate-x-1 transition-transform shadow-[0_0_12px_rgba(245,158,11,0.5)]">
+                    <ArrowRight className="w-3.5 h-3.5" strokeWidth={3} />
+                  </div>
                 </Link>
               </div>
 

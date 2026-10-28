@@ -45,15 +45,21 @@ export const FloatingButtons: React.FC = () => {
         <span className="absolute top-0 right-0 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-green-400 rounded-full border-2 border-white shadow-sm" />
       </a>
 
-      {/* Scroll to Top Button - Bottom Right */}
+      {/* Scroll to Top Button - Bottom Right (Themed Golden-Amber & Orange) */}
       <button
         onClick={scrollToTop}
         aria-label="Scroll to top"
-        className={`fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-50 w-10 h-10 sm:w-12 sm:h-12 bg-[#2563EB] rounded-full flex items-center justify-center text-white shadow-[0_4px_15px_rgba(37,99,235,0.4)] hover:shadow-[0_6px_25px_rgba(37,99,235,0.6)] hover:scale-110 transition-all duration-300 cursor-pointer border-[3px] border-white/80 ${
-          showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        className={`fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-50 group flex items-center justify-center transition-all duration-500 cursor-pointer ${
+          showScrollTop ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-75 pointer-events-none'
         }`}
       >
-        <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
+        {/* Ambient Golden Glow on Hover */}
+        <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 opacity-0 group-hover:opacity-80 blur-md transition-opacity duration-300 animate-pulse" />
+        
+        {/* Themed Button Body */}
+        <div className="relative w-11 h-11 sm:w-13 sm:h-13 bg-gradient-to-tr from-amber-500 via-orange-500 to-amber-400 rounded-full flex items-center justify-center text-gray-950 shadow-[0_4px_25px_rgba(245,158,11,0.65)] group-hover:shadow-[0_6px_35px_rgba(245,158,11,0.95)] group-hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-amber-200/90">
+          <ChevronUp className="w-6 h-6 sm:w-7 sm:h-7 text-gray-950 group-hover:-translate-y-1 transition-transform duration-300" strokeWidth={3.5} />
+        </div>
       </button>
     </>
   );

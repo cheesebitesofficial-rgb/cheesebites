@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { MenuItem } from '../../types';
-import { Plus, Eye, Flame, Sparkles, Star } from 'lucide-react';
+import { Plus, Eye, Flame, Sparkles, Star, ArrowRight } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -128,8 +128,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
             onClick={handlePrimaryClick}
             className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 px-4 py-2.5 rounded-2xl font-black text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_20px_rgba(245,158,11,0.5)] transition-all duration-300 cursor-pointer"
           >
-            <Plus className="w-4 h-4" />
-            <span>{hasMultipleSizes ? t('product.options') : t('product.add')}</span>
+            {hasMultipleSizes ? (
+              <>
+                <span>{t('product.options')}</span>
+                <ArrowRight className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                <Plus className="w-4 h-4" />
+                <span>{t('product.add')}</span>
+              </>
+            )}
           </motion.button>
         </div>
       </div>
