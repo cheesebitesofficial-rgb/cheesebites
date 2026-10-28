@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useMenu } from '../context/MenuContext';
 import { DealCard } from '../components/common/DealCard';
 import type { DealCategory } from '../types';
-import { Sparkles, Users, User, Flame, Crown, Pizza } from 'lucide-react';
+import { Sparkles, Users, User, Flame, Crown, Pizza, FileText, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const DealsPage: React.FC = () => {
   const { deals } = useMenu();
   const { t, dir } = useLanguage();
+  const [viewFlyer, setViewFlyer] = useState<boolean>(false);
 
   const sections: { title: DealCategory; subtitle: string; icon: React.ReactNode; badgeColor: string }[] = [
     {
@@ -65,6 +66,15 @@ export const DealsPage: React.FC = () => {
           <p className="text-amber-100/90 text-sm sm:text-base max-w-2xl mx-auto font-medium leading-relaxed">
             {t('deals.description')}
           </p>
+          <div className="pt-2">
+            <button
+              onClick={() => setViewFlyer(true)}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 font-black text-xs uppercase tracking-wider px-6 py-3 rounded-2xl shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all hover:scale-105 cursor-pointer"
+            >
+              <FileText className="w-4 h-4" />
+              <span>View Official Printed Deals Flyer</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -111,6 +121,47 @@ export const DealsPage: React.FC = () => {
           </div>
         );
       })}
+      {/* Lightbox Modal for Original Printed Deals Card */}
+      {viewFlyer && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md animate-fadeIn"
+          onClick={() => setViewFlyer(false)}
+        >
+          <div 
+            className="relative max-w-5xl w-full max-h-[92vh] bg-[#0c0d14] rounded-3xl border-2 border-amber-500/40 p-4 sm:p-6 overflow-hidden flex flex-col shadow-[0_0_60px_rgba(245,158,11,0.3)]"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between pb-3 border-b border-gray-800 shrink-0">
+              <div className="flex items-center gap-2.5">
+                <span className="w-3 h-3 rounded-full bg-amber-400 animate-pulse" />
+                <h3 className="text-base sm:text-lg font-black uppercase text-white tracking-wide font-sans">
+                  Official Cheese Bites Deals Card
+                </h3>
+              </div>
+              <button
+                onClick={() => setViewFlyer(false)}
+                className="text-gray-400 hover:text-white bg-gray-900 hover:bg-gray-800 p-2 rounded-full cursor-pointer transition-colors"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="flex-1 overflow-auto mt-3 rounded-2xl bg-[#07070b] p-2 flex items-center justify-center border border-gray-800/80">
+              <img
+                src="/images/real/deals-original-flyer.jpg"
+                alt="Cheese Bites Official Deals Flyer"
+                className="w-full h-auto object-contain max-h-[72vh] rounded-xl shadow-2xl"
+              />
+            </div>
+
+            <div className="pt-2 text-center text-[11px] text-slate-400 font-medium shrink-0">
+              📍 17 Meel Stop Japan Dam Road ISB | Delivery: 11:00 AM - 4:00 AM | Order: 0337-1500150
+            </div>
+          </div>
+        </div>
+      )}
+
     </motion.div>
   );
 };

@@ -68,14 +68,14 @@ export const Home: React.FC = () => {
 
   // Category data mapping (inside component for access to t())
   const categoryMap: { category: Category; image: string; tag: string }[] = [
-    { category: 'Pizza', image: '/images/hero-user-pizza.jpg', tag: t('cat.tag.pizza') },
-    { category: 'Burgers', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80', tag: t('cat.tag.burgers') },
-    { category: 'Deals', image: '/images/hero-user-pizza.jpg', tag: t('cat.tag.deals') },
-    { category: 'Roll Paratha', image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80', tag: t('cat.tag.rollParatha') },
-    { category: 'Pasta', image: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=800&q=80', tag: t('cat.tag.pasta') },
-    { category: 'Fried Chicken', image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80', tag: t('cat.tag.friedChicken') },
-    { category: 'Fries', image: 'https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=800&q=80', tag: t('cat.tag.fries') },
-    { category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80', tag: t('cat.tag.sandwiches') },
+    { category: 'Pizza', image: '/images/real/crown-crust-pizza.jpg', tag: t('cat.tag.pizza') },
+    { category: 'Burgers', image: '/images/real/burgers-trio.jpg', tag: t('cat.tag.burgers') },
+    { category: 'Deals', image: '/images/real/deals-flyer-full.jpg', tag: t('cat.tag.deals') },
+    { category: 'Roll Paratha', image: '/images/real/roll-paratha-trio.jpg', tag: t('cat.tag.rollParatha') },
+    { category: 'Pasta', image: '/images/real/pasta-bowl.jpg', tag: t('cat.tag.pasta') },
+    { category: 'Fried Chicken', image: '/images/real/fried-chicken-platter.jpg', tag: t('cat.tag.friedChicken') },
+    { category: 'Fries', image: '/images/real/fries-loaded-masala.jpg', tag: t('cat.tag.fries') },
+    { category: 'Sandwiches', image: '/images/real/sandwich-grill.jpg', tag: t('cat.tag.sandwiches') },
   ];
 
   return (

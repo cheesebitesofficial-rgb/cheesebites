@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Search, RefreshCw, Sparkles, UtensilsCrossed } from 'lucide-react';
+import { Search, RefreshCw, Sparkles, UtensilsCrossed, FileText, Flame, X } from 'lucide-react';
 import { useMenu } from '../context/MenuContext';
 import { useLanguage } from '../context/LanguageContext';
 import { ProductCard } from '../components/common/ProductCard';
@@ -17,6 +17,7 @@ export const MenuPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
+  const [viewFlyer, setViewFlyer] = useState<'menu' | 'deals' | null>(null);
 
   // Sync state with URL params
   useEffect(() => {
@@ -103,7 +104,7 @@ export const MenuPage: React.FC = () => {
     >
       
       {/* Page Header Banner */}
-      <div className="relative rounded-3xl bg-gradient-to-br from-[#0c0d14] via-[#151624] to-[#0c0d14] text-white p-8 sm:p-14 shadow-2xl border border-amber-500/30 overflow-hidden">
+      <div className="relative rounded-3xl bg-gradient-to-br from-[#0c0d14] via-[#151624] to-[#0c0d14] text-white p-8 sm:p-14 shadow-2xl border border-amber-500/30 overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="relative z-10 max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 font-black text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.2)]">
@@ -115,6 +116,24 @@ export const MenuPage: React.FC = () => {
           <p className="text-amber-100/90 text-sm sm:text-base font-medium leading-relaxed">
             {t('menu.description')}
           </p>
+        </div>
+
+        {/* Action Buttons to View Printed Restaurant Flyers */}
+        <div className="relative z-10 flex flex-wrap sm:flex-col gap-3 shrink-0">
+          <button
+            onClick={() => setViewFlyer('menu')}
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 font-black text-xs uppercase tracking-wider px-5 py-3 rounded-2xl shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all hover:scale-105 cursor-pointer"
+          >
+            <FileText className="w-4 h-4" />
+            <span>View Printed Menu Card</span>
+          </button>
+          <button
+            onClick={() => setViewFlyer('deals')}
+            className="inline-flex items-center gap-2 bg-[#0c0d14]/90 hover:bg-gray-800 text-amber-300 hover:text-white border border-amber-500/30 font-black text-xs uppercase tracking-wider px-5 py-3 rounded-2xl shadow-md transition-all hover:scale-105 cursor-pointer"
+          >
+            <Flame className="w-4 h-4 text-orange-400" />
+            <span>View Deals Card</span>
+          </button>
         </div>
       </div>
 
@@ -235,6 +254,55 @@ export const MenuPage: React.FC = () => {
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
       />
+
+      {/* Lightbox Modal for Original Printed Menu / Deals Card */}
+      {viewFlyer && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md animate-fadeIn"
+          onClick={() => setViewFlyer(null)}
+        >
+          <div 
+            className="relative max-w-5xl w-full max-h-[92vh] bg-[#0c0d14] rounded-3xl border-2 border-amber-500/40 p-4 sm:p-6 overflow-hidden flex flex-col shadow-[0_0_60px_rgba(245,158,11,0.3)]"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between pb-3 border-b border-gray-800 shrink-0">
+              <div className="flex items-center gap-2.5">
+                <span className="w-3 h-3 rounded-full bg-amber-400 animate-pulse" />
+                <h3 className="text-base sm:text-lg font-black uppercase text-white tracking-wide font-sans">
+                  {viewFlyer === 'menu' ? 'Official Cheese Bites Menu Card' : 'Official Cheese Bites Deals Card'}
+                </h3>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setViewFlyer(viewFlyer === 'menu' ? 'deals' : 'menu')}
+                  className="text-xs font-black uppercase bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 px-3 py-1.5 rounded-xl border border-amber-500/30 cursor-pointer transition-colors"
+                >
+                  Switch to {viewFlyer === 'menu' ? 'Deals' : 'Menu'}
+                </button>
+                <button
+                  onClick={() => setViewFlyer(null)}
+                  className="text-gray-400 hover:text-white bg-gray-900 hover:bg-gray-800 p-2 rounded-full cursor-pointer transition-colors"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+            
+            <div className="flex-1 overflow-auto mt-3 rounded-2xl bg-[#07070b] p-2 flex items-center justify-center border border-gray-800/80">
+              <img
+                src={viewFlyer === 'menu' ? '/images/real/menu-original-flyer.jpg' : '/images/real/deals-original-flyer.jpg'}
+                alt="Cheese Bites Official Printed Flyer"
+                className="w-full h-auto object-contain max-h-[72vh] rounded-xl shadow-2xl"
+              />
+            </div>
+
+            <div className="pt-2 text-center text-[11px] text-slate-400 font-medium shrink-0">
+              📍 17 Meel Stop Japan Dam Road ISB | Delivery: 11:00 AM - 4:00 AM | Call: 0337-1500150
+            </div>
+          </div>
+        </div>
+      )}
 
     </motion.div>
   );
