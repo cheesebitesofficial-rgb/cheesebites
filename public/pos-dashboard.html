@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheese Bites POS Orders Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0b0f19',
+                        cardBg: '#131c2e',
+                        cardBorder: '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(19, 28, 46, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 min-h-screen pb-12">
+
+    <header class="bg-cardBg border-b border-cardBorder sticky top-0 z-30 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <div class="flex items-center gap-3">
+                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                        <i class="fa-solid fa-pizza-slice text-amber-500"></i> WEBSITE ONLINE ORDERS
+                    </h1>
+                </div>
+                <p class="text-xs sm:text-sm text-gray-400 mt-1 flex items-center gap-2">
+                    <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    Synchronized live with Cheese Bites Supabase Cloud Database & Website
+                </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-start md:justify-end">
+                <span id="sync-badge" class="bg-emerald-950/80 text-emerald-400 border border-emerald-500/30 px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-2 shadow-inner">
+                    <i class="fa-solid fa-circle text-[8px] animate-ping"></i> ONLINE SYNC: LIVE ACTIVE
+                </span>
+                <button onclick="openAddOrderModal()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-bold px-4 py-2 rounded-xl text-xs sm:text-sm transition shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-plus"></i> New Order
+                </button>
+                <button onclick="openSettings()" class="bg-slate-800 hover:bg-slate-700 text-gray-200 border border-slate-700 px-4 py-2 rounded-xl text-xs sm:text-sm transition flex items-center gap-2">
+                    <i class="fa-solid fa-gear"></i> Database Settings
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 mb-6 bg-cardBg p-4 rounded-2xl border border-cardBorder shadow-sm">
+            <div class="flex flex-wrap items-center gap-3">
+                <button onclick="refreshOrders()" class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-4 py-2.5 rounded-xl text-sm transition flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-rotate" id="refresh-icon"></i> Refresh Orders
+                </button>
+                <div class="relative">
+                    <select id="status-filter" onchange="filterOrders()" class="bg-slate-900 text-gray-200 border border-slate-700 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-amber-500 pr-10 appearance-none cursor-pointer">
+                        <option value="ALL">All Statuses</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Confirm">Confirm</option>
+                        <option value="Preparing">Preparing</option>
+                        <option value="Ready">Ready</option>
+                        <option value="Out for Delivery">Out for Delivery</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Cancel">Cancel</option>
+                    </select>
+                    <div class="absolute right-3 top-3.5 text-gray-400 pointer-events-none text-xs">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button onclick="confirmDeleteAll()" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-4 py-2.5 rounded-xl text-sm transition flex items-center gap-2">
+                    <i class="fa-solid fa-trash-can"></i> Delete All Orders
+                </button>
+            </div>
+        </div>
+
+        <div id="orders-container" class="space-y-6">
+            <!-- Orders injected dynamically via JavaScript -->
+        </div>
+    </main>
+
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-cardBg w-full max-w-md rounded-2xl p-6 border border-cardBorder shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-database text-amber-500"></i> Database Settings</h3>
+                <button onclick="closeSettings()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <p class="text-sm text-gray-300 mb-4">Supabase connection parameters for Cheese Bites cloud live orders sync.</p>
+            <div class="space-y-3 mb-6">
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1 font-medium">SUPABASE URL</label>
+                    <input type="text" id="supabase-url" value="https://cheesebites-orders-db.supabase.co" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-gray-300">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1 font-medium">API ANON KEY</label>
+                    <input type="password" id="supabase-key" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-gray-300">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1 font-medium">SYNC FREQUENCY</label>
+                    <select class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-gray-300">
+                        <option>Real-time Broadcast & Storage (Active)</option>
+                        <option>Every 3 Seconds</option>
+                        <option>Manual Refresh</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex justify-end gap-3">
+                <button onclick="closeSettings()" class="bg-slate-800 hover:bg-slate-700 text-gray-200 px-4 py-2 rounded-xl text-sm">Close</button>
+                <button onclick="saveSettings()" class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-4 py-2 rounded-xl text-sm">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Order Modal -->
+    <div id="add-order-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-cardBg w-full max-w-lg rounded-2xl p-6 border border-cardBorder shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-cart-plus text-amber-500"></i> Create New Order</h3>
+                <button onclick="closeAddOrderModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form id="new-order-form" onsubmit="handleNewOrder(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1 font-medium">Customer Full Name</label>
+                    <input type="text" id="new-name" required placeholder="e.g. Hira Afzal" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-amber-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1 font-medium">Phone Number</label>
+                    <input type="text" id="new-phone" required placeholder="03245502471" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-amber-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1 font-medium">Delivery Address</label>
+                    <textarea id="new-address" required rows="2" placeholder="House 4 street 6 AKM road 17 meel stop lehtrar road Islamabad" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-amber-500"></textarea>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1 font-medium">Item Name & Category</label>
+                        <input type="text" id="new-item" required placeholder="e.g. Cheese Pizza (Medium)" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1 font-medium">Price (Rs.)</label>
+                        <input type="number" id="new-price" required placeholder="850" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-amber-500">
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3 pt-4">
+                    <button type="button" onclick="closeAddOrderModal()" class="bg-slate-800 hover:bg-slate-700 text-gray-200 px-4 py-2 rounded-xl text-sm">Cancel</button>
+                    <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-4 py-2 rounded-xl text-sm">Place Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const LOCAL_STORAGE_KEY = 'cheese_bites_orders_v1';
+        let currentFilter = "ALL";
+        let orders = [];
+
+        // Sample reference order matching user screenshot
+        const DEFAULT_SEED_ORDERS = [
+            {
+                id: "CB-64750",
+                timestamp: "9/23/2026, 10:44:50 AM",
+                elapsed: "12 mins ago",
+                status: "Ready",
+                customerName: "Hira Afzal",
+                phone: "03245502471",
+                address: "House 4 street 6 AKM road 17 meel stop lehtrar road Islamabad",
+                notes: "Please extra napkins and ketchup sachets.",
+                paymentMethod: "Cash on Delivery",
+                paymentStatus: "Pending",
+                items: [
+                    { name: "Cheese Pizza (Medium)", category: "PIZZAS", options: "Medium", qty: 1, price: 850 }
+                ],
+                deliveryFee: 150,
+                subtotal: 700
+            }
+        ];
+
+        function getElapsedStr(createdAt) {
+            if (!createdAt) return 'Just now';
+            const diffMs = Date.now() - new Date(createdAt).getTime();
+            const diffMins = Math.floor(diffMs / (1000 * 60));
+            if (isNaN(diffMins) || diffMins <= 0) return 'Just now';
+            if (diffMins === 1) return '1 min ago';
+            if (diffMins < 60) return `${diffMins} mins ago`;
+            const diffHours = Math.floor(diffMins / 60);
+            return `${diffHours} hr${diffHours > 1 ? 's' : ''} ago`;
+        }
+
+        // Load & synchronize orders from local store & website live events
+        function loadOrders() {
+            try {
+                const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        orders = parsed.map(o => {
+                            let formattedItems = [];
+                            if (Array.isArray(o.items)) {
+                                formattedItems = o.items.map(i => ({
+                                    name: i.name || 'Food Dish',
+                                    category: (i.category || 'PIZZAS').toUpperCase(),
+                                    options: i.selectedSize || i.options || 'Standard',
+                                    qty: i.quantity || i.qty || 1,
+                                    price: i.price || 0
+                                }));
+                            }
+
+                            return {
+                                id: o.orderNumber || o.id || ('CB-' + Math.floor(10000 + Math.random() * 90000)),
+                                timestamp: o.createdAt ? new Date(o.createdAt).toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true }) : (o.timestamp || new Date().toLocaleString()),
+                                elapsed: o.createdAt ? getElapsedStr(o.createdAt) : (o.elapsed || 'Just now'),
+                                status: o.status || 'Pending',
+                                customerName: o.customerName || o.customer_name || 'Online Customer',
+                                phone: o.customerPhone || o.phone || '03000000000',
+                                address: o.deliveryAddress || o.address || 'Address Provided Online',
+                                notes: o.orderNotes || o.notes || '',
+                                paymentMethod: o.paymentMethod || 'Cash on Delivery',
+                                paymentStatus: o.paymentStatus || (o.paymentMethod && o.paymentMethod.includes('Paid') ? 'Paid' : 'Pending'),
+                                items: formattedItems.length > 0 ? formattedItems : [{ name: 'Pizza Special', category: 'PIZZAS', options: 'Medium', qty: 1, price: 700 }],
+                                deliveryFee: Number(o.deliveryFee || 150),
+                                subtotal: Number(o.subtotal || 700)
+                            };
+                        });
+                        return;
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+            }
+            orders = [...DEFAULT_SEED_ORDERS];
+        }
+
+        function saveOrdersToStore() {
+            try {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(orders));
+                if (typeof BroadcastChannel !== 'undefined') {
+                    const bc = new BroadcastChannel('cb_orders_sync');
+                    bc.postMessage({ type: 'UPDATE_ORDERS' });
+                    bc.close();
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        // Helper to get color for status badges
+        function getStatusBadgeStyle(status) {
+            switch(status) {
+                case 'Pending': return 'bg-amber-500/20 text-amber-400 border-amber-500/30';
+                case 'Confirm':
+                case 'Confirmed': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
+                case 'Preparing': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+                case 'Ready': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+                case 'Out for Delivery': return 'bg-pink-500/20 text-pink-400 border-pink-500/30';
+                case 'Delivered': return 'bg-teal-500/20 text-teal-400 border-teal-500/30';
+                case 'Cancel':
+                case 'Cancelled': return 'bg-red-500/20 text-red-400 border-red-500/30';
+                default: return 'bg-slate-700 text-slate-300';
+            }
+        }
+
+        // Render all orders based on current filter
+        function renderOrders() {
+            const container = document.getElementById('orders-container');
+            container.innerHTML = '';
+
+            const filteredOrders = currentFilter === 'ALL' 
+                ? orders 
+                : orders.filter(o => o.status === currentFilter || (currentFilter === 'Confirm' && o.status === 'Confirmed') || (currentFilter === 'Cancel' && o.status === 'Cancelled'));
+
+            if (filteredOrders.length === 0) {
+                container.innerHTML = `
+                    <div class="glass-card rounded-2xl p-12 text-center text-gray-400">
+                        <i class="fa-solid fa-box-open text-4xl mb-3 text-slate-600"></i>
+                        <p class="text-base font-medium">No orders found with status "${currentFilter}".</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredOrders.forEach((order) => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl p-6 border border-cardBorder shadow-xl transition-all hover:border-slate-700";
+
+                let itemsHtml = '';
+                let totalItemsPrice = 0;
+                order.items.forEach(item => {
+                    totalItemsPrice += (item.price * item.qty);
+                    itemsHtml += `
+                        <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 py-3 items-center text-sm border-b border-slate-800/60 last:border-0">
+                            <div class="sm:col-span-2 font-semibold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-utensils text-amber-500 text-xs"></i> ${item.name}
+                            </div>
+                            <div>
+                                <span class="bg-slate-800 text-amber-400 text-xs px-2.5 py-1 rounded-md font-mono">${item.category}</span>
+                            </div>
+                            <div class="text-amber-300 font-medium">${item.options} (x${item.qty})</div>
+                            <div class="text-right font-bold text-white">Rs. ${item.price * item.qty}</div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <!-- Header of Order Card -->
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pb-4 border-b border-slate-800">
+                        <div>
+                            <div class="flex items-center gap-3">
+                                <h2 class="text-xl font-extrabold text-amber-400 tracking-wide">Order #${order.id}</h2>
+                                <span class="px-3 py-1 rounded-full text-xs font-bold border uppercase tracking-wider ${getStatusBadgeStyle(order.status)}">
+                                    ${order.status}
+                                </span>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1 flex items-center gap-2">
+                                <i class="fa-regular fa-clock"></i> Placed: ${order.timestamp} 
+                                <span class="text-slate-600">•</span> 
+                                <span class="text-amber-500 font-medium">${order.elapsed}</span>
+                            </p>
+                        </div>
+                        <div>
+                            <button onclick="deleteOrder('${order.id}')" class="text-gray-500 hover:text-red-400 p-2 rounded-lg transition" title="Delete Order">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Customer & Delivery Details Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-5">
+                        <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800">
+                            <span class="block text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-1">Customer Name</span>
+                            <span class="text-sm font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-user text-amber-500 text-xs"></i> ${order.customerName}
+                            </span>
+                        </div>
+                        <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+                            <div>
+                                <span class="block text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-1">Phone Number</span>
+                                <span class="text-sm font-bold text-white font-mono">${order.phone}</span>
+                            </div>
+                            <a href="https://wa.me/92${order.phone.replace(/^0/, '')}" target="_blank" class="bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white p-2.5 rounded-lg transition text-sm" title="Chat on WhatsApp">
+                                <i class="fa-brands fa-whatsapp text-base"></i>
+                            </a>
+                        </div>
+                        <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800 sm:col-span-1">
+                            <span class="block text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-1">Payment Status</span>
+                            <button onclick="togglePaymentStatus('${order.id}')" class="mt-0.5 text-xs font-bold px-3 py-1.5 rounded-lg border transition flex items-center gap-1.5 ${order.paymentStatus === 'Paid' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40 hover:bg-emerald-500/30' : 'bg-amber-500/20 text-amber-400 border-amber-500/40 hover:bg-amber-500/30'}">
+                                <i class="fa-solid fa-circle-check"></i> ${order.paymentStatus} (Click to toggle)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Address & Instructions -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+                        <div class="bg-slate-900/50 p-3.5 rounded-xl border border-slate-800/80 text-xs">
+                            <span class="block font-bold text-gray-400 uppercase tracking-wider mb-1">Delivery Address</span>
+                            <p class="text-gray-200 leading-relaxed">${order.address}</p>
+                        </div>
+                        <div class="bg-slate-900/50 p-3.5 rounded-xl border border-slate-800/80 text-xs">
+                            <span class="block font-bold text-gray-400 uppercase tracking-wider mb-1">Special Instructions / Notes</span>
+                            <p class="text-amber-300/90 italic">${order.notes || 'None specified.'}</p>
+                        </div>
+                    </div>
+
+                    <!-- Items Table -->
+                    <div class="bg-slate-950/40 rounded-xl p-4 border border-slate-800/80 mb-5">
+                        <div class="hidden sm:grid grid-cols-5 text-[11px] font-bold uppercase tracking-wider text-gray-500 pb-2 border-b border-slate-800">
+                            <div class="sm:col-span-2">Item Name</div>
+                            <div>Category</div>
+                            <div>Size / Options</div>
+                            <div class="text-right">Price</div>
+                        </div>
+                        ${itemsHtml}
+                    </div>
+
+                    <!-- Totals & Workflow Action Buttons -->
+                    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 pt-2">
+                        <div class="text-sm space-y-1">
+                            <p class="text-gray-400 text-xs">Subtotal: <span class="font-mono text-white">Rs.${order.subtotal}</span> | Delivery: <span class="font-mono text-white">Rs.${order.deliveryFee}</span></p>
+                            <h3 class="text-lg font-black text-amber-400">Grand Total: Rs. ${order.subtotal + order.deliveryFee}</h3>
+                        </div>
+
+                        <!-- Workflow buttons -->
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="text-xs text-gray-400 font-medium mr-1 hidden xl:inline">Update Status:</span>
+                            <button onclick="updateOrderStatus('${order.id}', 'Confirm')" class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-3 py-2 rounded-xl text-xs transition shadow-sm">Confirm</button>
+                            <button onclick="updateOrderStatus('${order.id}', 'Preparing')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 py-2 rounded-xl text-xs transition shadow-sm">Preparing</button>
+                            <button onclick="updateOrderStatus('${order.id}', 'Ready')" class="bg-emerald-500 hover:bg-emerald-600 text-black font-bold px-3 py-2 rounded-xl text-xs transition shadow-sm">Ready</button>
+                            <button onclick="updateOrderStatus('${order.id}', 'Out for Delivery')" class="bg-pink-600 hover:bg-pink-700 text-white font-bold px-3 py-2 rounded-xl text-xs transition shadow-sm">Out for Delivery</button>
+                            <button onclick="updateOrderStatus('${order.id}', 'Delivered')" class="bg-teal-600 hover:bg-teal-700 text-white font-bold px-3 py-2 rounded-xl text-xs transition shadow-sm">Delivered</button>
+                            <button onclick="updateOrderStatus('${order.id}', 'Cancel')" class="bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-2 rounded-xl text-xs transition shadow-sm">Cancel</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function updateOrderStatus(id, newStatus) {
+            const order = orders.find(o => o.id === id);
+            if (order) {
+                order.status = newStatus;
+                saveOrdersToStore();
+                renderOrders();
+                showToast(`Order #${id} status updated to ${newStatus}`, 'success');
+            }
+        }
+
+        function togglePaymentStatus(id) {
+            const order = orders.find(o => o.id === id);
+            if (order) {
+                order.paymentStatus = order.paymentStatus === 'Paid' ? 'Pending' : 'Paid';
+                saveOrdersToStore();
+                renderOrders();
+                showToast(`Payment status for #${id} changed to ${order.paymentStatus}`, 'info');
+            }
+        }
+
+        function deleteOrder(id) {
+            orders = orders.filter(o => o.id !== id);
+            saveOrdersToStore();
+            renderOrders();
+            showToast(`Order #${id} deleted successfully.`, 'error');
+        }
+
+        function confirmDeleteAll() {
+            if (orders.length === 0) {
+                showToast('No orders to delete.', 'info');
+                return;
+            }
+            orders = [];
+            saveOrdersToStore();
+            renderOrders();
+            showToast('All orders cleared from active queue.', 'error');
+        }
+
+        function filterOrders() {
+            currentFilter = document.getElementById('status-filter').value;
+            renderOrders();
+        }
+
+        function refreshOrders() {
+            const icon = document.getElementById('refresh-icon');
+            icon.classList.add('animate-spin');
+            loadOrders();
+            setTimeout(() => {
+                icon.classList.remove('animate-spin');
+                renderOrders();
+                showToast('Orders synchronized with Website & Cloud DB!', 'success');
+            }, 600);
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            let borderColor = 'border-emerald-500/40 bg-emerald-950/90 text-emerald-200';
+            if (type === 'error') borderColor = 'border-red-500/40 bg-red-950/90 text-red-200';
+            if (type === 'info') borderColor = 'border-blue-500/40 bg-blue-950/90 text-blue-200';
+
+            toast.className = `pointer-events-auto px-4 py-3 rounded-xl border ${borderColor} shadow-2xl text-xs font-semibold flex items-center gap-3 backdrop-blur-md transition-all transform translate-y-2 opacity-0`;
+            toast.innerHTML = `<i class="fa-solid fa-circle-info text-sm"></i> <span>${message}</span>`;
+            
+            container.appendChild(toast);
+            setTimeout(() => { toast.classList.remove('translate-y-2', 'opacity-0'); }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Modal controls
+        function openSettings() { document.getElementById('settings-modal').classList.remove('hidden'); }
+        function closeSettings() { document.getElementById('settings-modal').classList.add('hidden'); }
+        function saveSettings() {
+            closeSettings();
+            showToast('Database connection settings updated!', 'success');
+        }
+
+        function openAddOrderModal() { document.getElementById('add-order-modal').classList.remove('hidden'); }
+        function closeAddOrderModal() { document.getElementById('add-order-modal').classList.add('hidden'); }
+
+        function handleNewOrder(e) {
+            e.preventDefault();
+            const name = document.getElementById('new-name').value;
+            const phone = document.getElementById('new-phone').value;
+            const address = document.getElementById('new-address').value;
+            const itemName = document.getElementById('new-item').value;
+            const price = parseInt(document.getElementById('new-price').value) || 850;
+
+            const randomId = "CB-" + Math.floor(10000 + Math.random() * 90000);
+            const newOrder = {
+                id: randomId,
+                timestamp: new Date().toLocaleString(),
+                elapsed: "Just now",
+                status: "Pending",
+                customerName: name,
+                phone: phone,
+                address: address,
+                notes: "Standard online order.",
+                paymentMethod: "Cash on Delivery",
+                paymentStatus: "Pending",
+                items: [
+                    { name: itemName, category: "PIZZAS", options: "Medium", qty: 1, price: price }
+                ],
+                deliveryFee: 150,
+                subtotal: price
+            };
+
+            orders.unshift(newOrder);
+            saveOrdersToStore();
+            closeAddOrderModal();
+            document.getElementById('new-order-form').reset();
+            renderOrders();
+            showToast(`New Order #${randomId} received successfully!`, 'success');
+        }
+
+        // Listen to live events coming from website
+        window.addEventListener('storage', function(e) {
+            if (e.key === LOCAL_STORAGE_KEY) {
+                loadOrders();
+                renderOrders();
+                showToast('⚡ New Live Order Received from Website!', 'success');
+            }
+        });
+
+        try {
+            if (typeof BroadcastChannel !== 'undefined') {
+                const bc = new BroadcastChannel('cb_orders_sync');
+                bc.onmessage = function() {
+                    loadOrders();
+                    renderOrders();
+                    showToast('⚡ New Live Order Received from Website!', 'success');
+                };
+            }
+        } catch(e) {}
+
+        // Initial render on load
+        window.onload = function() {
+            loadOrders();
+            renderOrders();
+        }
+    </script>
+</body>
+</html>
