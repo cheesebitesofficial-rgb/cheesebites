@@ -15,8 +15,8 @@ interface MenuContextType {
   resetToDefaultMenu: () => void;
 }
 
-const MENU_KEY = 'cheese_bites_menu_items_v3';
-const DEALS_KEY = 'cheese_bites_deals_items_v2';
+const MENU_KEY = 'cheese_bites_menu_items_v4_real';
+const DEALS_KEY = 'cheese_bites_deals_items_v3_real';
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
 
@@ -55,7 +55,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
             category: p.category,
             description: p.description || '',
             basePrice: Number(p.base_price || p.price),
-            image: p.image || 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80',
+            image: p.image || '/images/real/crown-crust-pizza.jpg',
             sizes: typeof p.sizes === 'string' ? JSON.parse(p.sizes) : p.sizes,
             isPopular: Boolean(p.is_popular),
             isSpecial: Boolean(p.is_special),
@@ -72,7 +72,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
             category: d.category,
             price: Number(d.price),
             contents: typeof d.contents === 'string' ? JSON.parse(d.contents) : (d.contents || []),
-            image: d.image || 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f6?auto=format&fit=crop&w=800&q=80',
+            image: d.image || '/images/real/deal-12.jpg',
             isPopular: Boolean(d.is_popular),
           }));
           setDeals(mappedDeals);
@@ -101,7 +101,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
             contents: Array.isArray(prod.components)
               ? prod.components.map((c: any) => `${c.q || 1}x ${c.n}`)
               : (Array.isArray(prod.contents) ? prod.contents : []),
-            image: prod.img || prod.image || 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f6?auto=format&fit=crop&w=800&q=80',
+            image: prod.img || prod.image || '/images/real/deal-12.jpg',
             isPopular: Boolean(prod.isPopular),
           };
           setDeals(prev => {
@@ -118,7 +118,7 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
             category: (prod.cat || prod.category || 'Pizza') as any,
             description: prod.d || prod.description || '',
             basePrice: Number(prod.p || prod.basePrice || prod.price || 0),
-            image: prod.img || prod.image || 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80',
+            image: prod.img || prod.image || '/images/real/crown-crust-pizza.jpg',
             sizes: prod.sizes ? (typeof prod.sizes === 'string' ? JSON.parse(prod.sizes) : prod.sizes) : undefined,
             isPopular: Boolean(prod.isPopular),
             isSpecial: Boolean(prod.isSpecial),

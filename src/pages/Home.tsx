@@ -377,7 +377,7 @@ export const Home: React.FC = () => {
             <div className="lg:col-span-6 relative">
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-2 border-amber-500/30 shadow-2xl group">
                 <img
-                  src={bigFlexDeal?.image || 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80'}
+                  src={bigFlexDeal?.image || '/images/real/deal-20.jpg'}
                   alt={bigFlexDeal?.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />

@@ -63,7 +63,7 @@ export const AboutPage: React.FC = () => {
 
         <div className="relative">
           <img
-            src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=800&q=80"
+            src="/images/crown-crust-pull.jpg"
             alt="Cheese Bites Kitchen & Pizza"
             className="w-full h-96 object-cover rounded-3xl shadow-2xl border-2 border-amber-500/40 filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]"
           />
