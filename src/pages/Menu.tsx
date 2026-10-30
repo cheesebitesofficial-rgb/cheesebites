@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Search, RefreshCw, Sparkles, UtensilsCrossed, FileText, Flame, X } from 'lucide-react';
+import { Search, RefreshCw, Sparkles, UtensilsCrossed, FileText, Flame, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useMenu } from '../context/MenuContext';
 import { useLanguage } from '../context/LanguageContext';
 import { ProductCard } from '../components/common/ProductCard';
@@ -9,7 +9,11 @@ import { DealCard } from '../components/common/DealCard';
 import { ProductDetailsModal } from '../components/common/ProductDetailsModal';
 import { RestaurantInfoBanner } from '../components/common/RestaurantInfoBanner';
 import { SpecialOffersSection } from '../components/common/SpecialOffersSection';
-import type { MenuItem } from '../types';
+import type { MenuItem, DealItem } from '../types';
+
+type DisplayItem = 
+  | { type: 'product'; data: MenuItem }
+  | { type: 'deal'; data: DealItem };
 
 export const MenuPage: React.FC = () => {
   const { menuItems, deals } = useMenu();
@@ -20,6 +24,10 @@ export const MenuPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
   const [viewFlyer, setViewFlyer] = useState<'menu' | 'deals' | null>(null);
+
+  // Pagination states
+  const [itemsPerPage, setItemsPerPage] = useState<number>(12);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   // Sync state with URL params
   useEffect(() => {
@@ -33,6 +41,11 @@ export const MenuPage: React.FC = () => {
       setSearchQuery(searchParam);
     }
   }, [searchParams]);
+
+  // Reset to page 1 whenever category, search query or items per page change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory, searchQuery, itemsPerPage]);
 
   const categories = [
     'All',
@@ -74,7 +87,7 @@ export const MenuPage: React.FC = () => {
     setSearchParams(new URLSearchParams());
   };
 
-  // Filter items
+  // Filter products
   const filteredProducts = menuItems.filter(item => {
     const matchesCategory = activeCategory === 'All' || activeCategory === 'Deals' || item.category === activeCategory;
     const matchesSearch = searchQuery === '' || 
@@ -84,6 +97,7 @@ export const MenuPage: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
+  // Filter deals
   const filteredDeals = deals.filter(deal => {
     const matchesCategory = activeCategory === 'All' || activeCategory === 'Deals';
     const matchesSearch = searchQuery === '' ||
@@ -93,8 +107,26 @@ export const MenuPage: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const totalResults = (activeCategory === 'Deals' ? 0 : filteredProducts.length) + 
-                       (activeCategory === 'Pizza' || activeCategory === 'Burgers' || activeCategory === 'Sandwiches' || activeCategory === 'Roll Paratha' || activeCategory === 'Pasta' || activeCategory === 'Fried Chicken' || activeCategory === 'Fries' ? 0 : filteredDeals.length);
+  // Build combined items list
+  const combinedItems: DisplayItem[] = [
+    ...(activeCategory === 'Deals' ? [] : filteredProducts.map(p => ({ type: 'product' as const, data: p }))),
+    ...(activeCategory === 'Pizza' || activeCategory === 'Burgers' || activeCategory === 'Sandwiches' || activeCategory === 'Roll Paratha' || activeCategory === 'Pasta' || activeCategory === 'Fried Chicken' || activeCategory === 'Fries' ? [] : filteredDeals.map(d => ({ type: 'deal' as const, data: d }))),
+  ];
+
+  const totalResults = combinedItems.length;
+  const totalPages = Math.max(1, Math.ceil(totalResults / itemsPerPage));
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage, totalResults);
+  const currentItems = combinedItems.slice(startIndex, endIndex);
+
+  const goToPage = (page: number) => {
+    const targetPage = Math.max(1, Math.min(page, totalPages));
+    setCurrentPage(targetPage);
+    const el = document.getElementById('menu-items-grid');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <motion.div
@@ -187,17 +219,42 @@ export const MenuPage: React.FC = () => {
 
       </div>
 
-      {/* Active Filter Info */}
-      <div className="flex items-center justify-between border-b border-gray-800 pb-4 text-xs font-black uppercase tracking-wider text-slate-400">
-        <span>{t('menu.showing')} {totalResults} {t('menu.menuOptions')}</span>
-        {(activeCategory !== 'All' || searchQuery !== '') && (
-          <button
-            onClick={clearFilters}
-            className="text-amber-400 hover:text-amber-300 flex items-center gap-1.5 bg-gray-900 px-3.5 py-1.5 rounded-xl border border-amber-500/30 cursor-pointer"
-          >
-            <RefreshCw className="w-3.5 h-3.5" /> {t('menu.clearFilters')}
-          </button>
-        )}
+      {/* Active Filter & Pagination Info Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4 text-xs font-black uppercase tracking-wider text-slate-400">
+        <div className="flex items-center gap-4">
+          <span>
+            {totalResults > 0 
+              ? `Showing ${startIndex + 1}–${endIndex} of ${totalResults} items`
+              : `0 items found`
+            }
+          </span>
+          {(activeCategory !== 'All' || searchQuery !== '') && (
+            <button
+              onClick={clearFilters}
+              className="text-amber-400 hover:text-amber-300 flex items-center gap-1.5 bg-gray-900 px-3.5 py-1.5 rounded-xl border border-amber-500/30 cursor-pointer"
+            >
+              <RefreshCw className="w-3.5 h-3.5" /> {t('menu.clearFilters')}
+            </button>
+          )}
+        </div>
+
+        {/* Items Per Page Selector (8 or 12) */}
+        <div className="flex items-center gap-2">
+          <span className="text-[11px] text-gray-400">Show per page:</span>
+          {[8, 12].map(num => (
+            <button
+              key={num}
+              onClick={() => setItemsPerPage(num)}
+              className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                itemsPerPage === num
+                  ? 'bg-amber-500 text-gray-950 shadow-md font-bold'
+                  : 'bg-gray-900 text-gray-400 hover:text-white border border-gray-800'
+              }`}
+            >
+              {num}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Zero Results Empty State */}
@@ -219,38 +276,74 @@ export const MenuPage: React.FC = () => {
         </div>
       )}
 
-      {/* Product Items Grid */}
-      {activeCategory !== 'Deals' && filteredProducts.length > 0 && (
-        <div className="space-y-4">
-          {activeCategory === 'All' && (
-            <h2 className="text-2xl font-black text-white uppercase tracking-tight font-sans">{t('menu.individualDishes')}</h2>
-          )}
+      {/* Main Paginated Menu Items Grid */}
+      {currentItems.length > 0 && (
+        <div id="menu-items-grid" className="space-y-8 scroll-mt-24">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map(product => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onQuickView={prod => setSelectedProduct(prod)}
-              />
-            ))}
+            {currentItems.map(item => {
+              if (item.type === 'product') {
+                return (
+                  <ProductCard
+                    key={item.data.id}
+                    product={item.data}
+                    onQuickView={prod => setSelectedProduct(prod)}
+                  />
+                );
+              } else {
+                return (
+                  <DealCard
+                    key={item.data.id}
+                    deal={item.data}
+                  />
+                );
+              }
+            })}
           </div>
-        </div>
-      )}
 
-      {/* Deals Section Grid */}
-      {(activeCategory === 'All' || activeCategory === 'Deals') && filteredDeals.length > 0 && (
-        <div className="space-y-4 pt-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-black text-white uppercase tracking-tight font-sans">{t('menu.specialComboDeals')}</h2>
-            <span className="text-xs font-black text-amber-400 bg-amber-500/10 px-3.5 py-1 rounded-full border border-amber-500/30">
-              {t('menu.dealsRange')}
-            </span>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredDeals.map(deal => (
-              <DealCard key={deal.id} deal={deal} />
-            ))}
-          </div>
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 border-t border-gray-800/80">
+              {/* Previous Page Button */}
+              <button
+                onClick={() => goToPage(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-gray-900 border border-amber-500/20 text-xs font-black uppercase text-amber-300 disabled:opacity-30 disabled:pointer-events-none hover:bg-gray-800 hover:border-amber-400 transition-all cursor-pointer shadow-md"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                <span>Prev</span>
+              </button>
+
+              {/* Page Number Buttons */}
+              <div className="flex items-center gap-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => {
+                  const isActive = currentPage === pageNum;
+                  return (
+                    <button
+                      key={pageNum}
+                      onClick={() => goToPage(pageNum)}
+                      className={`w-10 h-10 rounded-2xl text-xs font-black transition-all cursor-pointer ${
+                        isActive
+                          ? 'bg-gradient-to-tr from-amber-500 via-orange-500 to-amber-400 text-gray-950 shadow-[0_0_15px_rgba(245,158,11,0.6)] scale-105'
+                          : 'bg-gray-900/90 text-gray-300 hover:text-white hover:bg-gray-800 border border-gray-800'
+                      }`}
+                    >
+                      {pageNum}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Next Page Button */}
+              <button
+                onClick={() => goToPage(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-gray-900 border border-amber-500/20 text-xs font-black uppercase text-amber-300 disabled:opacity-30 disabled:pointer-events-none hover:bg-gray-800 hover:border-amber-400 transition-all cursor-pointer shadow-md"
+              >
+                <span>Next</span>
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          )}
         </div>
       )}
 
