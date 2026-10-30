@@ -12,6 +12,9 @@ export const RESTAURANT_INFO = {
   deliveryFee: 150,
   freeDeliveryThreshold: 2000,
   minOrder: 300,
+  facebook: 'https://www.facebook.com/profile.php?id=61595736367068',
+  instagram: 'https://www.instagram.com/cheesebites_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+  whatsapp: 'https://wa.me/923371500150',
 };
 
 export const EXTRA_TOPPING_PRICES = {

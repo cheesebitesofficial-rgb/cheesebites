@@ -72,6 +72,31 @@ export const ContactPage: React.FC = () => {
                   <span className="text-sm font-bold text-white leading-relaxed block">{RESTAURANT_INFO.address}</span>
                 </div>
               </div>
+
+              {/* Official Social Media Connect */}
+              <div className="pt-2 border-t border-gray-800">
+                <span className="text-[10px] text-amber-400 font-black uppercase tracking-wider block mb-2.5">
+                  Connect on Social Media
+                </span>
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61595736367068"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 p-2.5 bg-blue-600/15 hover:bg-blue-600/30 border border-blue-500/30 text-blue-400 hover:text-white rounded-xl text-xs font-bold transition-all"
+                  >
+                    <span>Facebook</span>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/cheesebites_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 p-2.5 bg-gradient-to-r from-purple-600/15 to-pink-600/15 hover:from-purple-600/30 hover:to-pink-600/30 border border-pink-500/30 text-pink-400 hover:text-white rounded-xl text-xs font-bold transition-all"
+                  >
+                    <span>Instagram</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

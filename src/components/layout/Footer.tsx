@@ -5,8 +5,8 @@ import { RESTAURANT_INFO } from '../../data/menuData';
 import { useLanguage } from '../../context/LanguageContext';
 
 const SOCIAL_LINKS = {
-  instagram: 'https://instagram.com/cheesebites.pk',
-  facebook: 'https://facebook.com/cheesebites.pk',
+  instagram: 'https://www.instagram.com/cheesebites_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+  facebook: 'https://www.facebook.com/profile.php?id=61595736367068',
   tiktok: 'https://tiktok.com/@cheesebites.pk',
   youtube: 'https://youtube.com/@cheesebites',
   whatsapp: 'https://wa.me/923371500150',
