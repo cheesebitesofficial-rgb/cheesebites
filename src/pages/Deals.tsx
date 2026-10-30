@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useMenu } from '../context/MenuContext';
 import { DealCard } from '../components/common/DealCard';
-import { RestaurantInfoBanner } from '../components/common/RestaurantInfoBanner';
 import type { DealCategory } from '../types';
 import { Sparkles, Users, User, Flame, Crown, Pizza, FileText, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
@@ -122,9 +121,6 @@ export const DealsPage: React.FC = () => {
           </div>
         );
       })}
-
-      {/* Official Restaurant Information Banner */}
-      <RestaurantInfoBanner />
 
       {/* Lightbox Modal for Original Printed Deals Card */}
       {viewFlyer && (

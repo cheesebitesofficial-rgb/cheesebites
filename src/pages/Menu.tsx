@@ -7,7 +7,6 @@ import { useLanguage } from '../context/LanguageContext';
 import { ProductCard } from '../components/common/ProductCard';
 import { DealCard } from '../components/common/DealCard';
 import { ProductDetailsModal } from '../components/common/ProductDetailsModal';
-import { RestaurantInfoBanner } from '../components/common/RestaurantInfoBanner';
 import { SpecialOffersSection } from '../components/common/SpecialOffersSection';
 import type { MenuItem, DealItem } from '../types';
 
@@ -346,9 +345,6 @@ export const MenuPage: React.FC = () => {
           )}
         </div>
       )}
-
-      {/* Official Restaurant Information Banner */}
-      <RestaurantInfoBanner />
 
       {/* Customization Quick View Modal */}
       <ProductDetailsModal
