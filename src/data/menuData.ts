@@ -62,7 +62,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Vegie Max Pizza',
     category: 'Pizza',
     description: 'Loaded with fresh garden vegetables, mushrooms, olives, capsicum, onions & 100% mozzarella cheese.',
-    image: '/images/food/pizza-vegie.jpg',
+    image: '/images/food/pizza-veggie-max.jpg',
     basePrice: 430,
     sizes: [
       { name: 'Small', price: 430 },
@@ -93,7 +93,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Half & Half Pizza',
     category: 'Pizza',
     description: 'Choose two favorite flavors on one pizza — perfect for sharing or when you cannot decide!',
-    image: '/images/food/pizza-special.jpg',
+    image: '/images/food/pizza-half-half.jpg',
     basePrice: 500,
     sizes: [
       { name: 'Small', price: 500 },
@@ -108,7 +108,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Chicken Tikka Pizza',
     category: 'Pizza',
     description: 'Spicy marinated chicken tikka pieces with onions, capsicum, and melted mozzarella on fresh crust.',
-    image: '/images/food/pizza-tikka.jpg',
+    image: '/images/food/pizza-chicken-tikka.jpg',
     basePrice: 500,
     sizes: [
       { name: 'Small', price: 500 },
@@ -139,7 +139,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Supreme Pizza',
     category: 'Pizza',
     description: 'The ultimate loaded pizza with chicken, garden vegetables, olives, mushrooms, and mozzarella blend.',
-    image: '/images/food/pizza-supreme-loaded.jpg',
+    image: '/images/food/pizza-supreme.jpg',
     basePrice: 530,
     sizes: [
       { name: 'Small', price: 530 },
@@ -185,7 +185,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Chicken Grill Juice Pizza',
     category: 'Pizza',
     description: 'Juicy grilled chicken bites with special house sauce, fresh herbs and loaded mozzarella cheese.',
-    image: '/images/food/pizza-grill-juice.jpg',
+    image: '/images/food/pizza-chicken-grill.jpg',
     basePrice: 600,
     sizes: [
       { name: 'Small', price: 600 },
@@ -200,7 +200,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Cheese Stuffer Pizza',
     category: 'Pizza',
     description: 'Signature crust stuffed with premium melted mozzarella, topped with savory chicken and cheese.',
-    image: '/images/food/pizza-stuffed.jpg',
+    image: '/images/food/pizza-cheese-stuffer.jpg',
     basePrice: 600,
     sizes: [
       { name: 'Small', price: 600 },
@@ -216,7 +216,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Kabab Stuffer Pizza',
     category: 'Pizza',
     description: 'Stuffed crust pizza loaded with spicy kabab filling, onions, and melted mozzarella cheese.',
-    image: '/images/food/pizza-kabab.jpg',
+    image: '/images/food/pizza-kabab-stuffer.jpg',
     basePrice: 600,
     sizes: [
       { name: 'Small', price: 600 },
@@ -233,7 +233,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Behari Kabab Pizza',
     category: 'Pizza',
     description: 'Premium behari kabab pieces with pickled onions, mint chutney drizzle, and extra mozzarella.',
-    image: '/images/food/pizza-behari.jpg',
+    image: '/images/food/pizza-behari-kabab.jpg',
     basePrice: 550,
     sizes: [
       { name: 'Small', price: 550 },
@@ -279,7 +279,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Cheese Bites Special Pizza',
     category: 'Pizza',
     description: 'Our house flagship special! Stuffed cheese bites crust loaded with supreme chicken, olives & secret sauce.',
-    image: '/images/food/pizza-special.jpg',
+    image: '/images/food/pizza-cheese-bites-special.jpg',
     basePrice: 690,
     sizes: [
       { name: 'Small', price: 690 },
@@ -298,7 +298,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Crown Crust Pizza',
     category: 'Pizza',
     description: 'Royal crown crust stuffed with cheese crown cones, loaded chicken, olives, capsicum & herbs.',
-    image: '/images/real/crown-crust-pizza.jpg',
+    image: '/images/food/pizza-crown-crust.jpg',
     basePrice: 1350,
     sizes: [
       { name: 'Small', price: 1350 },
