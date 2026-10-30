@@ -38,7 +38,7 @@ export const SPECIAL_PIZZA_OFFERS = [
     pizzas: '2 Medium Pizzas (1 Legend Flavour + 1 Premium Flavour)',
     drink: '1 Litre Drink',
     price: 1900,
-    image: '/images/food/deal-duo-pizzas.jpg',
+    image: '/images/menu/deal-duo-medium-two-pizzas.jpg',
     description: 'Enjoy 2 freshly baked Medium Pizzas (1 Legend Flavour + 1 Premium Flavour) paired with a chilled 1 Litre Drink.',
   },
   {
@@ -48,7 +48,7 @@ export const SPECIAL_PIZZA_OFFERS = [
     pizzas: '2 Large Pizzas (1 Legend Flavour + 1 Premium Flavour)',
     drink: '1 Litre Drink',
     price: 2500,
-    image: '/images/food/deal-duo-pizzas.jpg',
+    image: '/images/menu/deal-duo-large-two-pizzas.jpg',
     description: 'Feast like royalty! 2 Large Pizzas (1 Legend Flavour + 1 Premium Flavour) plus a 1 Litre Drink.',
   },
 ];
@@ -62,7 +62,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Vegie Max Pizza',
     category: 'Pizza',
     description: 'Loaded with fresh garden vegetables, mushrooms, olives, capsicum, onions & 100% mozzarella cheese.',
-    image: '/images/food/pizza-veggie-max.jpg',
+    image: '/images/menu/pizza-veggie-max.jpg',
     basePrice: 430,
     sizes: [
       { name: 'Small', price: 430 },
@@ -77,7 +77,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Cheese Pizza',
     category: 'Pizza',
     description: 'Classic cheese pizza loaded with 100% real mozzarella cheese on our signature hand-tossed dough.',
-    image: '/images/food/pizza-cheese.jpg',
+    image: '/images/menu/pizza-cheese.jpg',
     basePrice: 430,
     sizes: [
       { name: 'Small', price: 430 },
@@ -93,7 +93,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Half & Half Pizza',
     category: 'Pizza',
     description: 'Choose two favorite flavors on one pizza — perfect for sharing or when you cannot decide!',
-    image: '/images/food/pizza-half-half.jpg',
+    image: '/images/menu/pizza-half-half.jpg',
     basePrice: 500,
     sizes: [
       { name: 'Small', price: 500 },
@@ -108,7 +108,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Chicken Tikka Pizza',
     category: 'Pizza',
     description: 'Spicy marinated chicken tikka pieces with onions, capsicum, and melted mozzarella on fresh crust.',
-    image: '/images/food/pizza-chicken-tikka.jpg',
+    image: '/images/menu/pizza-chicken-tikka.jpg',
     basePrice: 500,
     sizes: [
       { name: 'Small', price: 500 },
@@ -124,7 +124,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Fajita Pizza',
     category: 'Pizza',
     description: 'Grilled fajita chicken strips with bell peppers, onions, and flavorful herbs on a cheesy crust.',
-    image: '/images/food/pizza-fajita.jpg',
+    image: '/images/menu/pizza-fajita.jpg',
     basePrice: 530,
     sizes: [
       { name: 'Small', price: 530 },
@@ -139,7 +139,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Supreme Pizza',
     category: 'Pizza',
     description: 'The ultimate loaded pizza with chicken, garden vegetables, olives, mushrooms, and mozzarella blend.',
-    image: '/images/food/pizza-supreme.jpg',
+    image: '/images/menu/pizza-supreme.jpg',
     basePrice: 530,
     sizes: [
       { name: 'Small', price: 530 },
@@ -155,7 +155,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'BBQ Pizza',
     category: 'Pizza',
     description: 'Smoky BBQ chicken with caramelized onions, jalapeños, and tangy BBQ drizzle on a cheesy base.',
-    image: '/images/food/pizza-bbq.jpg',
+    image: '/images/menu/pizza-bbq.jpg',
     basePrice: 530,
     sizes: [
       { name: 'Small', price: 530 },
@@ -170,7 +170,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Tandoori Pizza',
     category: 'Pizza',
     description: 'Spicy tandoori chicken with onions, green chillies, and aromatic spices on freshly baked dough.',
-    image: '/images/food/pizza-tandoori.jpg',
+    image: '/images/menu/pizza-tandoori.jpg',
     basePrice: 530,
     sizes: [
       { name: 'Small', price: 530 },
@@ -185,7 +185,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Chicken Grill Juice Pizza',
     category: 'Pizza',
     description: 'Juicy grilled chicken bites with special house sauce, fresh herbs and loaded mozzarella cheese.',
-    image: '/images/food/pizza-chicken-grill.jpg',
+    image: '/images/menu/pizza-chicken-grill.jpg',
     basePrice: 600,
     sizes: [
       { name: 'Small', price: 600 },
@@ -200,7 +200,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Cheese Stuffer Pizza',
     category: 'Pizza',
     description: 'Signature crust stuffed with premium melted mozzarella, topped with savory chicken and cheese.',
-    image: '/images/food/pizza-cheese-stuffer.jpg',
+    image: '/images/menu/pizza-cheese-stuffer.jpg',
     basePrice: 600,
     sizes: [
       { name: 'Small', price: 600 },
@@ -216,7 +216,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Kabab Stuffer Pizza',
     category: 'Pizza',
     description: 'Stuffed crust pizza loaded with spicy kabab filling, onions, and melted mozzarella cheese.',
-    image: '/images/food/pizza-kabab-stuffer.jpg',
+    image: '/images/menu/pizza-kabab-stuffer.jpg',
     basePrice: 600,
     sizes: [
       { name: 'Small', price: 600 },
@@ -233,7 +233,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Behari Kabab Pizza',
     category: 'Pizza',
     description: 'Premium behari kabab pieces with pickled onions, mint chutney drizzle, and extra mozzarella.',
-    image: '/images/food/pizza-behari-kabab.jpg',
+    image: '/images/menu/pizza-behari-kabab.jpg',
     basePrice: 550,
     sizes: [
       { name: 'Small', price: 550 },
@@ -248,7 +248,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Cream Melt Pizza',
     category: 'Pizza',
     description: 'Creamy white sauce base with tender chicken, mushrooms, and melted premium cheese blend.',
-    image: '/images/food/pizza-cream-melt.jpg',
+    image: '/images/menu/pizza-cream-melt.jpg',
     basePrice: 550,
     sizes: [
       { name: 'Small', price: 550 },
@@ -262,7 +262,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Malai Boti Pizza',
     category: 'Pizza',
     description: 'Rich malai boti chicken pieces with creamy white sauce, fresh herbs and loaded mozzarella.',
-    image: '/images/food/pizza-malai-boti.jpg',
+    image: '/images/menu/pizza-malai-boti.jpg',
     basePrice: 550,
     sizes: [
       { name: 'Small', price: 550 },
@@ -279,7 +279,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Cheese Bites Special Pizza',
     category: 'Pizza',
     description: 'Our house flagship special! Stuffed cheese bites crust loaded with supreme chicken, olives & secret sauce.',
-    image: '/images/food/pizza-cheese-bites-special.jpg',
+    image: '/images/menu/pizza-cheese-bites-special.jpg',
     basePrice: 690,
     sizes: [
       { name: 'Small', price: 690 },
@@ -298,7 +298,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Crown Crust Pizza',
     category: 'Pizza',
     description: 'Royal crown crust stuffed with cheese crown cones, loaded chicken, olives, capsicum & herbs.',
-    image: '/images/food/pizza-crown-crust.jpg',
+    image: '/images/menu/pizza-crown-crust.jpg',
     basePrice: 1350,
     sizes: [
       { name: 'Small', price: 1350 },
@@ -316,7 +316,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Chicken Burger',
     category: 'Burgers',
     description: 'Classic chicken patty with fresh lettuce, mayo, and signature sauce in a soft sesame bun.',
-    image: '/images/food/burger-chicken.jpg',
+    image: '/images/menu/burger-chicken.jpg',
     basePrice: 330,
   },
   {
@@ -324,7 +324,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Zinger Burger',
     category: 'Burgers',
     description: 'Golden crispy zinger fillet with crunchy lettuce, creamy mayo, and signature zesty sauce.',
-    image: '/images/food/burger-zinger.jpg',
+    image: '/images/menu/burger-zinger.jpg',
     basePrice: 390,
     isPopular: true,
   },
@@ -333,7 +333,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Grill Burger',
     category: 'Burgers',
     description: 'Flame-grilled chicken patty with smoky sauce, lettuce, tomato, and melted cheese slice.',
-    image: '/images/food/burger-grill.jpg',
+    image: '/images/menu/burger-grill.jpg',
     basePrice: 400,
   },
   {
@@ -341,7 +341,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Double Zinger Burger',
     category: 'Burgers',
     description: 'Two crispy zinger fillets stacked with double cheese, coleslaw, and spicy zinger sauce.',
-    image: '/images/food/burger-double-stack.jpg',
+    image: '/images/menu/burger-double-zinger.jpg',
     basePrice: 600,
     isPopular: true,
   },
@@ -350,7 +350,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Jambo Burger',
     category: 'Burgers',
     description: 'Extra-large jumbo chicken patty with special mayo, fresh veggies, and melted cheddar.',
-    image: '/images/food/burger-jumbo.jpg',
+    image: '/images/menu/burger-jambo.jpg',
     basePrice: 520,
   },
   {
@@ -358,7 +358,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Double Jambo Burger',
     category: 'Burgers',
     description: 'Two jumbo chicken patties with double cheese, crispy onions, jalapeños, and tangy sauce.',
-    image: '/images/food/burger-double-jambo.jpg',
+    image: '/images/menu/burger-double-jambo.jpg',
     basePrice: 700,
     isSpecial: true,
   },
@@ -367,7 +367,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Tower Burger',
     category: 'Burgers',
     description: 'The ultimate tower — stacked with crispy fillets, cheese slices, crispy rings, and special sauce.',
-    image: '/images/food/burger-tower.jpg',
+    image: '/images/menu/burger-tower.jpg',
     basePrice: 650,
     isSpecial: true,
   },
@@ -378,7 +378,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Mughlai Sandwiches',
     category: 'Sandwiches',
     description: 'Toasted club sandwich with Mughlai spiced chicken, egg, lettuce, and creamy mayo.',
-    image: '/images/food/sandwich-club.jpg',
+    image: '/images/menu/sandwich-mughlai.jpg',
     basePrice: 600,
   },
   {
@@ -386,7 +386,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Crunch Sandwiches',
     category: 'Sandwiches',
     description: 'Crispy crunch chicken strips with cheese, lettuce, and tangy sauce in toasted bread.',
-    image: '/images/food/sandwich-crunch.jpg',
+    image: '/images/menu/sandwich-crunch.jpg',
     basePrice: 700,
   },
   {
@@ -394,7 +394,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Grill Sandwich',
     category: 'Sandwiches',
     description: 'Grilled chicken with melted cheese, fresh vegetables, and smoky mayo in pressed bread.',
-    image: '/images/food/sandwich-grill.jpg',
+    image: '/images/menu/sandwich-grill.jpg',
     basePrice: 700,
   },
   {
@@ -402,7 +402,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Bites Special Sandwich',
     category: 'Sandwiches',
     description: 'Cheese Bites signature triple-layer sandwich with loaded grilled chicken, cheese & fries.',
-    image: '/images/food/sandwich-special.jpg',
+    image: '/images/menu/sandwich-bites-special.jpg',
     basePrice: 750,
     isSpecial: true,
   },
@@ -413,7 +413,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Alfredo Pasta',
     category: 'Pasta',
     description: 'Creamy white Alfredo sauce with tender chicken pieces and perfectly cooked penne pasta.',
-    image: '/images/food/pasta-alfredo.jpg',
+    image: '/images/menu/pasta-alfredo.jpg',
     basePrice: 400,
     sizes: [
       { name: 'Small', price: 400 },
@@ -426,7 +426,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Arabian Pasta',
     category: 'Pasta',
     description: 'Arabian spiced chicken pasta with exotic Middle Eastern herbs and creamy savory sauce.',
-    image: '/images/food/pasta-arabian-penne.jpg',
+    image: '/images/menu/pasta-arabian.jpg',
     basePrice: 400,
     sizes: [
       { name: 'Small', price: 400 },
@@ -438,7 +438,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Hot & Spicy Pasta',
     category: 'Pasta',
     description: 'Fiery hot and spicy chicken pasta with jalapeños, red chili flakes, and tangy tomato herbs.',
-    image: '/images/food/pasta-spicy.jpg',
+    image: '/images/menu/pasta-hot-spicy.jpg',
     basePrice: 400,
     sizes: [
       { name: 'Small', price: 400 },
@@ -450,7 +450,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Crunchy Pasta',
     category: 'Pasta',
     description: 'Crispy fried chicken strips on top of rich creamy pasta with golden seasoning.',
-    image: '/images/food/pasta-crunchy.jpg',
+    image: '/images/menu/pasta-crunchy.jpg',
     basePrice: 450,
     sizes: [
       { name: 'Small', price: 450 },
@@ -462,7 +462,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Bites Special Pasta',
     category: 'Pasta',
     description: 'Chef special loaded pasta with double chicken, baked mozzarella crust, and rich creamy sauce.',
-    image: '/images/food/pasta-baked-cheese.jpg',
+    image: '/images/menu/pasta-bites-special.jpg',
     basePrice: 500,
     sizes: [
       { name: 'Small', price: 500 },
@@ -477,7 +477,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Fried Chicken 1PC',
     category: 'Fried Chicken',
     description: 'Single piece golden crispy fried chicken, marinated in special spices and deep fried.',
-    image: '/images/food/fried-chicken.jpg',
+    image: '/images/menu/chicken-fried-1pc.jpg',
     basePrice: 300,
   },
   {
@@ -485,7 +485,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Chicken Nuggets 10PCS',
     category: 'Fried Chicken',
     description: '10 pieces of golden crispy chicken nuggets served with dipping sauce.',
-    image: '/images/food/chicken-nuggets.jpg',
+    image: '/images/menu/chicken-nuggets-10pcs.jpg',
     basePrice: 600,
   },
   {
@@ -493,7 +493,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Hot Wings 10PCS',
     category: 'Fried Chicken',
     description: '10 pieces of spicy hot wings tossed in fiery sauce — crispy outside, juicy inside.',
-    image: '/images/food/chicken-wings-spicy.jpg',
+    image: '/images/menu/chicken-hot-wings.jpg',
     basePrice: 600,
     isPopular: true,
   },
@@ -502,7 +502,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'BBQ Wings 10PCS',
     category: 'Fried Chicken',
     description: '10 pieces of smoky BBQ glazed wings with tangy honey BBQ coating.',
-    image: '/images/food/chicken-wings-bbq-sauce.jpg',
+    image: '/images/menu/chicken-bbq-wings.jpg',
     basePrice: 650,
   },
   {
@@ -510,7 +510,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Oven Baked 10PCS',
     category: 'Fried Chicken',
     description: '10 pieces of oven-baked crispy wings with herbs and special seasoning.',
-    image: '/images/food/chicken-wings-roasted.jpg',
+    image: '/images/menu/chicken-oven-baked.jpg',
     basePrice: 650,
   },
   {
@@ -518,7 +518,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Bites Special 10PCS',
     category: 'Fried Chicken',
     description: '10 pieces of signature Cheese Bites special recipe wings with secret dipping sauce.',
-    image: '/images/food/chicken-bites-special.jpg',
+    image: '/images/menu/chicken-bites-special.jpg',
     basePrice: 700,
     isSpecial: true,
   },
@@ -529,7 +529,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Zinger Roll',
     category: 'Roll Paratha',
     description: 'Crispy zinger fillet wrapped in fresh flaky paratha with coleslaw, sauce, and pickled veggies.',
-    image: '/images/food/roll-zinger.jpg',
+    image: '/images/menu/roll-zinger.jpg',
     basePrice: 330,
     isPopular: true,
   },
@@ -538,7 +538,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Mughlai Roll',
     category: 'Roll Paratha',
     description: 'Mughlai spiced chicken with egg, onions, and green chutney wrapped in crispy paratha.',
-    image: '/images/food/roll-paratha.jpg',
+    image: '/images/menu/roll-mughlai.jpg',
     basePrice: 650,
   },
   {
@@ -546,7 +546,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Kabab Roll',
     category: 'Roll Paratha',
     description: 'Spicy seekh kabab pieces with onions, green chutney, and raita in fresh paratha wrap.',
-    image: '/images/food/roll-kabab.jpg',
+    image: '/images/menu/roll-kabab.jpg',
     basePrice: 650,
   },
   {
@@ -554,7 +554,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Chapli Roll',
     category: 'Roll Paratha',
     description: 'Traditional Peshawari chapli kabab with onions, tomato, and chutney in warm paratha.',
-    image: '/images/food/roll-chapli.jpg',
+    image: '/images/menu/roll-chapli.jpg',
     basePrice: 250,
   },
   {
@@ -562,7 +562,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Creamy Roll',
     category: 'Roll Paratha',
     description: 'Creamy chicken strips with special white sauce, veggies wrapped in golden paratha.',
-    image: '/images/food/roll-creamy.jpg',
+    image: '/images/menu/roll-creamy.jpg',
     basePrice: 650,
   },
   {
@@ -570,7 +570,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Cheese Bites Special',
     category: 'Roll Paratha',
     description: 'Our signature roll with extra melted mozzarella, premium chicken, and Cheese Bites special sauce.',
-    image: '/images/food/roll-special.jpg',
+    image: '/images/menu/roll-cheese-bites-special.jpg',
     basePrice: 750,
     isSpecial: true,
   },
@@ -581,7 +581,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Masala Fries Small',
     category: 'Fries',
     description: 'Crispy golden fries tossed in our special masala seasoning — perfect snack size.',
-    image: '/images/food/fries-masala.jpg',
+    image: '/images/menu/fries-masala-small.jpg',
     basePrice: 170,
   },
   {
@@ -589,7 +589,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Medium Simple Fries',
     category: 'Fries',
     description: 'Classic golden french fries, lightly salted and fried to crispy perfection.',
-    image: '/images/food/fries-simple-medium.jpg',
+    image: '/images/menu/fries-simple-medium.jpg',
     basePrice: 250,
   },
   {
@@ -597,7 +597,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Masala Fries Large',
     category: 'Fries',
     description: 'Large portion of crispy masala-seasoned golden fries — great for sharing.',
-    image: '/images/food/fries-masala-basket.jpg',
+    image: '/images/menu/fries-masala-large.jpg',
     basePrice: 400,
   },
   {
@@ -605,7 +605,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     name: 'Loaded Fries',
     category: 'Fries',
     description: 'Crispy fries loaded with melted cheese, jalapeños, chicken chunks, and special sauces.',
-    image: '/images/food/fries-loaded-cheese.jpg',
+    image: '/images/menu/fries-loaded.jpg',
     basePrice: 600,
     isPopular: true,
   },
@@ -622,7 +622,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Solo Era',
     price: 500,
     contents: ['1 Chicken Burger', '1 Regular Fries', '1 Regular Drink'],
-    image: '/images/food/deal-burger-combo.jpg',
+    image: '/images/menu/deal-1-chicken-burger-fries.jpg',
   },
   {
     id: 'deal-2',
@@ -631,7 +631,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Solo Era',
     price: 600,
     contents: ['1 Zinger Burger', '1 Regular Fries', '1 Regular Drink'],
-    image: '/images/food/deal-burger-combo.jpg',
+    image: '/images/menu/deal-2-zinger-burger-fries.jpg',
     isPopular: true,
   },
   {
@@ -641,7 +641,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Solo Era',
     price: 880,
     contents: ['1 Chicken Burger', '1 Small Pizza', '1 Regular Drink'],
-    image: '/images/food/deal-pizza-combo.jpg',
+    image: '/images/menu/deal-3-chicken-burger-pizza.jpg',
   },
   {
     id: 'deal-4',
@@ -650,7 +650,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Solo Era',
     price: 990,
     contents: ['2 Zinger Burgers', '1 Small Fries', '1 Regular Drink'],
-    image: '/images/food/deal-burger-combo.jpg',
+    image: '/images/menu/deal-4-two-zingers-fries.jpg',
     isPopular: true,
   },
 
@@ -662,7 +662,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Hits Different',
     price: 1150,
     contents: ['4 Spin Rolls', '5 Wings / Regular Fries', '1 Regular Drink'],
-    image: '/images/food/deal-wings-combo.jpg',
+    image: '/images/menu/deal-5-spin-rolls-wings.jpg',
   },
   {
     id: 'deal-6',
@@ -671,7 +671,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Hits Different',
     price: 1170,
     contents: ['1 Small Pizza', '1 Chicken Burger', '1 Chicken Burger / Reg Drink'],
-    image: '/images/food/deal-pizza-combo.jpg',
+    image: '/images/menu/deal-6-small-pizza-burger.jpg',
   },
   {
     id: 'deal-7',
@@ -680,7 +680,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Hits Different',
     price: 1250,
     contents: ['2 Zinger Burgers', '1 Small Pasta', '500ml Drink'],
-    image: '/images/food/deal-burger-pasta.jpg',
+    image: '/images/menu/deal-7-two-zingers-pasta.jpg',
   },
   {
     id: 'deal-8',
@@ -689,7 +689,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Hits Different',
     price: 1450,
     contents: ['2 Grill Burgers', '1 Pizza Fries', '1 Drink (1 Litre)'],
-    image: '/images/food/deal-burger-combo.jpg',
+    image: '/images/menu/deal-8-two-grill-burgers-pizza-fries.jpg',
   },
   {
     id: 'deal-9',
@@ -698,7 +698,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Hits Different',
     price: 1550,
     contents: ['3 Zinger Burgers', '1 Large Fries', '1 Drink (1.5 Litre)'],
-    image: '/images/food/deal-burgers-party.jpg',
+    image: '/images/menu/deal-9-three-zingers-large-fries.jpg',
     isPopular: true,
   },
   {
@@ -708,7 +708,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Hits Different',
     price: 1550,
     contents: ['3 Zinger Burgers', '5 Nuggets', '1 Drink (1 Litre)'],
-    image: '/images/food/deal-burgers-party.jpg',
+    image: '/images/menu/deal-10-three-zingers-nuggets.jpg',
   },
 
   // ─────────── SOUND GOALS ───────────
@@ -719,7 +719,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Squad Goals',
     price: 1600,
     contents: ['4 Chicken Burgers', '1 Regular Fries', '1 Drink (1.5 Litre)'],
-    image: '/images/food/deal-burgers-party.jpg',
+    image: '/images/menu/deal-11-four-chicken-burgers-fries.jpg',
   },
   {
     id: 'deal-12',
@@ -728,7 +728,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Squad Goals',
     price: 1900,
     contents: ['2 Zinger Burgers', '1 Medium Pizza', '1 Drink (1.5 Litre)'],
-    image: '/images/food/deal-pizza-combo.jpg',
+    image: '/images/menu/deal-12-two-zingers-medium-pizza.jpg',
     isPopular: true,
   },
   {
@@ -738,7 +738,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Squad Goals',
     price: 2050,
     contents: ['4 Zinger Burgers', '1 Small Pasta', '1 Drink (1.5 Litre)'],
-    image: '/images/food/deal-burger-pasta.jpg',
+    image: '/images/menu/deal-13-four-zingers-pasta.jpg',
   },
   {
     id: 'deal-14',
@@ -747,7 +747,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Squad Goals',
     price: 2300,
     contents: ['2 Zinger Burgers', '1 Large Pizza', '1 Drink (1.5 Litre)'],
-    image: '/images/food/deal-pizza-combo.jpg',
+    image: '/images/menu/deal-14-two-zingers-large-pizza.jpg',
   },
 
   // ─────────── THE BIG FLEX ───────────
@@ -758,7 +758,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'The Big Flex',
     price: 2300,
     contents: ['1 Medium Pizza', '2 Zinger Burgers', '1 Drink (1.5 Litre)'],
-    image: '/images/food/deal-pizza-combo.jpg',
+    image: '/images/menu/deal-15-medium-pizza-two-zingers.jpg',
   },
   {
     id: 'deal-16',
@@ -767,7 +767,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'The Big Flex',
     price: 2500,
     contents: ['3 Zinger Burgers', '1 Small Pizza', '1 Drink (1.5 Litre)'],
-    image: '/images/food/deal-pizza-combo.jpg',
+    image: '/images/menu/deal-16-three-zingers-small-pizza.jpg',
   },
   {
     id: 'deal-17',
@@ -776,7 +776,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'The Big Flex',
     price: 3400,
     contents: ['2 Large Pizzas', '1 Large Pasta', '1 Drink (1.5 Litre)'],
-    image: '/images/food/deal-family-spread.jpg',
+    image: '/images/menu/deal-17-two-large-pizzas-pasta.jpg',
     isPopular: true,
   },
   {
@@ -786,7 +786,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'The Big Flex',
     price: 3550,
     contents: ['2 XL Pizzas', '4 Zinger Burgers', '1 Drink (1.5 Litre)'],
-    image: '/images/food/deal-mega-party.jpg',
+    image: '/images/menu/deal-18-two-xl-pizzas-four-zingers.jpg',
   },
   {
     id: 'deal-19',
@@ -795,7 +795,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'The Big Flex',
     price: 4200,
     contents: ['1 XL Pizza', '2 Large Fries', '1 Crispy Wings', '1 Drink (1.5 Litre)'],
-    image: '/images/food/deal-feast.jpg',
+    image: '/images/menu/deal-19-xl-pizza-wings-two-fries.jpg',
     isSpecial: true,
   },
   {
@@ -805,7 +805,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'The Big Flex',
     price: 4350,
     contents: ['2 XL Pizzas', '1 Large Pasta', '1 Drink (1.5 Litre)'],
-    image: '/images/food/deal-mega-party.jpg',
+    image: '/images/menu/deal-20-two-xl-pizzas-pasta.jpg',
     isPopular: true,
     isSpecial: true,
   },
@@ -818,7 +818,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Duo Pizza Deals',
     price: 1900,
     contents: ['2 Medium Pizzas (1 Legend Flavour + 1 Premium Flavour)', '1 Litre Drink'],
-    image: '/images/food/deal-duo-pizzas.jpg',
+    image: '/images/menu/deal-duo-medium-two-pizzas.jpg',
     isPopular: true,
   },
   {
@@ -828,7 +828,7 @@ export const INITIAL_DEALS: DealItem[] = [
     category: 'Duo Pizza Deals',
     price: 2500,
     contents: ['2 Large Pizzas (1 Legend Flavour + 1 Premium Flavour)', '1 Litre Drink'],
-    image: '/images/food/deal-duo-pizzas.jpg',
+    image: '/images/menu/deal-duo-large-two-pizzas.jpg',
     isSpecial: true,
   },
 ];
