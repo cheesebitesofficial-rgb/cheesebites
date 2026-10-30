@@ -7,6 +7,8 @@ import { useLanguage } from '../context/LanguageContext';
 import { ProductCard } from '../components/common/ProductCard';
 import { DealCard } from '../components/common/DealCard';
 import { ProductDetailsModal } from '../components/common/ProductDetailsModal';
+import { RestaurantInfoBanner } from '../components/common/RestaurantInfoBanner';
+import { SpecialOffersSection } from '../components/common/SpecialOffersSection';
 import type { MenuItem } from '../types';
 
 export const MenuPage: React.FC = () => {
@@ -137,6 +139,9 @@ export const MenuPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Special Promotional Pizza Offers */}
+      <SpecialOffersSection />
+
       {/* Controls Bar: Search & Category Tabs */}
       <div className="space-y-6">
         
@@ -248,6 +253,9 @@ export const MenuPage: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Official Restaurant Information Banner */}
+      <RestaurantInfoBanner />
 
       {/* Customization Quick View Modal */}
       <ProductDetailsModal

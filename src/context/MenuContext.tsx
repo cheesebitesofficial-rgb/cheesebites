@@ -15,8 +15,8 @@ interface MenuContextType {
   resetToDefaultMenu: () => void;
 }
 
-const MENU_KEY = 'cheese_bites_menu_items_v4_real';
-const DEALS_KEY = 'cheese_bites_deals_items_v3_real';
+const MENU_KEY = 'cheese_bites_menu_items_v6_real';
+const DEALS_KEY = 'cheese_bites_deals_items_v5_real';
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
 

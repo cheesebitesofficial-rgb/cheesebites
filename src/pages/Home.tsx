@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Flame, ShoppingBag, Sparkles, ChevronRight, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Flame, ShoppingBag, Sparkles, ChevronRight, CheckCircle2, ArrowRight, UtensilsCrossed } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { useMenu } from '../context/MenuContext';
 import { useLanguage } from '../context/LanguageContext';
 import { ProductCard } from '../components/common/ProductCard';
+import { DealCard } from '../components/common/DealCard';
 import { ProductDetailsModal } from '../components/common/ProductDetailsModal';
+import { RestaurantInfoBanner } from '../components/common/RestaurantInfoBanner';
+import { SpecialOffersSection } from '../components/common/SpecialOffersSection';
 import { useScrollObserver } from '../hooks/useScrollObserver';
 import type { MenuItem, Category } from '../types';
 
@@ -62,6 +65,27 @@ export const Home: React.FC = () => {
 
   // Filter best seller items
   const bestSellers = menuItems.filter(item => item.isPopular || item.isSpecial).slice(0, 6);
+
+  // Active Menu Category Filter for Home Menu Section
+  const [activeMenuCategory, setActiveMenuCategory] = useState<string>('All');
+  const homeCategories = [
+    'All',
+    'Pizza',
+    'Burgers',
+    'Sandwiches',
+    'Roll Paratha',
+    'Pasta',
+    'Fried Chicken',
+    'Fries',
+    'Deals',
+  ];
+
+  const displayedHomeProducts = menuItems.filter(
+    item => activeMenuCategory === 'All' || item.category === activeMenuCategory
+  );
+  const displayedHomeDeals = deals.filter(
+    () => activeMenuCategory === 'All' || activeMenuCategory === 'Deals'
+  );
 
   // The Big Flex Campaign Deal (Deal 20)
   const bigFlexDeal = deals.find(d => d.dealNumber === 20) || deals.find(d => d.category === 'The Big Flex') || deals[deals.length - 1];
@@ -258,6 +282,9 @@ export const Home: React.FC = () => {
 
       </section>
 
+      {/* Official Restaurant Information Banner */}
+      <RestaurantInfoBanner />
+
       {/* ============================================================ */}
       {/* CATEGORY EXPLORER SECTION */}
       {/* ============================================================ */}
@@ -423,6 +450,94 @@ export const Home: React.FC = () => {
             />
           ))}
         </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 9. SPECIAL PROMOTIONAL PIZZA OFFERS */}
+      {/* ============================================================ */}
+      <SpecialOffersSection />
+
+      {/* ============================================================ */}
+      {/* COMPLETE MENU EXPLORER SECTION (HOME PAGE) */}
+      {/* ============================================================ */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 py-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-800 pb-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-black uppercase tracking-wider mb-2 border border-amber-500/20">
+              <UtensilsCrossed className="w-3.5 h-3.5" />
+              <span>Full Restaurant Selection</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight font-sans">
+              Explore Our <span className="text-[#FF6B00]">Complete Menu</span>
+            </h2>
+          </div>
+          <Link
+            to="/menu"
+            className="text-amber-400 hover:text-amber-300 font-black text-xs uppercase tracking-wider flex items-center gap-2 bg-gray-900 px-5 py-3 rounded-2xl border border-amber-500/30 transition-all hover:scale-105 shadow-md cursor-pointer shrink-0"
+          >
+            <span>Open Dedicated Menu Page</span>
+            <ChevronRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        {/* Category Filter Pills */}
+        <div className="flex items-center space-x-2.5 overflow-x-auto pb-2 scrollbar-none">
+          {homeCategories.map(cat => {
+            const isSelected = activeMenuCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveMenuCategory(cat)}
+                className={`px-5 py-2.5 rounded-2xl text-xs font-black uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                  isSelected
+                    ? 'bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 text-gray-950 shadow-[0_0_20px_rgba(245,158,11,0.5)] scale-105'
+                    : 'bg-[#0c0d14] text-slate-300 hover:bg-gray-800 hover:text-white border border-amber-500/20'
+                }`}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Products Grid */}
+        {activeMenuCategory !== 'Deals' && displayedHomeProducts.length > 0 && (
+          <div className="space-y-4">
+            {activeMenuCategory === 'All' && (
+              <h3 className="text-xl font-black text-white uppercase tracking-tight font-sans">
+                Signature Pizzas & Fast Food Dishes
+              </h3>
+            )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {displayedHomeProducts.map(product => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onQuickView={prod => setSelectedProduct(prod)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Deals Grid */}
+        {(activeMenuCategory === 'All' || activeMenuCategory === 'Deals') && displayedHomeDeals.length > 0 && (
+          <div className="space-y-4 pt-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-black text-white uppercase tracking-tight font-sans">
+                All 20 Combo Deals & Feasts
+              </h3>
+              <span className="text-xs font-black text-amber-400 bg-amber-500/10 px-3.5 py-1 rounded-full border border-amber-500/30">
+                Deals 1 to 20
+              </span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {displayedHomeDeals.map(deal => (
+                <DealCard key={deal.id} deal={deal} />
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* ============================================================ */}
