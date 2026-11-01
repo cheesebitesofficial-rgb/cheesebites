@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Flame, ShoppingBag, Sparkles, ChevronRight, CheckCircle2, ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
@@ -6,17 +6,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { useMenu } from '../context/MenuContext';
 import { useLanguage } from '../context/LanguageContext';
-import { ProductCard } from '../components/common/ProductCard';
-import { ProductDetailsModal } from '../components/common/ProductDetailsModal';
 import { useScrollObserver } from '../hooks/useScrollObserver';
-import type { MenuItem, Category } from '../types';
+import type { Category } from '../types';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const Home: React.FC = () => {
   const { menuItems, deals } = useMenu();
   const { t, dir } = useLanguage();
-  const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
   const navigate = useNavigate();
 
   // GSAP & Lenis Scroll Refs for Hero Scroll Animation
@@ -24,7 +21,6 @@ export const Home: React.FC = () => {
 
   // Scroll Observers for reveal animations
   const categoryReveal = useScrollObserver();
-  const bestSellersReveal = useScrollObserver();
   const campaignReveal = useScrollObserver();
   const storyReveal = useScrollObserver();
   const reviewsReveal = useScrollObserver();
@@ -60,22 +56,19 @@ export const Home: React.FC = () => {
     }
   }, []);
 
-  // Filter best seller items
-  const bestSellers = menuItems.filter(item => item.isPopular || item.isSpecial).slice(0, 6);
-
   // The Big Flex Campaign Deal (Deal 20)
   const bigFlexDeal = deals.find(d => d.dealNumber === 20) || deals.find(d => d.category === 'The Big Flex') || deals[deals.length - 1];
 
   // Category data mapping (inside component for access to t())
   const categoryMap: { category: Category; image: string; tag: string }[] = [
-    { category: 'Pizza', image: '/images/real/crown-crust-pizza.jpg', tag: t('cat.tag.pizza') },
-    { category: 'Burgers', image: '/images/real/burgers-trio.jpg', tag: t('cat.tag.burgers') },
-    { category: 'Deals', image: '/images/real/deals-flyer-full.jpg', tag: t('cat.tag.deals') },
-    { category: 'Roll Paratha', image: '/images/real/roll-paratha-trio.jpg', tag: t('cat.tag.rollParatha') },
-    { category: 'Pasta', image: '/images/real/pasta-bowl.jpg', tag: t('cat.tag.pasta') },
-    { category: 'Fried Chicken', image: '/images/real/fried-chicken-platter.jpg', tag: t('cat.tag.friedChicken') },
-    { category: 'Fries', image: '/images/real/fries-loaded-masala.jpg', tag: t('cat.tag.fries') },
-    { category: 'Sandwiches', image: '/images/real/sandwich-grill.jpg', tag: t('cat.tag.sandwiches') },
+    { category: 'Pizza', image: '/images/home/cat-pizza.jpg', tag: t('cat.tag.pizza') },
+    { category: 'Burgers', image: '/images/home/cat-burgers.jpg', tag: t('cat.tag.burgers') },
+    { category: 'Deals', image: '/images/home/cat-deals.jpg', tag: t('cat.tag.deals') },
+    { category: 'Roll Paratha', image: '/images/home/cat-roll-paratha.jpg', tag: t('cat.tag.rollParatha') },
+    { category: 'Pasta', image: '/images/home/cat-creamy-pasta.jpg', tag: t('cat.tag.pasta') },
+    { category: 'Fried Chicken', image: '/images/home/cat-chicken-wings.jpg', tag: t('cat.tag.friedChicken') },
+    { category: 'Fries', image: '/images/home/cat-loaded-fries.jpg', tag: t('cat.tag.fries') },
+    { category: 'Sandwiches', image: '/images/home/cat-sandwiches.jpg', tag: t('cat.tag.sandwiches') },
   ];
 
   return (
@@ -162,8 +155,8 @@ export const Home: React.FC = () => {
               >
                 {/* Pizza Main Image */}
                 <img
-                  src="/images/hero-pizza-user.jpg"
-                  alt="Fresh Baked Crown Crust Pizza"
+                  src="/images/home/hero-pizza-main.jpg"
+                  alt="Fresh Baked Loaded Gourmet Pizza"
                   className="w-full max-w-[480px] h-[340px] sm:h-[420px] object-cover object-center rounded-3xl border-2 border-orange-500/40 shadow-[0_25px_60px_rgba(0,0,0,0.95)]"
                 />
 
@@ -173,7 +166,7 @@ export const Home: React.FC = () => {
                   className="absolute -top-3 left-0 sm:-top-4 sm:-left-6 bg-white/95 text-gray-950 p-2 sm:p-3 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.5)] border border-white/60 flex items-center gap-2 sm:gap-3 backdrop-blur-md hover:scale-105 transition-transform duration-300 z-20 cursor-pointer scale-90 sm:scale-100"
                 >
                   <img
-                    src="/images/hero-pizza-user.jpg"
+                    src="/images/home/hero-badge-pizza.jpg"
                     alt="Cheese Pizza"
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-cover border border-amber-400/50"
                   />
@@ -195,15 +188,15 @@ export const Home: React.FC = () => {
                   className="absolute -bottom-3 right-0 sm:-bottom-4 sm:-right-6 bg-white/95 text-gray-950 p-2 sm:p-3 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.5)] border border-white/60 flex items-center gap-2 sm:gap-3 backdrop-blur-md hover:scale-105 transition-transform duration-300 z-20 cursor-pointer scale-90 sm:scale-100"
                 >
                   <img
-                    src="/images/hero-pizza-user.jpg"
-                    alt="Crown Crust Pizza"
+                    src="/images/home/hero-badge-burger.jpg"
+                    alt="Crispy Zinger Burger"
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-cover border border-amber-400/50"
                   />
                   <div>
-                    <h4 className="text-xs sm:text-sm font-black uppercase text-gray-950 leading-tight">{t('home.crownCrust')}</h4>
+                    <h4 className="text-xs sm:text-sm font-black uppercase text-gray-950 leading-tight">Crispy Burger</h4>
                     <div className="flex items-center gap-2 mt-0.5">
                       <span className="text-[10px] font-black text-amber-500 flex items-center gap-0.5">★ 5.0</span>
-                      <span className="text-xs font-mono font-black text-orange-600">Rs. 600</span>
+                      <span className="text-xs font-mono font-black text-orange-600">Rs. 450</span>
                     </div>
                   </div>
                   <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#FF6B00] text-white flex items-center justify-center font-black text-xs shadow-md ml-1">
@@ -379,7 +372,7 @@ export const Home: React.FC = () => {
             <div className="lg:col-span-6 relative">
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-2 border-amber-500/30 shadow-2xl group">
                 <img
-                  src={bigFlexDeal?.image || '/images/real/deal-20.jpg'}
+                  src={bigFlexDeal?.image || '/images/home/big-flex-deal.jpg'}
                   alt={bigFlexDeal?.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -391,37 +384,6 @@ export const Home: React.FC = () => {
             </div>
 
           </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* BEST SELLERS HIGHLIGHT GRID */}
-      {/* ============================================================ */}
-      <section ref={bestSellersReveal.ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-800/80 pb-6">
-          <div>
-            <span className="text-xs font-black uppercase tracking-[0.25em] text-amber-400 block">{t('home.mostCraved')}</span>
-            <h2 className="text-4xl sm:text-5xl font-black text-white uppercase tracking-tight mt-1 font-sans">
-              {t('home.bestSellers')}
-            </h2>
-          </div>
-          <Link 
-            to="/menu" 
-            className="text-amber-400 hover:text-amber-300 font-black text-xs uppercase tracking-wider flex items-center gap-2 bg-gray-900/90 px-5 py-3 rounded-2xl border border-amber-500/30 transition-all hover:scale-105 shadow-md cursor-pointer"
-          >
-            <span>{t('home.viewCompleteMenu')}</span>
-            <ChevronRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {bestSellers.map(item => (
-            <ProductCard
-              key={item.id}
-              product={item}
-              onQuickView={setSelectedProduct}
-            />
-          ))}
         </div>
       </section>
 
@@ -527,14 +489,6 @@ export const Home: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Product Details Modal */}
-      {selectedProduct && (
-        <ProductDetailsModal
-          product={selectedProduct}
-          onClose={() => setSelectedProduct(null)}
-        />
-      )}
     </div>
   );
 };

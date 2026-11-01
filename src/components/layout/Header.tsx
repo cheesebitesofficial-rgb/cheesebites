@@ -46,12 +46,11 @@ export const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-50 py-3 px-4 sm:px-6 lg:px-8 transition-all duration-300">
       <div className="max-w-7xl mx-auto">
-        <div className={`rounded-full px-5 py-3 transition-all duration-300 flex items-center justify-between border ${
-          scrolled 
-            ? 'bg-[#07070b]/90 backdrop-blur-2xl border-amber-500/40 shadow-[0_10px_35px_rgba(0,0,0,0.9)]' 
-            : 'bg-[#0a0a0f]/80 backdrop-blur-xl border-amber-500/25 shadow-2xl'
-        }`}>
-          
+        <div className={`rounded-full px-5 py-3 transition-all duration-300 flex items-center justify-between border ${scrolled
+          ? 'bg-[#07070b]/90 backdrop-blur-2xl border-amber-500/40 shadow-[0_10px_35px_rgba(0,0,0,0.9)]'
+          : 'bg-[#0a0a0f]/80 backdrop-blur-xl border-amber-500/25 shadow-2xl'
+          }`}>
+
           {/* Brand Favicon Logo */}
           <Link to="/" className="flex items-center gap-2.5 group">
             <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-500 via-orange-500 to-amber-300 p-[2px] shadow-[0_0_20px_rgba(245,158,11,0.5)] group-hover:scale-105 transition-transform overflow-hidden">
@@ -72,9 +71,8 @@ export const Header: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-xs font-black uppercase tracking-wider transition-all hover:text-amber-400 relative py-1 ${
-                  isActive(link.path) ? 'text-amber-400' : 'text-slate-300'
-                }`}
+                className={`text-xs font-black uppercase tracking-wider transition-all hover:text-amber-400 relative py-1 ${isActive(link.path) ? 'text-amber-400' : 'text-slate-300'
+                  }`}
               >
                 {link.name}
                 {isActive(link.path) && (
@@ -169,11 +167,10 @@ export const Header: React.FC = () => {
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-3 rounded-xl text-xs font-black uppercase tracking-wider transition-all ${
-                  isActive(link.path)
-                    ? 'bg-amber-500 text-gray-950 font-black shadow-lg shadow-amber-500/30'
-                    : 'text-slate-300 hover:bg-gray-900 hover:text-white'
-                }`}
+                className={`px-4 py-3 rounded-xl text-xs font-black uppercase tracking-wider transition-all ${isActive(link.path)
+                  ? 'bg-amber-500 text-gray-950 font-black shadow-lg shadow-amber-500/30'
+                  : 'text-slate-300 hover:bg-gray-900 hover:text-white'
+                  }`}
               >
                 {link.name}
               </Link>
