@@ -33,135 +33,191 @@ export const Footer: React.FC = () => {
 
   return (
     <footer 
-      className="bg-[#0b0c10] text-gray-400 border-t border-amber-500/20 pt-16 pb-10" 
+      className="bg-[#0b0c10] text-gray-400 border-t border-amber-500/20 pt-12 sm:pt-16 pb-10" 
       dir={dir}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800/80">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-12 border-b border-gray-800/80">
           
           {/* Column 1: Brand Info */}
-          <div className="space-y-4">
-            <Link to="/" className="flex items-center space-x-3">
+          <div className="space-y-4 text-start">
+            <Link to="/" className="inline-flex items-center gap-3 group">
               <img
                 src="/logo.png"
                 alt="Cheese Bites Logo"
-                className="w-11 h-11 object-contain rounded-xl border border-amber-500/40 shadow-md shadow-amber-500/20"
+                className="w-11 h-11 object-contain rounded-xl border border-amber-500/40 shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform"
               />
               <span className="text-2xl font-black text-white uppercase tracking-tight font-sans">
                 Cheese <span className="text-[#FF6B00]">Bites</span>
               </span>
             </Link>
-            <p className="text-xs text-gray-400 leading-relaxed pr-2">
+            
+            <p className="text-xs text-gray-400 leading-relaxed max-w-sm">
               {t('footer.desc')}
             </p>
+            
             <div className="pt-1">
-              <span className="inline-block bg-amber-500/10 text-amber-400 text-xs font-semibold px-3 py-1 rounded-full border border-amber-500/20">
+              <span className="inline-block bg-amber-500/10 text-amber-400 text-xs font-semibold px-3 py-1.5 rounded-full border border-amber-500/20">
                 {RESTAURANT_INFO.closingMessage || 'Thank You for Choosing Cheesy Bites'}
               </span>
             </div>
 
             {/* Social Links */}
-            <div className="pt-2 flex items-center gap-2">
-              <a 
-                href={SOCIAL_LINKS.instagram} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-amber-500/50 hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 flex items-center justify-center transition-all"
-                title="Instagram"
-              >
-                <InstagramIcon />
-              </a>
-              <a 
-                href={SOCIAL_LINKS.facebook} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-blue-500 hover:bg-blue-600 flex items-center justify-center transition-all"
-                title="Facebook"
-              >
-                <FacebookIcon />
-              </a>
-              <a 
-                href={SOCIAL_LINKS.tiktok} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-white/50 hover:bg-black flex items-center justify-center transition-all"
-                title="TikTok"
-              >
-                <TikTokIcon />
-              </a>
-              <a 
-                href={SOCIAL_LINKS.youtube} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-red-500 hover:bg-red-600 flex items-center justify-center transition-all"
-                title="YouTube"
-              >
-                <YouTubeIcon />
-              </a>
+            <div className="pt-2">
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-gray-500 mb-2">
+                Follow Us
+              </span>
+              <div className="flex items-center gap-2">
+                <a 
+                  href={SOCIAL_LINKS.instagram} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-pink-500/50 hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 flex items-center justify-center transition-all shadow-sm"
+                  title="Instagram"
+                  aria-label="Instagram"
+                >
+                  <InstagramIcon />
+                </a>
+                <a 
+                  href={SOCIAL_LINKS.facebook} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-blue-500 hover:bg-blue-600 flex items-center justify-center transition-all shadow-sm"
+                  title="Facebook"
+                  aria-label="Facebook"
+                >
+                  <FacebookIcon />
+                </a>
+                <a 
+                  href={SOCIAL_LINKS.tiktok} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-white/50 hover:bg-black flex items-center justify-center transition-all shadow-sm"
+                  title="TikTok"
+                  aria-label="TikTok"
+                >
+                  <TikTokIcon />
+                </a>
+                <a 
+                  href={SOCIAL_LINKS.youtube} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-red-500 hover:bg-red-600 flex items-center justify-center transition-all shadow-sm"
+                  title="YouTube"
+                  aria-label="YouTube"
+                >
+                  <YouTubeIcon />
+                </a>
+              </div>
             </div>
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="space-y-4">
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase border-l-2 border-[#FF6B00] pl-3">
+          <div className="space-y-4 text-start">
+            <h4 className="text-white font-bold text-sm tracking-wider uppercase border-s-2 border-[#FF6B00] ps-3">
               {t('footer.quickLinks')}
             </h4>
-            <ul className="space-y-2.5 text-xs font-medium text-gray-400">
-              <li><Link to="/" className="hover:text-amber-400 transition-colors">{t('footer.homePage')}</Link></li>
-              <li><Link to="/menu" className="hover:text-amber-400 transition-colors">{t('footer.fullMenu')}</Link></li>
-              <li><Link to="/deals" className="hover:text-amber-400 transition-colors">{t('footer.combos')}</Link></li>
-              <li><Link to="/about" className="hover:text-amber-400 transition-colors">{t('footer.aboutUs')}</Link></li>
-              <li><Link to="/contact" className="hover:text-amber-400 transition-colors">{t('footer.contactDelivery')}</Link></li>
+            <ul className="space-y-2 text-xs font-medium text-gray-400">
+              <li>
+                <Link to="/" className="inline-block py-1 hover:text-amber-400 transition-colors">
+                  {t('footer.homePage')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/menu" className="inline-block py-1 hover:text-amber-400 transition-colors">
+                  {t('footer.fullMenu')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/deals" className="inline-block py-1 hover:text-amber-400 transition-colors">
+                  {t('footer.combos')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="inline-block py-1 hover:text-amber-400 transition-colors">
+                  {t('footer.aboutUs')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="inline-block py-1 hover:text-amber-400 transition-colors">
+                  {t('footer.contactDelivery')}
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Column 3: Menu Categories */}
-          <div className="space-y-4">
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase border-l-2 border-[#FF6B00] pl-3">
+          <div className="space-y-4 text-start">
+            <h4 className="text-white font-bold text-sm tracking-wider uppercase border-s-2 border-[#FF6B00] ps-3">
               {t('footer.specialties')}
             </h4>
-            <ul className="space-y-2.5 text-xs font-medium text-gray-400">
-              <li><Link to="/menu?category=Pizza" className="hover:text-amber-400 transition-colors">Special Pizzas & Crown Crust</Link></li>
-              <li><Link to="/menu?category=Burgers" className="hover:text-amber-400 transition-colors">Zinger & Grilled Burgers</Link></li>
-              <li><Link to="/deals" className="hover:text-amber-400 transition-colors">20 Value Combo Deals</Link></li>
-              <li><Link to="/menu?category=Roll%20Paratha" className="hover:text-amber-400 transition-colors">Crispy Roll Parathas</Link></li>
-              <li><Link to="/menu?category=Fried%20Chicken" className="hover:text-amber-400 transition-colors">Hot & BBQ Wings, Fried Chicken</Link></li>
-              <li><Link to="/menu?category=Fries" className="hover:text-amber-400 transition-colors">Loaded & Masala Fries</Link></li>
+            <ul className="space-y-2 text-xs font-medium text-gray-400">
+              <li>
+                <Link to="/menu?category=Pizza" className="inline-block py-1 hover:text-amber-400 transition-colors">
+                  Special Pizzas & Crown Crust
+                </Link>
+              </li>
+              <li>
+                <Link to="/menu?category=Burgers" className="inline-block py-1 hover:text-amber-400 transition-colors">
+                  Zinger & Grilled Burgers
+                </Link>
+              </li>
+              <li>
+                <Link to="/deals" className="inline-block py-1 hover:text-amber-400 transition-colors">
+                  20 Value Combo Deals
+                </Link>
+              </li>
+              <li>
+                <Link to="/menu?category=Roll%20Paratha" className="inline-block py-1 hover:text-amber-400 transition-colors">
+                  Crispy Roll Parathas
+                </Link>
+              </li>
+              <li>
+                <Link to="/menu?category=Fried%20Chicken" className="inline-block py-1 hover:text-amber-400 transition-colors">
+                  Hot & BBQ Wings, Fried Chicken
+                </Link>
+              </li>
+              <li>
+                <Link to="/menu?category=Fries" className="inline-block py-1 hover:text-amber-400 transition-colors">
+                  Loaded & Masala Fries
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Column 4: Contact & Order Info */}
-          <div className="space-y-4">
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase border-l-2 border-[#FF6B00] pl-3">
+          <div className="space-y-4 text-start">
+            <h4 className="text-white font-bold text-sm tracking-wider uppercase border-s-2 border-[#FF6B00] ps-3">
               {t('footer.orderHotline')}
             </h4>
-            <div className="space-y-3 text-xs">
+            
+            <div className="space-y-3.5 text-xs">
               <a 
                 href={`tel:${RESTAURANT_INFO.phone}`}
-                className="flex items-center gap-3 bg-amber-500/10 hover:bg-amber-500/20 p-3 rounded-xl border border-amber-500/30 text-white transition-colors group cursor-pointer"
+                className="flex items-center gap-3 bg-amber-500/10 hover:bg-amber-500/20 p-3 rounded-2xl border border-amber-500/30 text-white transition-all group cursor-pointer shadow-sm"
               >
-                <div className="w-8 h-8 rounded-lg bg-amber-500 text-gray-950 flex items-center justify-center font-black shrink-0 group-hover:scale-105 transition-transform">
+                <div className="w-9 h-9 rounded-xl bg-amber-500 text-gray-950 flex items-center justify-center font-black shrink-0 group-hover:scale-105 transition-transform shadow-md">
                   <Phone className="w-4 h-4" />
                 </div>
-                <div>
+                <div className="text-start">
                   <span className="block text-[10px] text-amber-400 font-semibold uppercase">{t('footer.callToOrder')}</span>
                   <span className="text-sm font-black text-amber-300 font-mono tracking-wider">{RESTAURANT_INFO.phone}</span>
                 </div>
               </a>
 
-              <div className="flex items-start gap-2.5 text-gray-400 pt-1">
+              <div className="flex items-start gap-3 text-gray-400 pt-1">
                 <Clock className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <div>
+                <div className="text-start">
                   <span className="block text-[10px] text-gray-500 uppercase font-semibold">{t('footer.deliveryHours')}</span>
-                  <span className="text-white font-medium">{RESTAURANT_INFO.hours}</span>
+                  <span className="text-white font-medium text-xs">{RESTAURANT_INFO.hours}</span>
                 </div>
               </div>
 
-              <div className="flex items-start gap-2.5 text-gray-400">
+              <div className="flex items-start gap-3 text-gray-400">
                 <MapPin className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
-                <div>
+                <div className="text-start">
                   <span className="block text-[10px] text-gray-500 uppercase font-semibold">{t('footer.storeLocation')}</span>
-                  <span className="text-white font-medium">{RESTAURANT_INFO.address}</span>
+                  <span className="text-white font-medium text-xs leading-relaxed block">{RESTAURANT_INFO.address}</span>
                 </div>
               </div>
             </div>
@@ -170,15 +226,17 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Footer Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 text-center sm:text-start">
           <p>© {new Date().getFullYear()} Cheese Bites Islamabad. {t('footer.rights')}</p>
-          <div className="flex items-center space-x-4">
-            <span className="flex items-center gap-1 text-gray-400">
-              {t('footer.madeWith')} <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 inline" /> {t('footer.forLovers')}
-            </span>
+          <div className="flex items-center justify-center gap-1.5 text-gray-400">
+            <span>{t('footer.madeWith')}</span>
+            <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 inline" />
+            <span>{t('footer.forLovers')}</span>
           </div>
         </div>
       </div>
     </footer>
   );
 };
+
+export default Footer;

@@ -42,7 +42,7 @@ export const SpecialOffersSection: React.FC = () => {
         {SPECIAL_PIZZA_OFFERS.map((offer, idx) => (
           <div
             key={offer.id}
-            className="relative rounded-3xl bg-gradient-to-br from-[#121320] via-[#0e0f18] to-[#14101a] border-2 border-amber-500/40 p-6 sm:p-8 overflow-hidden shadow-2xl flex flex-col justify-between group hover:border-amber-400/80 transition-all duration-300"
+            className="relative rounded-3xl bg-gradient-to-br from-[#121320] via-[#0e0f18] to-[#14101a] border-2 border-amber-500/40 p-5 sm:p-8 overflow-hidden shadow-2xl flex flex-col justify-between group hover:border-amber-400/80 transition-all duration-300"
           >
             {/* Ambient Corner Glow */}
             <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#FF6B00]/15 rounded-full blur-3xl pointer-events-none" />

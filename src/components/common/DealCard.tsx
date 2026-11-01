@@ -59,7 +59,7 @@ export const DealCard: React.FC<DealCardProps> = ({ deal }) => {
       </div>
 
       {/* Deal Contents Checklist */}
-      <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+      <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-3 sm:space-y-4">
         <div>
           <span className="text-[10px] font-black uppercase tracking-widest text-amber-400 flex items-center gap-1 mb-2.5">
             <Sparkles className="w-3 h-3 text-amber-400" /> {t('deal.includesCombo')}

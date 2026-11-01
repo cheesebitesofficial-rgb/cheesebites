@@ -137,32 +137,32 @@ export const MenuPage: React.FC = () => {
     >
       
       {/* Page Header Banner */}
-      <div className="relative rounded-3xl bg-gradient-to-br from-[#0c0d14] via-[#151624] to-[#0c0d14] text-white p-8 sm:p-14 shadow-2xl border border-amber-500/30 overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="relative rounded-3xl bg-gradient-to-br from-[#0c0d14] via-[#151624] to-[#0c0d14] text-white p-6 sm:p-12 lg:p-14 shadow-2xl border border-amber-500/30 overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="relative z-10 max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 font-black text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.2)]">
             <Sparkles className="w-3.5 h-3.5" /> {t('menu.onlineSelection')}
           </div>
-          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight font-sans text-white">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight font-sans text-white">
             {t('menu.ourComplete')} <span className="text-gold-gradient">{t('menu.menuTitle')}</span>
           </h1>
-          <p className="text-amber-100/90 text-sm sm:text-base font-medium leading-relaxed">
+          <p className="text-amber-100/90 text-xs sm:text-base font-medium leading-relaxed">
             {t('menu.description')}
           </p>
         </div>
 
         {/* Action Buttons to View Printed Restaurant Flyers */}
-        <div className="relative z-10 flex flex-wrap sm:flex-col gap-3 shrink-0">
+        <div className="relative z-10 flex flex-col sm:flex-row md:flex-col gap-3 w-full sm:w-auto shrink-0">
           <button
             onClick={() => setViewFlyer('menu')}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 font-black text-xs uppercase tracking-wider px-5 py-3 rounded-2xl shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all hover:scale-105 cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 font-black text-xs uppercase tracking-wider px-5 py-3.5 rounded-2xl shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all hover:scale-105 cursor-pointer"
           >
             <FileText className="w-4 h-4" />
             <span>View Printed Menu Card</span>
           </button>
           <button
             onClick={() => setViewFlyer('deals')}
-            className="inline-flex items-center gap-2 bg-[#0c0d14]/90 hover:bg-gray-800 text-amber-300 hover:text-white border border-amber-500/30 font-black text-xs uppercase tracking-wider px-5 py-3 rounded-2xl shadow-md transition-all hover:scale-105 cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0c0d14]/90 hover:bg-gray-800 text-amber-300 hover:text-white border border-amber-500/30 font-black text-xs uppercase tracking-wider px-5 py-3.5 rounded-2xl shadow-md transition-all hover:scale-105 cursor-pointer"
           >
             <Flame className="w-4 h-4 text-orange-400" />
             <span>View Deals Card</span>
@@ -183,7 +183,7 @@ export const MenuPage: React.FC = () => {
             value={searchQuery}
             onChange={e => handleSearchChange(e.target.value)}
             placeholder={t('menu.searchPlaceholder')}
-            className="w-full bg-[#0c0d14]/90 border border-amber-500/25 text-white text-sm rounded-2xl pl-11 pr-10 py-4 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-500/30 shadow-lg transition-all"
+            className="w-full bg-[#0c0d14]/90 border border-amber-500/25 text-white text-sm rounded-2xl pl-11 pr-10 py-3.5 sm:py-4 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-500/30 shadow-lg transition-all"
           />
           <Search className="w-5 h-5 text-amber-400 absolute left-4 top-1/2 -translate-y-1/2" />
           {searchQuery && (
@@ -196,15 +196,15 @@ export const MenuPage: React.FC = () => {
           )}
         </div>
 
-        {/* Category Pill Tabs */}
-        <div className="flex items-center space-x-2.5 overflow-x-auto pb-2 scrollbar-none">
+        {/* Category Pill Tabs - Edge to edge on mobile */}
+        <div className="flex items-center space-x-2.5 overflow-x-auto pb-2 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
           {categories.map(cat => {
             const isSelected = activeCategory === cat;
             return (
               <button
                 key={cat}
                 onClick={() => handleCategorySelect(cat)}
-                className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                className={`px-5 sm:px-6 py-2.5 sm:py-3 rounded-2xl text-xs font-black uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer ${
                   isSelected
                     ? 'bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 text-gray-950 shadow-[0_0_25px_rgba(245,158,11,0.5)] scale-105'
                     : 'bg-[#0c0d14] text-slate-300 hover:bg-gray-800 hover:text-white border border-amber-500/20'
@@ -301,26 +301,26 @@ export const MenuPage: React.FC = () => {
 
           {/* Pagination Controls */}
           {totalPages > 1 && (
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 border-t border-gray-800/80">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-8 border-t border-gray-800/80 w-full">
               {/* Previous Page Button */}
               <button
                 onClick={() => goToPage(currentPage - 1)}
                 disabled={currentPage === 1}
-                className="flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-gray-900 border border-amber-500/20 text-xs font-black uppercase text-amber-300 disabled:opacity-30 disabled:pointer-events-none hover:bg-gray-800 hover:border-amber-400 transition-all cursor-pointer shadow-md"
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-gray-900 border border-amber-500/20 text-xs font-black uppercase text-amber-300 disabled:opacity-30 disabled:pointer-events-none hover:bg-gray-800 hover:border-amber-400 transition-all cursor-pointer shadow-md shrink-0"
               >
                 <ChevronLeft className="w-4 h-4" />
                 <span>Prev</span>
               </button>
 
-              {/* Page Number Buttons */}
-              <div className="flex items-center gap-2">
+              {/* Page Number Buttons - Scrollable or wrap on mobile */}
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2 max-w-full overflow-x-auto py-1 px-1 scrollbar-none">
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => {
                   const isActive = currentPage === pageNum;
                   return (
                     <button
                       key={pageNum}
                       onClick={() => goToPage(pageNum)}
-                      className={`w-10 h-10 rounded-2xl text-xs font-black transition-all cursor-pointer ${
+                      className={`w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-2xl text-xs font-black transition-all cursor-pointer ${
                         isActive
                           ? 'bg-gradient-to-tr from-amber-500 via-orange-500 to-amber-400 text-gray-950 shadow-[0_0_15px_rgba(245,158,11,0.6)] scale-105'
                           : 'bg-gray-900/90 text-gray-300 hover:text-white hover:bg-gray-800 border border-gray-800'
@@ -336,7 +336,7 @@ export const MenuPage: React.FC = () => {
               <button
                 onClick={() => goToPage(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-gray-900 border border-amber-500/20 text-xs font-black uppercase text-amber-300 disabled:opacity-30 disabled:pointer-events-none hover:bg-gray-800 hover:border-amber-400 transition-all cursor-pointer shadow-md"
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-gray-900 border border-amber-500/20 text-xs font-black uppercase text-amber-300 disabled:opacity-30 disabled:pointer-events-none hover:bg-gray-800 hover:border-amber-400 transition-all cursor-pointer shadow-md shrink-0"
               >
                 <span>Next</span>
                 <ChevronRight className="w-4 h-4" />

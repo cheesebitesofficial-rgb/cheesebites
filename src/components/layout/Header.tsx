@@ -61,7 +61,7 @@ export const Header: React.FC = () => {
                 className="w-full h-full object-cover rounded-full bg-[#07070b]"
               />
             </div>
-            <span className="text-xl sm:text-2xl font-black tracking-tight text-white uppercase font-sans">
+            <span className="text-lg sm:text-xl md:text-2xl font-black tracking-tight text-white uppercase font-sans whitespace-nowrap">
               CHEESE <span className="text-amber-400 font-extrabold">BITES</span>
             </span>
           </Link>

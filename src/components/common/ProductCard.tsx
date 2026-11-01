@@ -82,7 +82,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
       </div>
 
       {/* Product Information */}
-      <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+      <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-3 sm:space-y-4">
         <div>
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-black text-white group-hover:text-amber-400 transition-colors line-clamp-1 uppercase tracking-tight font-sans">

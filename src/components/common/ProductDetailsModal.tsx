@@ -57,12 +57,12 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ produc
 
   return (
     <div 
-      className="fixed inset-0 z-50 overflow-y-auto bg-gray-950/85 backdrop-blur-xl flex items-center justify-center p-4 animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 overflow-y-auto bg-gray-950/85 backdrop-blur-xl flex items-center justify-center p-3 sm:p-4 animate-in fade-in duration-200"
       onClick={onClose}
     >
       
       <div 
-        className="relative bg-[#0c0d14] rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-amber-500/30 my-8 text-white"
+        className="relative bg-[#0c0d14] rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-amber-500/30 my-auto text-white max-h-[92vh] flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -99,7 +99,7 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ produc
         </div>
 
         {/* Modal Content Body */}
-        <div className="p-6 space-y-6">
+        <div className="p-4 sm:p-6 space-y-5 sm:space-y-6 overflow-y-auto">
           <p className="text-sm text-gray-300 leading-relaxed font-medium">
             {product.description}
           </p>

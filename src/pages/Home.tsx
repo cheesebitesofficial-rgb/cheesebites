@@ -108,21 +108,21 @@ export const Home: React.FC = () => {
               </div>
 
               {/* Main Headline matching reference */}
-              <h1 className="text-4xl sm:text-6xl xl:text-7xl font-black uppercase tracking-tight leading-[1.05] text-white drop-shadow-lg font-sans">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black uppercase tracking-tight leading-[1.08] text-white drop-shadow-lg font-sans">
                 {t('home.headline1')} <br />
                 <span className="text-[#FF6B00] font-sans">{t('home.headline2')}</span>
               </h1>
 
               {/* Subtitle Paragraph matching reference */}
-              <p className="text-amber-100/90 text-sm sm:text-base max-w-lg font-medium leading-relaxed drop-shadow-md">
+              <p className="text-amber-100/90 text-xs sm:text-base max-w-lg font-medium leading-relaxed drop-shadow-md">
                 {t('home.subtitle')}
               </p>
 
               {/* Dual Action Buttons matching reference styling */}
-              <div className="flex items-center justify-center lg:justify-start gap-5 pt-2 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-5 pt-2 w-full sm:w-auto">
                 <Link
                   to="/menu"
-                  className="px-8 py-4 rounded-full text-xs font-black uppercase tracking-wider text-white bg-gradient-to-r from-[#FF6B00] to-[#FF8800] hover:from-[#FF5500] hover:to-[#FF7700] shadow-[0_0_30px_rgba(255,107,0,0.6)] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
+                  className="w-full sm:w-auto px-8 py-4 rounded-full text-xs font-black uppercase tracking-wider text-white bg-gradient-to-r from-[#FF6B00] to-[#FF8800] hover:from-[#FF5500] hover:to-[#FF7700] shadow-[0_0_30px_rgba(255,107,0,0.6)] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   <ShoppingBag className="w-4 h-4" />
                   <span>{t('home.orderNow')}</span>
@@ -130,7 +130,7 @@ export const Home: React.FC = () => {
 
                 <Link
                   to="/menu"
-                  className="px-6 py-4 rounded-full text-xs font-black uppercase tracking-wider text-amber-300 hover:text-white bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 flex items-center gap-2.5 group transition-all duration-300 hover:scale-105 shadow-md cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-4 rounded-full text-xs font-black uppercase tracking-wider text-amber-300 hover:text-white bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 flex items-center justify-center gap-2.5 group transition-all duration-300 hover:scale-105 shadow-md cursor-pointer"
                 >
                   <span>{t('home.seeMenu')}</span>
                   <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-orange-500 text-gray-950 flex items-center justify-center group-hover:translate-x-1 transition-transform shadow-[0_0_12px_rgba(245,158,11,0.5)]">
@@ -170,12 +170,12 @@ export const Home: React.FC = () => {
                 {/* FLOATING CARD 1: TOP LEFT OVERLAY */}
                 <div
                   onClick={() => navigate('/menu')}
-                  className="absolute -top-4 -left-4 sm:-left-8 bg-white/95 text-gray-950 p-2.5 sm:p-3 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.5)] border border-white/60 flex items-center gap-3 backdrop-blur-md hover:scale-105 transition-transform duration-300 z-20 cursor-pointer"
+                  className="absolute -top-3 left-0 sm:-top-4 sm:-left-6 bg-white/95 text-gray-950 p-2 sm:p-3 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.5)] border border-white/60 flex items-center gap-2 sm:gap-3 backdrop-blur-md hover:scale-105 transition-transform duration-300 z-20 cursor-pointer scale-90 sm:scale-100"
                 >
                   <img
                     src="/images/hero-pizza-user.jpg"
                     alt="Cheese Pizza"
-                    className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl object-cover border border-amber-400/50"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-cover border border-amber-400/50"
                   />
                   <div>
                     <h4 className="text-xs sm:text-sm font-black uppercase text-gray-950 leading-tight">{t('home.cheesePizza')}</h4>
@@ -184,7 +184,7 @@ export const Home: React.FC = () => {
                       <span className="text-xs font-mono font-black text-orange-600">Rs. 400</span>
                     </div>
                   </div>
-                  <div className="w-7 h-7 rounded-lg bg-[#FF6B00] text-white flex items-center justify-center font-black text-xs shadow-md ml-1">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#FF6B00] text-white flex items-center justify-center font-black text-xs shadow-md ml-1">
                     +
                   </div>
                 </div>
@@ -192,12 +192,12 @@ export const Home: React.FC = () => {
                 {/* FLOATING CARD 2: BOTTOM RIGHT OVERLAY */}
                 <div
                   onClick={() => navigate('/menu')}
-                  className="absolute -bottom-4 -right-4 sm:-right-8 bg-white/95 text-gray-950 p-2.5 sm:p-3 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.5)] border border-white/60 flex items-center gap-3 backdrop-blur-md hover:scale-105 transition-transform duration-300 z-20 cursor-pointer"
+                  className="absolute -bottom-3 right-0 sm:-bottom-4 sm:-right-6 bg-white/95 text-gray-950 p-2 sm:p-3 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.5)] border border-white/60 flex items-center gap-2 sm:gap-3 backdrop-blur-md hover:scale-105 transition-transform duration-300 z-20 cursor-pointer scale-90 sm:scale-100"
                 >
                   <img
                     src="/images/hero-pizza-user.jpg"
                     alt="Crown Crust Pizza"
-                    className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl object-cover border border-amber-400/50"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-cover border border-amber-400/50"
                   />
                   <div>
                     <h4 className="text-xs sm:text-sm font-black uppercase text-gray-950 leading-tight">{t('home.crownCrust')}</h4>
@@ -206,7 +206,7 @@ export const Home: React.FC = () => {
                       <span className="text-xs font-mono font-black text-orange-600">Rs. 600</span>
                     </div>
                   </div>
-                  <div className="w-7 h-7 rounded-lg bg-[#FF6B00] text-white flex items-center justify-center font-black text-xs shadow-md ml-1">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#FF6B00] text-white flex items-center justify-center font-black text-xs shadow-md ml-1">
                     +
                   </div>
                 </div>

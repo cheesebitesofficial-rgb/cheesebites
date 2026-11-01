@@ -53,23 +53,23 @@ export const DealsPage: React.FC = () => {
       className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 bg-[#07070b] min-h-screen"
     >
       {/* Page Hero Header */}
-      <div className="relative bg-gradient-to-br from-[#0c0d14] via-[#151624] to-[#0c0d14] text-white rounded-3xl p-8 sm:p-14 shadow-2xl border border-amber-500/30 text-center max-w-4xl mx-auto space-y-4 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-[#0c0d14] via-[#151624] to-[#0c0d14] text-white rounded-3xl p-6 sm:p-14 shadow-2xl border border-amber-500/30 text-center max-w-4xl mx-auto space-y-4 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-black uppercase px-4 py-2 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.25)]">
             <Sparkles className="w-4 h-4" />
             <span>{t('deals.badge')}</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight font-sans text-white">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight font-sans text-white">
             {t('deals.title')} <span className="text-gold-gradient">{t('deals.titleHighlight')}</span>
           </h1>
-          <p className="text-amber-100/90 text-sm sm:text-base max-w-2xl mx-auto font-medium leading-relaxed">
+          <p className="text-amber-100/90 text-xs sm:text-base max-w-2xl mx-auto font-medium leading-relaxed">
             {t('deals.description')}
           </p>
           <div className="pt-2">
             <button
               onClick={() => setViewFlyer(true)}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 font-black text-xs uppercase tracking-wider px-6 py-3 rounded-2xl shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all hover:scale-105 cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-2xl shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all hover:scale-105 cursor-pointer"
             >
               <FileText className="w-4 h-4" />
               <span>View Official Printed Deals Flyer</span>
@@ -79,12 +79,12 @@ export const DealsPage: React.FC = () => {
       </div>
 
       {/* Quick Tier Pill Navigation */}
-      <div className="flex items-center justify-center gap-3 flex-wrap">
+      <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
         {sections.map((section) => (
           <a
             key={section.title}
             href={`#${section.title.toLowerCase().replace(/\s+/g, '-')}`}
-            className="px-5 py-2.5 rounded-2xl bg-[#0c0d14] border border-amber-500/25 hover:border-amber-400/60 text-amber-300 hover:text-white text-xs font-black uppercase tracking-wider flex items-center gap-2 transition-all hover:scale-105 shadow-md"
+            className="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-2xl bg-[#0c0d14] border border-amber-500/25 hover:border-amber-400/60 text-amber-300 hover:text-white text-[11px] sm:text-xs font-black uppercase tracking-wider flex items-center gap-1.5 sm:gap-2 transition-all hover:scale-105 shadow-md"
           >
             {section.icon}
             <span>{section.title}</span>
