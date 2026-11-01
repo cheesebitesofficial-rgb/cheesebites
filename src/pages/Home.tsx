@@ -68,14 +68,14 @@ export const Home: React.FC = () => {
 
   // Category data mapping (inside component for access to t())
   const categoryMap: { category: Category; image: string; tag: string }[] = [
-    { category: 'Pizza', image: '/images/real/crown-crust-pizza.jpg', tag: t('cat.tag.pizza') },
-    { category: 'Burgers', image: '/images/real/burgers-trio.jpg', tag: t('cat.tag.burgers') },
-    { category: 'Deals', image: '/images/real/deals-flyer-full.jpg', tag: t('cat.tag.deals') },
-    { category: 'Roll Paratha', image: '/images/real/roll-paratha-trio.jpg', tag: t('cat.tag.rollParatha') },
-    { category: 'Pasta', image: '/images/real/pasta-bowl.jpg', tag: t('cat.tag.pasta') },
-    { category: 'Fried Chicken', image: '/images/real/fried-chicken-platter.jpg', tag: t('cat.tag.friedChicken') },
-    { category: 'Fries', image: '/images/real/fries-loaded-masala.jpg', tag: t('cat.tag.fries') },
-    { category: 'Sandwiches', image: '/images/real/sandwich-grill.jpg', tag: t('cat.tag.sandwiches') },
+    { category: 'Pizza', image: '/images/menu/pizza.jpg', tag: t('cat.tag.pizza') },
+    { category: 'Burgers', image: '/images/menu/burgers.jpg', tag: t('cat.tag.burgers') },
+    { category: 'Deals', image: '/images/menu/deals.jpg', tag: t('cat.tag.deals') },
+    { category: 'Roll Paratha', image: '/images/menu/roll-paratha.jpg', tag: t('cat.tag.rollParatha') },
+    { category: 'Pasta', image: '/images/menu/pasta.jpg', tag: t('cat.tag.pasta') },
+    { category: 'Fried Chicken', image: '/images/menu/fried-chicken.jpg', tag: t('cat.tag.friedChicken') },
+    { category: 'Fries', image: '/images/menu/fries.jpg', tag: t('cat.tag.fries') },
+    { category: 'Sandwiches', image: '/images/menu/sandwiches.jpg', tag: t('cat.tag.sandwiches') },
   ];
 
   return (
@@ -304,6 +304,7 @@ export const Home: React.FC = () => {
                     src={cat.image}
                     alt={cat.category}
                     loading="lazy"
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/images/real/crown-crust-pizza.jpg'; }}
                   />
                   
                   <div className="items-badge">
