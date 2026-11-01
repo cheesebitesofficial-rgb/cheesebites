@@ -580,28 +580,18 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
 
   // ─────────── 7. FRIES ───────────
   {
-    id: 'fries-masala-small',
-    name: 'Masala Fries Small',
+    id: 'fries-masala',
+    name: 'Masala Fries',
     category: 'Fries',
-    description: 'Crispy golden fries tossed in our special masala seasoning — perfect snack size.',
-    image: '/images/menu/fries-masala-small.jpg',
+    description: 'Crispy golden fries tossed in our special masala seasoning — served hot and fresh.',
+    image: '/images/menu/fries-masala.jpg',
     basePrice: 170,
-  },
-  {
-    id: 'fries-simple-medium',
-    name: 'Medium Simple Fries',
-    category: 'Fries',
-    description: 'Classic golden french fries, lightly salted and fried to crispy perfection.',
-    image: '/images/menu/fries-simple-medium.jpg',
-    basePrice: 250,
-  },
-  {
-    id: 'fries-masala-large',
-    name: 'Masala Fries Large',
-    category: 'Fries',
-    description: 'Large portion of crispy masala-seasoned golden fries — great for sharing.',
-    image: '/images/menu/fries-masala-large.jpg',
-    basePrice: 400,
+    sizes: [
+      { name: 'Small', price: 170 },
+      { name: 'Medium', price: 250 },
+      { name: 'Large', price: 400 },
+    ],
+    isPopular: true,
   },
   {
     id: 'fries-loaded',
@@ -611,6 +601,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     image: '/images/menu/fries-loaded.jpg',
     basePrice: 600,
     isPopular: true,
+    isSpecial: true,
   },
 ];
 
