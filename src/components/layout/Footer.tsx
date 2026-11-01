@@ -199,40 +199,40 @@ export const Footer: React.FC = () => {
               </h4>
             </div>
             
-            <div className="space-y-2 text-xs">
-              {/* Call to Order on 1 line */}
+            <div className="space-y-3.5 text-xs">
+              {/* Call to Order */}
               <a 
                 href={`tel:${RESTAURANT_INFO.phone}`}
-                className="flex items-center gap-2.5 py-1 text-gray-300 hover:text-amber-400 transition-colors group cursor-pointer"
+                className="flex items-center gap-3 bg-amber-500/10 hover:bg-amber-500/20 p-2.5 rounded-xl border border-amber-500/30 text-white transition-all group cursor-pointer shadow-sm"
               >
-                <div className="w-6 h-6 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-gray-950 transition-colors">
-                  <Phone className="w-3.5 h-3.5" />
+                <div className="w-8 h-8 rounded-lg bg-amber-500 text-gray-950 flex items-center justify-center font-black shrink-0 group-hover:scale-105 transition-transform shadow-md">
+                  <Phone className="w-4 h-4" />
                 </div>
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-[11px] text-amber-400 font-bold uppercase">{t('footer.callToOrder')}:</span>
-                  <span className="text-xs font-black text-amber-300 font-mono tracking-wider">{RESTAURANT_INFO.phone}</span>
+                <div className="text-start">
+                  <span className="block text-[10px] text-amber-400 font-bold uppercase tracking-wider">{t('footer.callToOrder')}</span>
+                  <span className="text-sm font-black text-amber-300 font-mono tracking-wider">{RESTAURANT_INFO.phone}</span>
                 </div>
               </a>
 
-              {/* Delivery Timing on 1 line */}
-              <div className="flex items-center gap-2.5 py-1 text-gray-300">
-                <div className="w-6 h-6 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0">
-                  <Clock className="w-3.5 h-3.5" />
+              {/* Delivery Timing */}
+              <div className="flex items-start gap-3 text-gray-400">
+                <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                  <Clock className="w-4 h-4" />
                 </div>
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-[11px] text-gray-400 font-semibold uppercase">{t('footer.deliveryHours')}:</span>
-                  <span className="text-xs font-bold text-white tracking-wide">{RESTAURANT_INFO.hours}</span>
+                <div className="text-start">
+                  <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">{t('footer.deliveryHours')}</span>
+                  <span className="text-xs font-bold text-white tracking-wide block mt-0.5">{RESTAURANT_INFO.hours}</span>
                 </div>
               </div>
 
               {/* Store Location */}
-              <div className="flex items-start gap-2.5 py-1 text-gray-300">
-                <div className="w-6 h-6 rounded-lg bg-orange-500/10 text-orange-400 border border-orange-500/30 flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin className="w-3.5 h-3.5" />
+              <div className="flex items-start gap-3 text-gray-400">
+                <div className="w-8 h-8 rounded-lg bg-orange-500/10 text-orange-400 border border-orange-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4" />
                 </div>
                 <div className="text-start">
-                  <span className="text-[11px] text-gray-400 font-semibold uppercase block">{t('footer.storeLocation')}</span>
-                  <span className="text-xs font-medium text-white leading-relaxed block">{RESTAURANT_INFO.address}</span>
+                  <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">{t('footer.storeLocation')}</span>
+                  <span className="text-xs font-medium text-white leading-relaxed block mt-0.5">{RESTAURANT_INFO.address}</span>
                 </div>
               </div>
             </div>
