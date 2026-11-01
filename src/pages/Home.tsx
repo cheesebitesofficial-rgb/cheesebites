@@ -79,27 +79,27 @@ export const Home: React.FC = () => {
   ];
 
   return (
-    <div dir={dir} className="space-y-12 sm:space-y-16 pb-20 overflow-x-hidden bg-[#0a0a0a] text-gray-100 font-sans">
+    <div dir={dir} className="space-y-8 sm:space-y-16 pb-12 sm:pb-20 overflow-x-hidden bg-[#0a0a0a] text-gray-100 font-sans">
       
       {/* ============================================================ */}
       {/* HERO SECTION MATCHING REFERENCE DESIGN */}
       {/* ============================================================ */}
       <section
         ref={heroSectionRef}
-        className="hero-wrapper hero relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#0a0a0a] text-white pt-24 pb-16 lg:pt-16 lg:pb-16"
+        className="hero-wrapper hero relative min-h-0 lg:min-h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#0a0a0a] text-white pt-3 pb-6 sm:pt-16 sm:pb-16"
       >
         {/* Dark Ambient Radial Glows */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0c0d14] via-[#0a0a0a] to-[#0c0d14] z-0" />
         <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-[#FF6B00]/10 rounded-full blur-[150px] pointer-events-none z-0" />
         <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[150px] pointer-events-none z-0" />
 
-        <div className="hero-content relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col justify-between h-full space-y-12">
+        <div className="hero-content relative z-30 max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 w-full flex flex-col justify-between h-full space-y-6 sm:space-y-12">
           
           {/* TOP HERO GRID (2 COLUMNS: LEFT COPY + RIGHT PIZZA WITH FLOATING CARDS) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center pt-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center pt-2 sm:pt-4">
             
             {/* LEFT COLUMN: HEADLINE, DESCRIPTION & BUTTONS */}
-            <div className="lg:col-span-6 text-center lg:text-left space-y-7 flex flex-col items-center lg:items-start justify-center">
+            <div className="lg:col-span-6 text-center lg:text-left space-y-4 sm:space-y-7 flex flex-col items-center lg:items-start justify-center">
               
               {/* Badge Pill */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark border border-[#FF6B00]/40 text-[#FF6B00] text-xs font-black uppercase tracking-wider shadow-[0_0_20px_rgba(255,107,0,0.3)] bg-black/60 backdrop-blur-md">
@@ -164,7 +164,8 @@ export const Home: React.FC = () => {
                 <img
                   src="/images/hero-pizza-user.jpg"
                   alt="Fresh Baked Crown Crust Pizza"
-                  className="w-full max-w-[480px] h-[340px] sm:h-[420px] object-cover object-center rounded-3xl border-2 border-orange-500/40 shadow-[0_25px_60px_rgba(0,0,0,0.95)]"
+                  className="w-full max-w-[480px] h-[250px] sm:h-[420px] object-cover object-center rounded-3xl border-2 border-orange-500/40 shadow-[0_25px_60px_rgba(0,0,0,0.95)]"
+                  decoding="async"
                 />
 
                 {/* FLOATING CARD 1: TOP LEFT OVERLAY */}
@@ -261,8 +262,8 @@ export const Home: React.FC = () => {
       {/* ============================================================ */}
       {/* CATEGORY EXPLORER SECTION */}
       {/* ============================================================ */}
-      <section ref={categoryReveal.ref} className="bg-[#120d08] py-20 border-t border-b border-amber-900/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <section ref={categoryReveal.ref} className="bg-[#120d08] py-8 sm:py-20 border-t border-b border-amber-900/40">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 space-y-5 sm:space-y-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-800/80 pb-6">
             <div>
               <span className="text-xs font-black uppercase tracking-[0.25em] text-[#FFB703] block">{t('home.menuLabel')}</span>
@@ -329,13 +330,13 @@ export const Home: React.FC = () => {
       {/* ============================================================ */}
       {/* FEATURED ADVERTISING CAMPAIGN ("THE BIG FLEX") */}
       {/* ============================================================ */}
-      <section ref={campaignReveal.ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl bg-gradient-to-br from-[#0c0d14] via-amber-950/30 to-[#0c0d14] border-2 border-amber-500/40 p-8 sm:p-14 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
+      <section ref={campaignReveal.ref} className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div className="relative rounded-3xl bg-gradient-to-br from-[#0c0d14] via-amber-950/30 to-[#0c0d14] border-2 border-amber-500/40 p-4 sm:p-14 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
           <div className="absolute -right-20 -top-20 w-96 h-96 bg-amber-500/10 rounded-full blur-[110px] pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center relative z-10">
             
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 space-y-4 sm:space-y-6">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 text-gray-950 font-black text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
                 <Sparkles className="w-4 h-4" /> {t('home.featuredDeal')}
               </div>
@@ -429,31 +430,31 @@ export const Home: React.FC = () => {
       {/* ============================================================ */}
       {/* STORY & HERITAGE BANNER */}
       {/* ============================================================ */}
-      <section ref={storyReveal.ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl glass-dark border border-amber-500/30 p-8 sm:p-12 text-center space-y-6 shadow-2xl relative overflow-hidden">
-          <div className="max-w-3xl mx-auto space-y-4">
+      <section ref={storyReveal.ref} className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div className="rounded-3xl glass-dark border border-amber-500/30 p-5 sm:p-12 text-center space-y-4 sm:space-y-6 shadow-2xl relative overflow-hidden">
+          <div className="max-w-3xl mx-auto space-y-2.5 sm:space-y-4">
             <span className="text-xs font-black uppercase tracking-[0.25em] text-amber-400 block">{t('home.qualityCommitment')}</span>
-            <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight font-sans">
+            <h2 className="text-2xl sm:text-5xl font-black text-white uppercase tracking-tight font-sans">
               {t('home.craftedWith')} <span className="text-gold-gradient">{t('home.realCheese')}</span>
             </h2>
-            <p className="text-amber-100/80 text-sm sm:text-base font-medium leading-relaxed">
+            <p className="text-amber-100/80 text-xs sm:text-base font-medium leading-relaxed">
               {t('home.storyDesc')}
             </p>
           </div>
 
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-8 text-center border-t border-white/10 max-w-4xl mx-auto">
+          <div className="pt-3 sm:pt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-center border-t border-white/10 max-w-4xl mx-auto">
             <div>
-              <div className="text-3xl font-black text-amber-400">100%</div>
+              <div className="text-2xl sm:text-3xl font-black text-amber-400">100%</div>
               <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{t('home.realMozzarella')}</div>
             </div>
             <div className="w-px h-8 bg-white/10 hidden sm:block" />
             <div>
-              <div className="text-3xl font-black text-amber-400">20+</div>
+              <div className="text-2xl sm:text-3xl font-black text-amber-400">20+</div>
               <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{t('home.gourmetDeals')}</div>
             </div>
             <div className="w-px h-8 bg-white/10 hidden sm:block" />
             <div>
-              <div className="text-3xl font-black text-amber-400">30 Min</div>
+              <div className="text-2xl sm:text-3xl font-black text-amber-400">30 Min</div>
               <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{t('home.expressDelivery')}</div>
             </div>
           </div>
@@ -463,21 +464,21 @@ export const Home: React.FC = () => {
       {/* ============================================================ */}
       {/* CUSTOMER REVIEWS SLIDER / HIGHLIGHTS */}
       {/* ============================================================ */}
-      <section ref={reviewsReveal.ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="text-center space-y-2">
+      <section ref={reviewsReveal.ref} className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 space-y-4 sm:space-y-8">
+        <div className="text-center space-y-1.5 sm:space-y-2">
           <span className="text-xs font-black uppercase tracking-[0.25em] text-amber-400 block">{t('home.realCustomerStories')}</span>
-          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight font-sans">
+          <h2 className="text-2xl sm:text-5xl font-black text-white uppercase tracking-tight font-sans">
             {t('home.whatFoodiesSay')}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6">
           {[
             { name: t('home.reviewer1'), review: t('home.review1'), rating: 5, date: t('home.2daysAgo') },
             { name: t('home.reviewer2'), review: t('home.review2'), rating: 5, date: t('home.1weekAgo') },
             { name: t('home.reviewer3'), review: t('home.review3'), rating: 5, date: t('home.3daysAgo') },
           ].map((rev, idx) => (
-            <div key={idx} className="glass-dark p-6 rounded-3xl border border-white/10 space-y-4 text-left shadow-xl hover:border-amber-500/40 transition-all">
+            <div key={idx} className="glass-dark p-4 sm:p-6 rounded-3xl border border-white/10 space-y-3 sm:space-y-4 text-left shadow-xl hover:border-amber-500/40 transition-all">
               <div className="flex items-center justify-between">
                 <div className="flex text-amber-400 text-xs">★★★★★</div>
                 <span className="text-[10px] font-bold text-slate-500">{rev.date}</span>
@@ -497,22 +498,22 @@ export const Home: React.FC = () => {
       {/* ============================================================ */}
       {/* FINAL CALL TO ACTION BANNER */}
       {/* ============================================================ */}
-      <section ref={finalCtaReveal.ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 p-8 sm:p-14 text-center space-y-6 shadow-[0_20px_50px_rgba(245,158,11,0.4)] text-gray-950 relative overflow-hidden">
-          <div className="max-w-2xl mx-auto space-y-3">
+      <section ref={finalCtaReveal.ref} className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div className="rounded-3xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 p-5 sm:p-14 text-center space-y-4 sm:space-y-6 shadow-[0_20px_50px_rgba(245,158,11,0.4)] text-gray-950 relative overflow-hidden">
+          <div className="max-w-2xl mx-auto space-y-2 sm:space-y-3">
             <span className="text-xs font-black uppercase tracking-[0.25em] text-gray-950/80 block">{t('home.hungryYet')}</span>
-            <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-none font-sans">
+            <h2 className="text-3xl sm:text-6xl font-black uppercase tracking-tight leading-none font-sans">
               {t('home.orderCheeseBites')}
             </h2>
-            <p className="text-gray-950/90 text-sm sm:text-base font-bold">
+            <p className="text-gray-950/90 text-xs sm:text-base font-bold">
               {t('home.ctaDesc')}
             </p>
           </div>
 
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <Link
               to="/menu"
-              className="w-full sm:w-auto px-10 py-4.5 rounded-full text-xs font-black uppercase tracking-wider text-white bg-gray-950 hover:bg-gray-900 shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-8 py-3.5 sm:px-10 sm:py-4.5 rounded-full text-xs font-black uppercase tracking-wider text-white bg-gray-950 hover:bg-gray-900 shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-2 group"
             >
               <ShoppingBag className="w-4 h-4 text-amber-400" />
               <span>{t('home.exploreMenuOrder')}</span>
@@ -521,7 +522,7 @@ export const Home: React.FC = () => {
 
             <Link
               to="/deals"
-              className="w-full sm:w-auto px-9 py-4.5 rounded-full text-xs font-black uppercase tracking-wider text-gray-950 bg-white/30 hover:bg-white/40 border border-gray-950/20 transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-7 py-3.5 sm:px-9 sm:py-4.5 rounded-full text-xs font-black uppercase tracking-wider text-gray-950 bg-white/30 hover:bg-white/40 border border-gray-950/20 transition-all flex items-center justify-center gap-2"
             >
               <span>{t('home.viewSpecialDeals')}</span>
             </Link>

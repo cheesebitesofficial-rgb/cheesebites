@@ -48,6 +48,7 @@ export const DealCard: React.FC<DealCardProps> = ({ deal }) => {
           alt={deal.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100 filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]"
           loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d14] via-transparent to-transparent opacity-80" />
 
@@ -59,7 +60,7 @@ export const DealCard: React.FC<DealCardProps> = ({ deal }) => {
       </div>
 
       {/* Deal Contents Checklist */}
-      <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-3 sm:space-y-4">
+      <div className="p-3.5 sm:p-6 flex-1 flex flex-col justify-between space-y-2.5 sm:space-y-4">
         <div>
           <span className="text-[10px] font-black uppercase tracking-widest text-amber-400 flex items-center gap-1 mb-2.5">
             <Sparkles className="w-3 h-3 text-amber-400" /> {t('deal.includesCombo')}
