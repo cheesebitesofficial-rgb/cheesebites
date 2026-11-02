@@ -16,7 +16,7 @@ interface MenuContextType {
 }
 
 const MENU_KEY = 'cheese_bites_menu_items_v10_pizzas';
-const DEALS_KEY = 'cheese_bites_deals_items_v8_duo';
+const DEALS_KEY = 'cheese_bites_deals_items_v9_clean_text';
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
 

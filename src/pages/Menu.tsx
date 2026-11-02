@@ -41,6 +41,7 @@ export const MenuPage: React.FC = () => {
     }
   }, [searchParams]);
 
+  
   // Reset to page 1 whenever category, search query or items per page change
   useEffect(() => {
     setCurrentPage(1);
