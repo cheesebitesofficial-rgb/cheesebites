@@ -139,7 +139,7 @@ const translations: Record<string, Record<Lang, string>> = {
   // Home - Best Sellers
   'home.mostCraved': { en: 'MOST CRAVED FAVORITES', ur: 'سب سے زیادہ پسندیدہ' },
   'home.bestSellers': { en: 'Best Sellers', ur: 'بیسٹ سیلرز' },
-  'home.viewCompleteMenu': { en: 'VIEW COMPLETE MENU', ur: 'مکمل مینو دیکھیں' },
+  'home.viewCompleteMenu': { en: 'EXPLORE FULL MENU', ur: 'تمام مینو دیکھیں' },
 
   // Home - Story Section
   'home.qualityCommitment': { en: 'OUR QUALITY COMMITMENT', ur: 'ہمارا معیار کا وعدہ' },

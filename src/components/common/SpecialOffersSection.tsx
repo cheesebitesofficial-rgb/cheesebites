@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Pizza, ShoppingBag, ArrowRight } from 'lucide-react';
+import { Sparkles, ShoppingBag, ArrowRight } from 'lucide-react';
 import { SPECIAL_PIZZA_OFFERS } from '../../data/menuData';
 import { useCart } from '../../context/CartContext';
 import type { DealItem } from '../../types';
@@ -57,18 +57,13 @@ export const SpecialOffersSection: React.FC = () => {
                 </span>
               </div>
 
-              <div className="relative aspect-video rounded-2xl overflow-hidden border border-amber-500/30 shadow-lg">
+              <div className="relative aspect-[3/2] rounded-2xl overflow-hidden border border-amber-500/30 shadow-lg bg-[#07070b]">
                 <img
                   src={offer.image}
                   alt={offer.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain group-hover:scale-[1.01] transition-transform duration-500"
                   decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white text-xs font-bold bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
-                  <Pizza className="w-3.5 h-3.5 text-amber-400" />
-                  <span>2 Fresh Hot Pizzas + 1L Drink</span>
-                </div>
               </div>
 
               <div>
