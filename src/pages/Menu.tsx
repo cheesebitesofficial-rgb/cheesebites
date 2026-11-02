@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Search, RefreshCw, UtensilsCrossed, FileText, Flame, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, RefreshCw, UtensilsCrossed, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useMenu } from '../context/MenuContext';
 import { useLanguage } from '../context/LanguageContext';
 import { ProductCard } from '../components/common/ProductCard';
@@ -137,23 +137,6 @@ export const MenuPage: React.FC = () => {
       dir={dir}
     >
       
-      {/* Quick Access: Printed Cards */}
-      <div className="flex flex-wrap items-center justify-end gap-2.5 pt-1">
-        <button
-          onClick={() => setViewFlyer('menu')}
-          className="inline-flex items-center gap-1.5 bg-[#0c0d14] hover:bg-gray-800 text-amber-400 border border-amber-500/30 text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition-all hover:scale-105 cursor-pointer"
-        >
-          <FileText className="w-3.5 h-3.5" />
-          <span>View Menu Card</span>
-        </button>
-        <button
-          onClick={() => setViewFlyer('deals')}
-          className="inline-flex items-center gap-1.5 bg-[#0c0d14] hover:bg-gray-800 text-amber-400 border border-amber-500/30 text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition-all hover:scale-105 cursor-pointer"
-        >
-          <Flame className="w-3.5 h-3.5 text-orange-400" />
-          <span>View Deals Card</span>
-        </button>
-      </div>
 
       {/* Special Promotional Pizza Offers */}
       <SpecialOffersSection />
