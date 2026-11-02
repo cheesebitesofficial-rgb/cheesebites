@@ -378,15 +378,17 @@ export const Home: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-6 relative">
-              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border-2 border-amber-500/30 shadow-2xl group">
+            <div className="lg:col-span-6 relative w-full">
+              <div className="relative aspect-video w-full rounded-3xl overflow-hidden border-2 border-amber-500/30 shadow-2xl group bg-[#07070b]">
                 <img
                   src={bigFlexDeal?.image || '/images/real/deal-20.jpg'}
                   alt={bigFlexDeal?.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-transparent to-transparent" />
-                <div className="absolute top-4 right-4 bg-amber-400 text-gray-950 font-black text-xs uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/40 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute top-4 left-4 bg-amber-400 text-gray-950 font-black text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-lg">
                   {t('home.saveHuge')}
                 </div>
               </div>
