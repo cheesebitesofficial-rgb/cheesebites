@@ -175,7 +175,7 @@ export const Home: React.FC = () => {
                   className="absolute -top-3 left-0 sm:-top-4 sm:-left-6 bg-white/95 text-gray-950 p-2 sm:p-3 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.5)] border border-white/60 flex items-center gap-2 sm:gap-3 backdrop-blur-md hover:scale-105 transition-transform duration-300 z-20 cursor-pointer scale-90 sm:scale-100"
                 >
                   <img
-                    src="/images/hero-pizza-user.jpg"
+                    src="/images/menu/pizza-cheese.jpg"
                     alt="Cheese Pizza"
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-cover border border-amber-400/50"
                   />
@@ -197,7 +197,7 @@ export const Home: React.FC = () => {
                   className="absolute -bottom-3 right-0 sm:-bottom-4 sm:-right-6 bg-white/95 text-gray-950 p-2 sm:p-3 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.5)] border border-white/60 flex items-center gap-2 sm:gap-3 backdrop-blur-md hover:scale-105 transition-transform duration-300 z-20 cursor-pointer scale-90 sm:scale-100"
                 >
                   <img
-                    src="/images/hero-pizza-user.jpg"
+                    src="/images/menu/pizza-crown-crust.jpg"
                     alt="Crown Crust Pizza"
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-cover border border-amber-400/50"
                   />
