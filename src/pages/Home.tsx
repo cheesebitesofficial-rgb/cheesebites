@@ -170,70 +170,16 @@ export const Home: React.FC = () => {
                     decoding="async"
                   />
 
-                  {/* LIVE RISING OVEN-FRESH STEAM EFFECT */}
-                  <div className="absolute -top-16 inset-x-0 h-48 pointer-events-none z-10 overflow-visible flex justify-center items-end">
-                    {/* Steam Plume 1 (Left-Center) */}
-                    <div className="absolute bottom-8 left-[26%] w-16 h-28 bg-gradient-to-t from-white/35 via-amber-100/20 to-transparent rounded-full blur-xl steam-plume-1 transform -rotate-6" />
-                    
-                    {/* Steam Plume 2 (Center) */}
-                    <div className="absolute bottom-10 left-[44%] w-20 h-36 bg-gradient-to-t from-white/40 via-white/15 to-transparent rounded-full blur-2xl steam-plume-2" />
-                    
-                    {/* Steam Plume 3 (Right-Center) */}
-                    <div className="absolute bottom-8 left-[62%] w-16 h-32 bg-gradient-to-t from-white/35 via-amber-100/20 to-transparent rounded-full blur-xl steam-plume-3 transform rotate-6" />
-                    
-                    {/* Steam Plume 4 (Wide ambient heat haze) */}
-                    <div className="absolute bottom-4 left-[20%] w-32 h-24 bg-gradient-to-t from-amber-400/15 via-white/20 to-transparent rounded-full blur-3xl steam-plume-4" />
-
-                    {/* Steam Plume 5 (Right edge wisp) */}
-                    <div className="absolute bottom-12 left-[70%] w-14 h-24 bg-gradient-to-t from-white/30 via-transparent to-transparent rounded-full blur-lg steam-plume-5" />
-
-                    {/* Organic Swirling SVG Vapor Wisps */}
-                    <svg
-                      viewBox="0 0 200 200"
-                      className="absolute -top-10 w-64 h-64 opacity-60 mix-blend-screen pointer-events-none"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M60 170 Q50 120 75 80 T80 20"
-                        stroke="url(#steam-grad-1)"
-                        strokeWidth="12"
-                        strokeLinecap="round"
-                        className="steam-plume-1"
-                        style={{ filter: 'blur(10px)' }}
-                      />
-                      <path
-                        d="M100 180 Q120 130 95 85 T110 15"
-                        stroke="url(#steam-grad-2)"
-                        strokeWidth="16"
-                        strokeLinecap="round"
-                        className="steam-plume-2"
-                        style={{ filter: 'blur(14px)' }}
-                      />
-                      <path
-                        d="M140 175 Q155 125 130 75 T145 25"
-                        stroke="url(#steam-grad-1)"
-                        strokeWidth="14"
-                        strokeLinecap="round"
-                        className="steam-plume-3"
-                        style={{ filter: 'blur(12px)' }}
-                      />
-                      <defs>
-                        <linearGradient id="steam-grad-1" x1="0%" y1="100%" x2="0%" y2="0%">
-                          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.5" />
-                          <stop offset="50%" stopColor="#fff8e7" stopOpacity="0.25" />
-                          <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-                        </linearGradient>
-                        <linearGradient id="steam-grad-2" x1="0%" y1="100%" x2="0%" y2="0%">
-                          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.6" />
-                          <stop offset="50%" stopColor="#fffbeb" stopOpacity="0.3" />
-                          <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-
-                    {/* Gentle Surface Heat Shimmer */}
-                    <div className="absolute bottom-2 inset-x-8 h-12 bg-gradient-to-t from-orange-500/10 via-amber-300/10 to-transparent blur-xl animate-heat-wave" />
+                  {/* REALISTIC RISING STEAM — thin CSS strands from pizza surface */}
+                  <div className="absolute bottom-[8%] inset-x-0 h-44 pointer-events-none z-10 overflow-visible">
+                    <div className="steam-strand" />
+                    <div className="steam-strand" />
+                    <div className="steam-strand" />
+                    <div className="steam-strand" />
+                    <div className="steam-strand" />
+                    <div className="steam-strand" />
+                    {/* Subtle surface heat shimmer */}
+                    <div className="absolute bottom-0 inset-x-4 h-8 bg-gradient-to-t from-orange-400/12 via-amber-200/8 to-transparent blur-2xl animate-heat-wave rounded-full" />
                   </div>
                 </div>
 

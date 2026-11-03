@@ -216,87 +216,79 @@
 
 /* ============================================================ */
 /* REALISTIC OVEN-FRESH FOOD STEAM ANIMATION */
+/* Pure CSS - thin wisps rising from pizza surface */
 /* ============================================================ */
-@keyframes steam-drift-1 {
-  0% {
-    transform: translateY(15px) translateX(0) scale(0.7) rotate(0deg);
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.55;
-  }
-  65% {
-    transform: translateY(-55px) translateX(12px) scale(1.3) rotate(6deg);
-    opacity: 0.35;
-  }
-  100% {
-    transform: translateY(-120px) translateX(24px) scale(1.9) rotate(12deg);
-    opacity: 0;
-  }
+
+/* Each steam strand rises straight up, fades in near bottom, fades out top */
+@keyframes steam-rise-1 {
+  0%   { transform: scaleX(1) translateY(0px) translateX(0px);   opacity: 0; }
+  10%  { opacity: 0.55; }
+  50%  { transform: scaleX(1.6) translateY(-60px) translateX(5px);  opacity: 0.4; }
+  85%  { transform: scaleX(2.2) translateY(-130px) translateX(12px); opacity: 0.15; }
+  100% { transform: scaleX(2.5) translateY(-160px) translateX(16px); opacity: 0; }
 }
 
-@keyframes steam-drift-2 {
-  0% {
-    transform: translateY(20px) translateX(0) scale(0.65) rotate(0deg);
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.6;
-  }
-  65% {
-    transform: translateY(-65px) translateX(-14px) scale(1.4) rotate(-8deg);
-    opacity: 0.3;
-  }
-  100% {
-    transform: translateY(-130px) translateX(-28px) scale(2.1) rotate(-15deg);
-    opacity: 0;
-  }
+@keyframes steam-rise-2 {
+  0%   { transform: scaleX(1) translateY(0px) translateX(0px);    opacity: 0; }
+  10%  { opacity: 0.5; }
+  50%  { transform: scaleX(1.5) translateY(-70px) translateX(-8px); opacity: 0.35; }
+  85%  { transform: scaleX(2.0) translateY(-140px) translateX(-18px); opacity: 0.12; }
+  100% { transform: scaleX(2.3) translateY(-170px) translateX(-22px); opacity: 0; }
 }
 
-@keyframes steam-drift-3 {
-  0% {
-    transform: translateY(10px) translateX(0) scale(0.75) rotate(0deg);
-    opacity: 0;
-  }
-  30% {
-    opacity: 0.5;
-  }
-  70% {
-    transform: translateY(-50px) translateX(8px) scale(1.35) rotate(4deg);
-    opacity: 0.25;
-  }
-  100% {
-    transform: translateY(-110px) translateX(15px) scale(1.8) rotate(8deg);
-    opacity: 0;
-  }
+@keyframes steam-rise-3 {
+  0%   { transform: scaleX(1) translateY(0px) translateX(0px);    opacity: 0; }
+  15%  { opacity: 0.45; }
+  55%  { transform: scaleX(1.7) translateY(-55px) translateX(3px);  opacity: 0.3; }
+  85%  { transform: scaleX(2.1) translateY(-120px) translateX(8px);  opacity: 0.1; }
+  100% { transform: scaleX(2.4) translateY(-150px) translateX(10px); opacity: 0; }
 }
 
-@keyframes heat-wave {
-  0%, 100% {
-    transform: scale(1) translateY(0);
-    opacity: 0.2;
-  }
-  50% {
-    transform: scale(1.04, 0.98) translateY(-4px);
-    opacity: 0.45;
-  }
+@keyframes steam-rise-4 {
+  0%   { transform: scaleX(1) translateY(0px) translateX(0px);    opacity: 0; }
+  12%  { opacity: 0.5; }
+  50%  { transform: scaleX(1.8) translateY(-65px) translateX(-6px); opacity: 0.32; }
+  85%  { transform: scaleX(2.3) translateY(-135px) translateX(-14px); opacity: 0.1; }
+  100% { transform: scaleX(2.6) translateY(-165px) translateX(-18px); opacity: 0; }
 }
 
-.steam-plume-1 {
-  animation: steam-drift-1 3.4s cubic-bezier(0.25, 0.8, 0.4, 1) infinite;
+@keyframes steam-rise-5 {
+  0%   { transform: scaleX(1) translateY(0px) translateX(0px);    opacity: 0; }
+  15%  { opacity: 0.4; }
+  55%  { transform: scaleX(1.4) translateY(-50px) translateX(7px);  opacity: 0.28; }
+  85%  { transform: scaleX(1.9) translateY(-115px) translateX(15px); opacity: 0.08; }
+  100% { transform: scaleX(2.2) translateY(-145px) translateX(20px); opacity: 0; }
 }
-.steam-plume-2 {
-  animation: steam-drift-2 4.1s cubic-bezier(0.25, 0.8, 0.4, 1) infinite 0.9s;
+
+/* Individual steam strand classes */
+.steam-strand {
+  position: absolute;
+  bottom: 0;
+  width: 3px;
+  border-radius: 50px;
+  background: linear-gradient(to top,
+    rgba(255,255,255,0.9) 0%,
+    rgba(240,240,240,0.5) 40%,
+    rgba(255,255,255,0.15) 75%,
+    transparent 100%
+  );
+  filter: blur(4px);
+  transform-origin: bottom center;
+  pointer-events: none;
 }
-.steam-plume-3 {
-  animation: steam-drift-3 3.7s cubic-bezier(0.25, 0.8, 0.4, 1) infinite 1.8s;
-}
-.steam-plume-4 {
-  animation: steam-drift-1 4.5s cubic-bezier(0.25, 0.8, 0.4, 1) infinite 2.6s;
-}
-.steam-plume-5 {
-  animation: steam-drift-2 3.9s cubic-bezier(0.25, 0.8, 0.4, 1) infinite 1.4s;
+
+.steam-strand:nth-child(1) { animation: steam-rise-1 3.2s ease-in-out infinite 0.0s; height: 110px; left: 22%; }
+.steam-strand:nth-child(2) { animation: steam-rise-2 4.0s ease-in-out infinite 0.8s; height: 130px; left: 35%; }
+.steam-strand:nth-child(3) { animation: steam-rise-3 3.6s ease-in-out infinite 1.5s; height: 120px; left: 50%; }
+.steam-strand:nth-child(4) { animation: steam-rise-4 4.2s ease-in-out infinite 2.2s; height: 115px; left: 63%; }
+.steam-strand:nth-child(5) { animation: steam-rise-5 3.5s ease-in-out infinite 0.5s; height: 100px; left: 76%; }
+.steam-strand:nth-child(6) { animation: steam-rise-2 3.8s ease-in-out infinite 3.0s; height: 95px;  left: 42%; }
+
+/* Surface heat shimmer */
+@keyframes heat-shimmer {
+  0%, 100% { opacity: 0.12; transform: scaleX(1); }
+  50%       { opacity: 0.28; transform: scaleX(1.03); }
 }
 .animate-heat-wave {
-  animation: heat-wave 2.8s ease-in-out infinite;
+  animation: heat-shimmer 2.5s ease-in-out infinite;
 }
