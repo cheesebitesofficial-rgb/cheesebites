@@ -19,7 +19,7 @@ const translations: Record<string, Record<Lang, string>> = {
   'nav.contact': { en: 'Contact', ur: 'رابطہ' },
   'nav.orderOnline': { en: 'Order Online', ur: 'آن لائن آرڈر' },
   'nav.orderOnlineNow': { en: 'Order Online Now', ur: 'ابھی آرڈر کریں' },
-  'nav.searchPlaceholder': { en: 'Enter your delivery location...', ur: 'اپنا پتہ درج کریں...' },
+  'nav.searchPlaceholder': { en: 'Search cravings...', ur: 'اپنی پسندیدہ چیز تلاش کریں...' },
 
   // Footer
   'footer.quickLinks': { en: 'Quick Links', ur: 'فوری لنکس' },

@@ -98,7 +98,7 @@ export const Header: React.FC = () => {
 
             {/* Search Input (Desktop) */}
             <div className="hidden lg:flex items-center bg-[#14151f] border border-orange-500/40 rounded-full px-3.5 py-1.5 shadow-md">
-              <span className="text-orange-400 text-xs mr-2">📍</span>
+              <Search className="w-3.5 h-3.5 text-amber-400 mr-2 shrink-0" />
               <form onSubmit={handleSearchSubmit} className="flex items-center gap-1">
                 <input
                   type="text"
@@ -107,8 +107,8 @@ export const Header: React.FC = () => {
                   placeholder={t('nav.searchPlaceholder')}
                   className="bg-transparent text-xs text-white placeholder-gray-400 focus:outline-none w-44"
                 />
-                <button type="submit" className="bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 p-1.5 rounded-full hover:scale-105 transition-transform cursor-pointer">
-                  <Search className="w-3.5 h-3.5 font-bold" />
+                <button type="submit" className="bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 p-1.5 rounded-full hover:scale-105 transition-transform cursor-pointer" aria-label="Search">
+                  <ArrowRight className="w-3 h-3 font-bold" />
                 </button>
               </form>
             </div>
@@ -163,7 +163,7 @@ export const Header: React.FC = () => {
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                placeholder={isUrdu ? 'مینو میں تلاش کریں...' : 'Search menu, pizza, zingers...'}
+                placeholder={t('nav.searchPlaceholder')}
                 className="w-full bg-gray-900 border border-amber-500/30 text-xs text-white placeholder-gray-400 rounded-xl pl-9 pr-4 py-2.5 focus:outline-none focus:border-amber-400"
               />
               <Search className="w-4 h-4 text-amber-400 absolute left-3 top-1/2 -translate-y-1/2" />
