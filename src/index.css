@@ -213,3 +213,90 @@
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(245, 158, 11, 0.4);
 }
+
+/* ============================================================ */
+/* REALISTIC OVEN-FRESH FOOD STEAM ANIMATION */
+/* ============================================================ */
+@keyframes steam-drift-1 {
+  0% {
+    transform: translateY(15px) translateX(0) scale(0.7) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.55;
+  }
+  65% {
+    transform: translateY(-55px) translateX(12px) scale(1.3) rotate(6deg);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-120px) translateX(24px) scale(1.9) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes steam-drift-2 {
+  0% {
+    transform: translateY(20px) translateX(0) scale(0.65) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.6;
+  }
+  65% {
+    transform: translateY(-65px) translateX(-14px) scale(1.4) rotate(-8deg);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-130px) translateX(-28px) scale(2.1) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes steam-drift-3 {
+  0% {
+    transform: translateY(10px) translateX(0) scale(0.75) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.5;
+  }
+  70% {
+    transform: translateY(-50px) translateX(8px) scale(1.35) rotate(4deg);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(-110px) translateX(15px) scale(1.8) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes heat-wave {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.04, 0.98) translateY(-4px);
+    opacity: 0.45;
+  }
+}
+
+.steam-plume-1 {
+  animation: steam-drift-1 3.4s cubic-bezier(0.25, 0.8, 0.4, 1) infinite;
+}
+.steam-plume-2 {
+  animation: steam-drift-2 4.1s cubic-bezier(0.25, 0.8, 0.4, 1) infinite 0.9s;
+}
+.steam-plume-3 {
+  animation: steam-drift-3 3.7s cubic-bezier(0.25, 0.8, 0.4, 1) infinite 1.8s;
+}
+.steam-plume-4 {
+  animation: steam-drift-1 4.5s cubic-bezier(0.25, 0.8, 0.4, 1) infinite 2.6s;
+}
+.steam-plume-5 {
+  animation: steam-drift-2 3.9s cubic-bezier(0.25, 0.8, 0.4, 1) infinite 1.4s;
+}
+.animate-heat-wave {
+  animation: heat-wave 2.8s ease-in-out infinite;
+}

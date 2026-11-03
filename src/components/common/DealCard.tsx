@@ -41,16 +41,16 @@ export const DealCard: React.FC<DealCardProps> = ({ deal }) => {
         </span>
       </div>
 
-      {/* Food Visual */}
-      <div className="relative aspect-[16/9] overflow-hidden bg-[#07070b]">
+      {/* Food Visual - Uncropped High-Definition */}
+      <div className="relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden bg-gradient-to-b from-[#0e0f18] to-[#07070b] flex items-center justify-center">
         <img
           src={deal.image}
           alt={deal.name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100 filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]"
+          className="w-full h-full object-contain p-2 group-hover:scale-[1.03] transition-transform duration-500 opacity-95 group-hover:opacity-100 filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.95)]"
           loading="lazy"
           decoding="async"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d14] via-transparent to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d14]/40 via-transparent to-transparent pointer-events-none" />
 
         {deal.isPopular && (
           <span className="absolute top-3 left-3 bg-gradient-to-r from-red-600 to-red-500 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-lg flex items-center gap-1 border border-red-400/40">
