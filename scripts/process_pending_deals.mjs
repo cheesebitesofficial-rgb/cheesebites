@@ -47,3 +47,4 @@ for (const { src, dest, label } of updates) {
 }
 
 console.log('\n🎉 All 3 deal images processed!');
+
