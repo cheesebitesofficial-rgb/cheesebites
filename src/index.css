@@ -2,7 +2,7 @@
 
 @layer base {
   body {
-    @apply bg-[#07070b] text-gray-100 antialiased font-sans selection:bg-amber-400 selection:text-black overflow-x-hidden;
+    @apply bg-[#FAF5E4] text-gray-900 antialiased font-sans selection:bg-amber-400 selection:text-black overflow-x-hidden;
   }
 }
 
@@ -13,7 +13,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #07070b;
+  background: #FAF5E4;
 }
 
 ::-webkit-scrollbar-thumb {

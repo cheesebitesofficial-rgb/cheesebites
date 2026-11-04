@@ -33,11 +33,11 @@ export const Footer: React.FC = () => {
 
   return (
     <footer 
-      className="bg-[#0b0c10] text-gray-400 border-t border-amber-500/20 pt-12 sm:pt-16 pb-10" 
+      className="bg-[#FAF5E4] text-gray-700 border-t border-amber-300 pt-12 sm:pt-16 pb-10" 
       dir={dir}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-12 border-b border-gray-800/80">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-12 border-b border-amber-200">
           
           {/* Column 1: Brand Info */}
           <div className="space-y-4 text-start">
@@ -48,25 +48,25 @@ export const Footer: React.FC = () => {
                   alt="Cheese Bites Logo"
                   className="w-8 h-8 object-contain rounded-xl border border-amber-500/40 shadow-sm shadow-amber-500/20 group-hover:scale-105 transition-transform"
                 />
-                <span className="text-xl font-black text-white uppercase tracking-tight font-sans">
+                <span className="text-xl font-black text-gray-900 uppercase tracking-tight font-sans">
                   Cheese <span className="text-[#FF6B00]">Bites</span>
                 </span>
               </Link>
             </div>
             
-            <p className="text-xs text-gray-400 leading-relaxed max-w-sm">
+            <p className="text-xs text-gray-600 leading-relaxed max-w-sm">
               {t('footer.desc')}
             </p>
             
             <div>
-              <span className="inline-block bg-amber-500/10 text-amber-400 text-xs font-semibold px-3 py-1.5 rounded-full border border-amber-500/20">
+              <span className="inline-block bg-amber-500/15 text-amber-900 text-xs font-semibold px-3 py-1.5 rounded-full border border-amber-500/30">
                 {RESTAURANT_INFO.closingMessage || 'Thank You for Choosing Cheesy Bites'}
               </span>
             </div>
 
             {/* Social Links */}
             <div className="pt-1">
-              <span className="block text-[11px] font-bold uppercase tracking-wider text-gray-500 mb-2">
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-gray-600 mb-2">
                 {t('footer.followUs')}
               </span>
               <div className="flex items-center gap-2">
@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
                   href={SOCIAL_LINKS.instagram} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-pink-500/50 hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 flex items-center justify-center transition-all shadow-sm"
+                  className="w-9 h-9 rounded-xl bg-white border border-amber-200 text-gray-700 hover:text-white hover:border-pink-500/50 hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 flex items-center justify-center transition-all shadow-xs"
                   title="Instagram"
                   aria-label="Instagram"
                 >
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
                   href={SOCIAL_LINKS.facebook} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-blue-500 hover:bg-blue-600 flex items-center justify-center transition-all shadow-sm"
+                  className="w-9 h-9 rounded-xl bg-white border border-amber-200 text-gray-700 hover:text-white hover:border-blue-500 hover:bg-blue-600 flex items-center justify-center transition-all shadow-xs"
                   title="Facebook"
                   aria-label="Facebook"
                 >
@@ -94,7 +94,7 @@ export const Footer: React.FC = () => {
                   href={SOCIAL_LINKS.tiktok} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-white/50 hover:bg-black flex items-center justify-center transition-all shadow-sm"
+                  className="w-9 h-9 rounded-xl bg-white border border-amber-200 text-gray-700 hover:text-white hover:border-black hover:bg-black flex items-center justify-center transition-all shadow-xs"
                   title="TikTok"
                   aria-label="TikTok"
                 >
@@ -194,7 +194,7 @@ export const Footer: React.FC = () => {
           {/* Column 4: Contact & Order Info */}
           <div className="space-y-4 text-start">
             <div className="h-8 flex items-center">
-              <h4 className="text-white font-bold text-sm tracking-wider uppercase border-s-2 border-[#FF6B00] ps-3 flex items-center h-5">
+              <h4 className="text-gray-900 font-bold text-sm tracking-wider uppercase border-s-2 border-[#FF6B00] ps-3 flex items-center h-5">
                 {t('footer.orderHotline')}
               </h4>
             </div>
@@ -203,36 +203,36 @@ export const Footer: React.FC = () => {
               {/* Call to Order */}
               <a 
                 href={`tel:${RESTAURANT_INFO.phone}`}
-                className="flex items-center gap-3 bg-amber-500/10 hover:bg-amber-500/20 p-2.5 rounded-xl border border-amber-500/30 text-white transition-all group cursor-pointer shadow-sm"
+                className="flex items-center gap-3 bg-amber-500/15 hover:bg-amber-500/25 p-2.5 rounded-xl border border-amber-500/30 text-gray-900 transition-all group cursor-pointer shadow-xs"
               >
-                <div className="w-8 h-8 rounded-lg bg-amber-500 text-gray-950 flex items-center justify-center font-black shrink-0 group-hover:scale-105 transition-transform shadow-md">
+                <div className="w-8 h-8 rounded-lg bg-amber-500 text-white flex items-center justify-center font-black shrink-0 group-hover:scale-105 transition-transform shadow-sm">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div className="text-start">
-                  <span className="block text-[10px] text-amber-400 font-bold uppercase tracking-wider">{t('footer.callToOrder')}</span>
-                  <span className="text-sm font-black text-amber-300 font-mono tracking-wider">{RESTAURANT_INFO.phone}</span>
+                  <span className="block text-[10px] text-amber-800 font-bold uppercase tracking-wider">{t('footer.callToOrder')}</span>
+                  <span className="text-sm font-black text-amber-900 font-mono tracking-wider">{RESTAURANT_INFO.phone}</span>
                 </div>
               </a>
 
               {/* Delivery Timing */}
-              <div className="flex items-start gap-3 text-gray-400">
-                <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center shrink-0 mt-0.5">
+              <div className="flex items-start gap-3 text-gray-600">
+                <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-700 border border-amber-500/20 flex items-center justify-center shrink-0 mt-0.5">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div className="text-start">
-                  <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">{t('footer.deliveryHours')}</span>
-                  <span className="text-xs font-bold text-white tracking-wide block mt-0.5">{RESTAURANT_INFO.hours}</span>
+                  <span className="block text-[10px] text-gray-500 font-bold uppercase tracking-wider">{t('footer.deliveryHours')}</span>
+                  <span className="text-xs font-bold text-gray-900 tracking-wide block mt-0.5">{RESTAURANT_INFO.hours}</span>
                 </div>
               </div>
 
               {/* Store Location */}
-              <div className="flex items-start gap-3 text-gray-400">
-                <div className="w-8 h-8 rounded-lg bg-orange-500/10 text-orange-400 border border-orange-500/20 flex items-center justify-center shrink-0 mt-0.5">
+              <div className="flex items-start gap-3 text-gray-600">
+                <div className="w-8 h-8 rounded-lg bg-orange-500/10 text-orange-700 border border-orange-500/20 flex items-center justify-center shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div className="text-start">
-                  <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">{t('footer.storeLocation')}</span>
-                  <span className="text-xs font-medium text-white leading-relaxed block mt-0.5">{RESTAURANT_INFO.address}</span>
+                  <span className="block text-[10px] text-gray-500 font-bold uppercase tracking-wider">{t('footer.storeLocation')}</span>
+                  <span className="text-xs font-medium text-gray-900 leading-relaxed block mt-0.5">{RESTAURANT_INFO.address}</span>
                 </div>
               </div>
             </div>
@@ -241,9 +241,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Footer Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 text-center sm:text-start">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600 text-center sm:text-start">
           <p>© {new Date().getFullYear()} Cheese Bites Islamabad. {t('footer.rights')}</p>
-          <div className="flex items-center justify-center gap-1.5 text-gray-400">
+          <div className="flex items-center justify-center gap-1.5 text-gray-600">
             <span>{t('footer.madeWith')}</span>
             <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 inline" />
             <span>{t('footer.forLovers')}</span>
