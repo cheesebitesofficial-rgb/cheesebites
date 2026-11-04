@@ -5,6 +5,7 @@ import { DealCard } from '../components/common/DealCard';
 import type { DealCategory } from '../types';
 import { Sparkles, Users, User, Flame, Crown, Pizza, FileText, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { SEO } from '../components/common/SEO';
 
 export const DealsPage: React.FC = () => {
   const { deals } = useMenu();
@@ -52,6 +53,11 @@ export const DealsPage: React.FC = () => {
       dir={dir}
       className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 bg-[#07070b] min-h-screen"
     >
+      <SEO
+        title="Cheese Bites Deals | Delicious Food Combos"
+        description="Check out Cheese Bites exclusive deals and budget-friendly food combos: Solo Era, Hits Different, Squad Goals, and The Big Flex mega value bundles."
+        canonicalPath="/deals"
+      />
       {/* Page Hero Header */}
       <div className="relative bg-gradient-to-br from-[#0c0d14] via-[#151624] to-[#0c0d14] text-white rounded-3xl p-6 sm:p-14 shadow-2xl border border-amber-500/30 text-center max-w-4xl mx-auto space-y-4 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />

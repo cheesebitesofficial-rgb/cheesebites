@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Phone, MapPin, Clock, Send, CheckCircle2, MessageSquare } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/menuData';
 import { useLanguage } from '../context/LanguageContext';
+import { SEO } from '../components/common/SEO';
 
 export const ContactPage: React.FC = () => {
   const { t, dir } = useLanguage();
@@ -26,6 +27,11 @@ export const ContactPage: React.FC = () => {
       className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 bg-[#07070b] min-h-screen"
       dir={dir}
     >
+      <SEO
+        title="Contact Cheese Bites"
+        description="Get in touch with Cheese Bites in Islamabad. Call our order hotline 0337-1500150 or visit 17 Meel Stop, Japan Dam Road. Open 11:00 AM to 4:00 AM."
+        canonicalPath="/contact"
+      />
       {/* Page Title */}
       <div className="text-center max-w-2xl mx-auto space-y-2">
         <span className="text-xs font-black uppercase tracking-[0.25em] text-amber-400">{t('contact.getInTouch')}</span>

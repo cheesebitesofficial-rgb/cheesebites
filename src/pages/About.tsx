@@ -1,12 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { SEO } from '../components/common/SEO';
 
 export const AboutPage: React.FC = () => {
   const { dir } = useLanguage();
 
   return (
     <div className="bg-[#07070b] text-gray-100 font-sans selection:bg-amber-400 selection:text-black overflow-hidden" dir={dir}>
+      <SEO
+        title="About Cheese Bites | Our Food Story"
+        description="Learn the story of Cheese Bites in Islamabad: fresh dough daily, 100% real mozzarella cheese, and passionate culinary craftsmanship in every bite."
+        canonicalPath="/about"
+      />
       {/* ═══════════════════════════════════════════════════════════════
           PREMIUM ABOUT HERO SECTION
       ═══════════════════════════════════════════════════════════════ */}

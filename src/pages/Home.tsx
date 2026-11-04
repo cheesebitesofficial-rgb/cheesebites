@@ -8,6 +8,7 @@ import { useMenu } from '../context/MenuContext';
 import { useLanguage } from '../context/LanguageContext';
 import { ProductCard } from '../components/common/ProductCard';
 import { ProductDetailsModal } from '../components/common/ProductDetailsModal';
+import { SEO } from '../components/common/SEO';
 import { useScrollObserver } from '../hooks/useScrollObserver';
 import type { MenuItem, Category } from '../types';
 
@@ -80,6 +81,11 @@ export const Home: React.FC = () => {
 
   return (
     <div dir={dir} className="space-y-8 sm:space-y-16 pb-12 sm:pb-20 overflow-x-hidden bg-[#0a0a0a] text-gray-100 font-sans">
+      <SEO
+        title="Cheese Bites | Fresh Pizza, Burgers & Fast Food"
+        description="Welcome to Cheese Bites Islamabad! Enjoy fresh oven-baked pizzas, crispy zinger burgers, roll parathas, and loaded cheesy deals. Order online now."
+        canonicalPath="/"
+      />
       
       {/* ============================================================ */}
       {/* HERO SECTION MATCHING REFERENCE DESIGN */}

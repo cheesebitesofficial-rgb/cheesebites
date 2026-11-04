@@ -8,6 +8,7 @@ import { ProductCard } from '../components/common/ProductCard';
 import { DealCard } from '../components/common/DealCard';
 import { ProductDetailsModal } from '../components/common/ProductDetailsModal';
 import { SpecialOffersSection } from '../components/common/SpecialOffersSection';
+import { SEO } from '../components/common/SEO';
 import type { MenuItem, DealItem } from '../types';
 
 type DisplayItem = 
@@ -136,6 +137,11 @@ export const MenuPage: React.FC = () => {
       className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-12 space-y-5 sm:space-y-10 bg-[#07070b] min-h-screen"
       dir={dir}
     >
+      <SEO
+        title="Cheese Bites Menu | Explore Our Food"
+        description="Explore the full Cheese Bites menu: delicious pizzas, specialty stuffed crusts, juicy burgers, roll parathas, crispy fries, and refreshing beverages."
+        canonicalPath="/menu"
+      />
       
 
       {/* Special Promotional Pizza Offers */}

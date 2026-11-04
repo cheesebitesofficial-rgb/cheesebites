@@ -6,8 +6,89 @@
     <link rel="shortcut icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Cheese Bites - Fresh, Cheesy, Delicious Pizza, Zinger Burgers, Paratha Rolls, Pasta and Special Combo Deals." />
-    <title>Cheese Bites | Fresh. Cheesy. Delicious.</title>
+    <meta name="theme-color" content="#f59e0b" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Default SEO Fallbacks -->
+    <title>Cheese Bites | Fresh Pizza, Burgers & Fast Food</title>
+    <meta name="description" content="Cheese Bites serves fresh oven-baked pizzas, crispy zinger burgers, stuffed crusts, and special combo deals in Islamabad. Order online or call 0337-1500150." />
+    <link rel="canonical" href="https://cheesebites.pk/" />
+
+    <!-- Open Graph & Social Sharing -->
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:site_name" content="Cheese Bites" />
+    <meta property="og:title" content="Cheese Bites | Fresh Pizza, Burgers & Fast Food" />
+    <meta property="og:description" content="Fresh oven-baked pizzas, crispy zinger burgers, stuffed crusts, and special combo deals in Islamabad. Order online or call 0337-1500150." />
+    <meta property="og:url" content="https://cheesebites.pk/" />
+    <meta property="og:image" content="https://cheesebites.pk/logo.png" />
+    <meta property="og:locale" content="en_PK" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cheese Bites | Fresh Pizza, Burgers & Fast Food" />
+    <meta name="twitter:description" content="Fresh oven-baked pizzas, crispy zinger burgers, stuffed crusts, and special combo deals in Islamabad. Order online or call 0337-1500150." />
+    <meta name="twitter:image" content="https://cheesebites.pk/logo.png" />
+
+    <!-- Restaurant Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FastFoodRestaurant",
+      "@id": "https://cheesebites.pk/#restaurant",
+      "name": "Cheese Bites",
+      "image": "https://cheesebites.pk/logo.png",
+      "url": "https://cheesebites.pk",
+      "telephone": "+923371500150",
+      "priceRange": "$$",
+      "servesCuisine": ["Pizza", "Fast Food", "Burgers", "Roll Paratha", "Pasta"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "17 Meel Stop, Japan Dam Road",
+        "addressLocality": "Islamabad",
+        "addressRegion": "Islamabad Capital Territory",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.7294,
+        "longitude": 73.0931
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "11:00",
+          "closes": "04:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61595736367068",
+        "https://www.instagram.com/cheesebites_official",
+        "https://wa.me/923371500150"
+      ],
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://cheesebites.pk/menu",
+          "inLanguage": "en-PK",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "deliveryMethod": "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
