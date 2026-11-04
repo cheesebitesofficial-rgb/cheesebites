@@ -31,3 +31,4 @@ for (const { src, dest, label } of images) {
   console.log(`✅ ${label} → ${dest} (${Math.round(size/1024)}KB)`);
 }
 console.log('\n🎉 About images ready!');
+
