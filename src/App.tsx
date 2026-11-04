@@ -49,7 +49,7 @@ const ScrollToTop: React.FC = () => {
 // Main Customer Shell
 const CustomerLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF5E4] text-gray-900 font-sans">
+    <div className="min-h-screen flex flex-col bg-gray-950 text-gray-100 font-sans">
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
