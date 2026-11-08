@@ -299,8 +299,12 @@ export const AboutPage: React.FC = () => {
             height="420"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 sm:via-black/60 to-transparent flex items-center">
-            <div className="px-6 sm:px-14 py-8 sm:py-12 space-y-4 sm:space-y-5 max-w-xl">
-              <span className="text-xs text-amber-400 font-black uppercase tracking-widest">Our Signature</span>
+            <div className="px-6 sm:px-14 py-10 sm:py-16 md:py-20 space-y-4 sm:space-y-5 max-w-xl">
+              <div className="pt-2 sm:pt-4">
+                <span className="text-xs text-amber-400 font-black uppercase tracking-widest block">
+                  Our Signature
+                </span>
+              </div>
               <h3 className="text-2xl sm:text-4xl md:text-5xl font-black uppercase text-white leading-tight">
                 Flavour-Packed Pizzas
                 <br />
@@ -311,7 +315,7 @@ export const AboutPage: React.FC = () => {
               <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">
                 Experience generous toppings, molten cheese, and crisp golden crusts freshly made to order.
               </p>
-              <div className="pt-2 sm:pt-4 pb-2">
+              <div className="pt-3 sm:pt-5 pb-3">
                 <Link
                   to="/menu"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 font-black text-xs px-7 py-3.5 rounded-xl uppercase tracking-wider transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_4px_25px_rgba(245,158,11,0.5)] cursor-pointer"
