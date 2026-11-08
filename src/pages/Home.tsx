@@ -92,7 +92,7 @@ export const Home: React.FC = () => {
       {/* ============================================================ */}
       <section
         ref={heroSectionRef}
-        className="hero-wrapper hero relative min-h-0 lg:min-h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#0a0a0a] text-white pt-3 pb-6 sm:pt-16 sm:pb-16"
+        className="hero-wrapper hero relative min-h-0 w-full flex flex-col justify-center items-center overflow-hidden bg-[#0a0a0a] text-white pt-3 pb-4 sm:pt-10 sm:pb-6"
       >
         {/* Dark Ambient Radial Glows */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0c0d14] via-[#0a0a0a] to-[#0c0d14] z-0" />
@@ -136,15 +136,13 @@ export const Home: React.FC = () => {
                   <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
-                {/* SEE THE MENU: Dark capsule pill with circular arrow badge */}
+                {/* SEE THE MENU: Prominent glass button with matching gold styling and glow */}
                 <Link
                   to="/menu"
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-full text-xs font-black uppercase tracking-wider text-amber-400/90 hover:text-white bg-[#0e0f16]/90 hover:bg-[#151622] border border-amber-500/30 hover:border-amber-400/60 flex items-center justify-center gap-2.5 group transition-all duration-300 hover:scale-105 shadow-md cursor-pointer backdrop-blur-md"
+                  className="w-full sm:w-auto px-7 py-3.5 rounded-full text-xs font-black uppercase tracking-wider text-amber-400 hover:text-white bg-[#14120e]/85 hover:bg-[#1a1712] border border-amber-500/50 hover:border-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.25)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer backdrop-blur-md"
                 >
                   <span>{t('home.seeMenu')}</span>
-                  <div className="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black group-hover:translate-x-1 transition-all duration-300">
-                    <ArrowRight className="w-3.5 h-3.5" strokeWidth={3} />
-                  </div>
+                  <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
 
@@ -241,7 +239,7 @@ export const Home: React.FC = () => {
           </div>
 
           {/* BOTTOM HERO FEATURE PILLARS MATCHING REFERENCE DESIGN */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 border-t border-gray-800/80 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 sm:pt-8 border-t border-gray-800/80 w-full">
             
             {/* Pillar 1: Fast Delivery */}
             <div className="flex items-center gap-4 bg-[#0e0f18]/80 border border-gray-800 p-4 rounded-2xl backdrop-blur-sm">
@@ -285,7 +283,7 @@ export const Home: React.FC = () => {
       {/* ============================================================ */}
       {/* CATEGORY EXPLORER SECTION */}
       {/* ============================================================ */}
-      <section ref={categoryReveal.ref} className="bg-[#120d08] py-8 sm:py-20 border-t border-b border-amber-900/40">
+      <section ref={categoryReveal.ref} className="bg-[#120d08] !mt-2 sm:!mt-4 pt-6 pb-10 sm:pt-8 sm:pb-16 border-t border-b border-amber-900/40">
         <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 space-y-5 sm:space-y-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-800/80 pb-6">
             <div>

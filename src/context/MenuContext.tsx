@@ -15,7 +15,7 @@ interface MenuContextType {
   resetToDefaultMenu: () => void;
 }
 
-const MENU_KEY = 'cheese_bites_menu_items_v24_behari_prices';
+const MENU_KEY = 'cheese_bites_menu_items_v25_crown_crust_prices';
 const DEALS_KEY = 'cheese_bites_deals_items_v22_behari_prices';
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
