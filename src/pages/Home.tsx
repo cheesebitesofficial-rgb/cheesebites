@@ -128,6 +128,15 @@ export const Home: React.FC = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-5 pt-2 w-full sm:w-auto">
                 <Link
                   to="/menu"
+                  className="w-full sm:w-auto px-8 py-4 rounded-full text-xs font-black uppercase tracking-wider text-gray-950 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 shadow-[0_0_25px_rgba(245,158,11,0.6)] hover:shadow-[0_0_35px_rgba(245,158,11,0.9)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2.5 group cursor-pointer border border-amber-300/50"
+                >
+                  <ShoppingBag className="w-4 h-4 text-gray-950" />
+                  <span>{t('home.orderNow')}</span>
+                  <ArrowRight className="w-4 h-4 text-gray-950 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <Link
+                  to="/menu"
                   className="w-full sm:w-auto px-7 py-4 rounded-full text-xs font-black uppercase tracking-wider text-amber-300 hover:text-white bg-gray-900/90 hover:bg-gray-800 border border-amber-500/40 flex items-center justify-center gap-2.5 group transition-all duration-300 hover:scale-105 shadow-md cursor-pointer"
                 >
                   <span>{t('home.seeMenu')}</span>
