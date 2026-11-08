@@ -281,7 +281,7 @@ export const AboutPage: React.FC = () => {
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 4: PIZZA SPOTLIGHT & CLOSING CTA BANNER
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 pb-20 sm:pb-28">
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -292,14 +292,14 @@ export const AboutPage: React.FC = () => {
           <img
             src="/images/about/about-pizza.jpg"
             alt="Cheese Bites Flavour-Packed Signature Pizza"
-            className="w-full h-64 sm:h-80 md:h-96 object-cover object-center filter brightness-[0.85]"
+            className="w-full min-h-[360px] sm:h-80 md:h-[420px] object-cover object-center filter brightness-[0.85]"
             loading="lazy"
             decoding="async"
             width="1200"
-            height="400"
+            height="420"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent flex items-center">
-            <div className="px-6 sm:px-14 space-y-4 max-w-xl">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 sm:via-black/60 to-transparent flex items-center">
+            <div className="px-6 sm:px-14 py-8 sm:py-12 space-y-4 sm:space-y-5 max-w-xl">
               <span className="text-xs text-amber-400 font-black uppercase tracking-widest">Our Signature</span>
               <h3 className="text-2xl sm:text-4xl md:text-5xl font-black uppercase text-white leading-tight">
                 Flavour-Packed Pizzas
@@ -308,15 +308,16 @@ export const AboutPage: React.FC = () => {
                   You'll Crave Again
                 </span>
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 font-medium">
+              <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">
                 Experience generous toppings, molten cheese, and crisp golden crusts freshly made to order.
               </p>
-              <div>
+              <div className="pt-2 sm:pt-4 pb-2">
                 <Link
                   to="/menu"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 font-black text-xs px-7 py-3.5 rounded-xl uppercase tracking-wider transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_4px_25px_rgba(245,158,11,0.5)] cursor-pointer"
                 >
-                  View Full Menu <ChevronRight className="w-4 h-4" />
+                  <span>View Full Menu</span>
+                  <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
