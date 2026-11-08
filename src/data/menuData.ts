@@ -242,6 +242,7 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
       { name: 'Small', price: 690 },
       { name: 'Medium', price: 1300 },
       { name: 'Large', price: 1750 },
+      { name: 'X-Large', price: 2300 },
     ],
     supportsExtraToppings: true,
     isPopular: true,

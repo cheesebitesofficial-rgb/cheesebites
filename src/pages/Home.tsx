@@ -125,22 +125,24 @@ export const Home: React.FC = () => {
               </p>
 
               {/* Dual Action Buttons matching reference styling */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-5 pt-2 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-3 w-full sm:w-auto">
+                {/* ORDER NOW: Dark translucent glass button with amber glow and border */}
                 <Link
                   to="/menu"
-                  className="w-full sm:w-auto px-8 py-4 rounded-full text-xs font-black uppercase tracking-wider text-gray-950 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 shadow-[0_0_25px_rgba(245,158,11,0.6)] hover:shadow-[0_0_35px_rgba(245,158,11,0.9)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2.5 group cursor-pointer border border-amber-300/50"
+                  className="w-full sm:w-auto px-7 py-3.5 rounded-full text-xs font-black uppercase tracking-wider text-amber-400 hover:text-white bg-[#14120e]/85 hover:bg-[#1a1712] border border-amber-500/50 hover:border-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.25)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer backdrop-blur-md"
                 >
-                  <ShoppingBag className="w-4 h-4 text-gray-950" />
+                  <ShoppingBag className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
                   <span>{t('home.orderNow')}</span>
-                  <ArrowRight className="w-4 h-4 text-gray-950 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
+                {/* SEE THE MENU: Dark capsule pill with circular arrow badge */}
                 <Link
                   to="/menu"
-                  className="w-full sm:w-auto px-7 py-4 rounded-full text-xs font-black uppercase tracking-wider text-amber-300 hover:text-white bg-gray-900/90 hover:bg-gray-800 border border-amber-500/40 flex items-center justify-center gap-2.5 group transition-all duration-300 hover:scale-105 shadow-md cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-full text-xs font-black uppercase tracking-wider text-amber-400/90 hover:text-white bg-[#0e0f16]/90 hover:bg-[#151622] border border-amber-500/30 hover:border-amber-400/60 flex items-center justify-center gap-2.5 group transition-all duration-300 hover:scale-105 shadow-md cursor-pointer backdrop-blur-md"
                 >
                   <span>{t('home.seeMenu')}</span>
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-orange-500 text-gray-950 flex items-center justify-center group-hover:translate-x-1 transition-transform shadow-[0_0_12px_rgba(245,158,11,0.5)]">
+                  <div className="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black group-hover:translate-x-1 transition-all duration-300">
                     <ArrowRight className="w-3.5 h-3.5" strokeWidth={3} />
                   </div>
                 </Link>
