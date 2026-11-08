@@ -280,69 +280,45 @@ export const AboutPage: React.FC = () => {
 
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 4: PIZZA SPOTLIGHT & CLOSING CTA BANNER
-          (Exact reference image composition with perfect text, button & mobile design)
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 pb-20 sm:pb-28">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-24">
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.95)] border border-amber-500/25 bg-[#0b0c10]"
+          className="relative rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.95)] border border-amber-500/30"
         >
-          {/* Pizza Background Image */}
           <img
-            src="/images/about/flavour-packed-pizza-banner.jpg"
+            src="/images/about/about-pizza.jpg"
             alt="Cheese Bites Flavour-Packed Signature Pizza"
-            className="w-full h-[480px] sm:h-[420px] md:h-[400px] lg:h-[420px] object-cover object-[70%_center] sm:object-right filter brightness-[0.92]"
+            className="w-full h-64 sm:h-80 md:h-96 object-cover object-center filter brightness-[0.85]"
             loading="lazy"
             decoding="async"
             width="1200"
-            height="420"
+            height="400"
           />
-
-          {/* Precision Gradient Overlays: Deep Black on Left for 100% Readable Text, Seamless Transition to Pizza */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 sm:via-black/70 to-transparent sm:to-black/10 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 sm:hidden pointer-events-none" />
-
-          {/* Banner Content: Exact typography, alignment & button matching reference */}
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full px-6 sm:px-12 md:px-16 lg:px-20 py-8 sm:py-10 max-w-xl sm:max-w-xl lg:max-w-2xl space-y-4 sm:space-y-5 text-left">
-              
-              {/* Small Tag */}
-              <div>
-                <span className="inline-block text-[11px] sm:text-xs font-black uppercase tracking-[0.22em] text-[#FF9500]">
-                  OUR SIGNATURE
-                </span>
-              </div>
-
-              {/* Main Headline */}
-              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black uppercase tracking-tight text-white leading-[1.08] font-sans">
-                FLAVOUR-PACKED
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent flex items-center">
+            <div className="px-6 sm:px-14 space-y-4 max-w-xl">
+              <span className="text-xs text-amber-400 font-black uppercase tracking-widest">Our Signature</span>
+              <h3 className="text-2xl sm:text-4xl md:text-5xl font-black uppercase text-white leading-tight">
+                Flavour-Packed Pizzas
                 <br />
-                PIZZAS
-                <br />
-                <span className="text-[#FF9500]">
-                  YOU'LL CRAVE AGAIN
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">
+                  You'll Crave Again
                 </span>
               </h3>
-
-              {/* Subtitle / Description */}
-              <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed max-w-md pt-0.5 opacity-90">
+              <p className="text-xs sm:text-sm text-slate-300 font-medium">
                 Experience generous toppings, molten cheese, and crisp golden crusts freshly made to order.
               </p>
-
-              {/* Action Button: Matches exact rounded pill with chevron from reference */}
-              <div className="pt-2 sm:pt-3">
+              <div>
                 <Link
                   to="/menu"
-                  className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#FF9500] to-[#FF7A00] hover:from-[#ff9f1a] hover:to-[#ff850a] text-black font-black text-xs sm:text-sm px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl uppercase tracking-wider transition-all duration-300 hover:scale-[1.03] active:scale-95 shadow-[0_4px_25px_rgba(255,149,0,0.45)] cursor-pointer"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 font-black text-xs px-7 py-3.5 rounded-xl uppercase tracking-wider transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_4px_25px_rgba(245,158,11,0.5)] cursor-pointer"
                 >
-                  <span>VIEW FULL MENU</span>
-                  <ChevronRight className="w-4 h-4 stroke-[3]" />
+                  View Full Menu <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>
-
             </div>
           </div>
         </motion.div>
