@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate, Outlet } from 'react-router-dom';
-import { LayoutDashboard, ShoppingCart, UtensilsCrossed, ArrowLeft, LogOut, UserCheck } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, UtensilsCrossed, ArrowLeft, LogOut, UserCheck, Layers } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 export const AdminLayout: React.FC = () => {
@@ -15,8 +15,9 @@ export const AdminLayout: React.FC = () => {
 
   const navItems = [
     { name: 'Dashboard', path: '/admin', icon: <LayoutDashboard className="w-5 h-5" /> },
-    { name: 'Order Management', path: '/admin/orders', icon: <ShoppingCart className="w-5 h-5" /> },
+    { name: 'CMS & Content', path: '/admin/cms', icon: <Layers className="w-5 h-5" /> },
     { name: 'Menu & Products', path: '/admin/products', icon: <UtensilsCrossed className="w-5 h-5" /> },
+    { name: 'Order Management', path: '/admin/orders', icon: <ShoppingCart className="w-5 h-5" /> },
   ];
 
   const isActive = (path: string) => {

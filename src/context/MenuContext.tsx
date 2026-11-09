@@ -13,6 +13,9 @@ interface MenuContextType {
   addDealItem: (deal: DealItem) => void;
   deleteDealItem: (id: string) => void;
   resetToDefaultMenu: () => void;
+  setFullMenu: (items: MenuItem[], deals: DealItem[]) => void;
+  toggleItemAvailability: (id: string) => void;
+  toggleDealAvailability: (id: string) => void;
 }
 
 const MENU_KEY = 'cheese_bites_menu_items_v25_crown_crust_prices';
@@ -216,6 +219,31 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setDeals(prev => prev.filter(deal => deal.id !== id));
   };
 
+  const toggleItemAvailability = (id: string) => {
+    setMenuItems(prev =>
+      prev.map(item =>
+        item.id === id ? { ...item, isAvailable: item.isAvailable === false ? true : false } : item
+      )
+    );
+  };
+
+  const toggleDealAvailability = (id: string) => {
+    setDeals(prev =>
+      prev.map(deal =>
+        deal.id === id ? { ...deal, isAvailable: deal.isAvailable === false ? true : false } : deal
+      )
+    );
+  };
+
+  const setFullMenu = (newItems: MenuItem[], newDeals: DealItem[]) => {
+    if (Array.isArray(newItems) && newItems.length > 0) {
+      setMenuItems(newItems);
+    }
+    if (Array.isArray(newDeals) && newDeals.length > 0) {
+      setDeals(newDeals);
+    }
+  };
+
   const resetToDefaultMenu = () => {
     setMenuItems(INITIAL_MENU_ITEMS);
     setDeals(INITIAL_DEALS);
@@ -239,6 +267,9 @@ export const MenuProvider: React.FC<{ children: React.ReactNode }> = ({ children
         addDealItem,
         deleteDealItem,
         resetToDefaultMenu,
+        setFullMenu,
+        toggleItemAvailability,
+        toggleDealAvailability,
       }}
     >
       {children}

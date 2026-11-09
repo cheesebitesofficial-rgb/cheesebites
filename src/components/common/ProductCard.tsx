@@ -14,10 +14,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
   const { addToCart } = useCart();
   const { t } = useLanguage();
 
+  const isAvailable = product.isAvailable !== false;
   const hasMultipleSizes = product.sizes && product.sizes.length > 1;
 
   const handlePrimaryClick = (e: React.MouseEvent) => {
     e.stopPropagation();
+    if (!isAvailable) return;
     if (hasMultipleSizes || product.supportsExtraToppings) {
       onQuickView(product);
     } else {
@@ -57,11 +59,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d14] via-transparent to-transparent opacity-85 group-hover:opacity-40 transition-opacity duration-500" />
 
         {/* Hover Quick Customize Pill Overlay */}
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 backdrop-blur-xs">
-          <span className="text-gray-950 text-xs font-black flex items-center gap-2 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 px-5 py-2.5 rounded-full shadow-[0_0_25px_rgba(245,158,11,0.7)] uppercase tracking-wider">
-            <Eye className="w-4 h-4" /> {t('product.quickCustomize')}
-          </span>
-        </div>
+        {isAvailable ? (
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 backdrop-blur-xs">
+            <span className="text-gray-950 text-xs font-black flex items-center gap-2 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 px-5 py-2.5 rounded-full shadow-[0_0_25px_rgba(245,158,11,0.7)] uppercase tracking-wider">
+              <Eye className="w-4 h-4" /> {t('product.quickCustomize')}
+            </span>
+          </div>
+        ) : (
+          <div className="absolute inset-0 bg-black/70 flex items-center justify-center p-4">
+            <span className="bg-red-600/90 text-white text-xs font-black px-4 py-1.5 rounded-full shadow-lg uppercase tracking-wider border border-red-400/40">
+              Temporarily Sold Out
+            </span>
+          </div>
+        )}
 
         {/* Floating Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
@@ -124,12 +134,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
           </div>
 
           <motion.button
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.92 }}
+            whileHover={isAvailable ? { scale: 1.08 } : {}}
+            whileTap={isAvailable ? { scale: 0.92 } : {}}
             onClick={handlePrimaryClick}
-            className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 px-4 py-2.5 rounded-2xl font-black text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_20px_rgba(245,158,11,0.5)] transition-all duration-300 cursor-pointer"
+            disabled={!isAvailable}
+            className={`${
+              isAvailable
+                ? 'bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 shadow-[0_0_20px_rgba(245,158,11,0.5)] cursor-pointer'
+                : 'bg-gray-800 text-gray-500 border border-gray-700 cursor-not-allowed'
+            } px-4 py-2.5 rounded-2xl font-black text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all duration-300`}
           >
-            {hasMultipleSizes ? (
+            {!isAvailable ? (
+              <span>Sold Out</span>
+            ) : hasMultipleSizes ? (
               <>
                 <span>{t('product.options')}</span>
                 <ArrowRight className="w-4 h-4" />

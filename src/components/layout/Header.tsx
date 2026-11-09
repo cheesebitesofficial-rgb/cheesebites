@@ -3,13 +3,16 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ShoppingBag, Search, Menu, X, ArrowRight } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useLanguage } from '../../context/LanguageContext';
+import { useSiteSettings } from '../../context/SiteSettingsContext';
 
 export const Header: React.FC = () => {
   const { cartCount } = useCart();
   const { t, toggleLang, isUrdu } = useLanguage();
+  const { announcement } = useSiteSettings();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [scrolled, setScrolled] = useState(false);
+  const [announcementDismissed, setAnnouncementDismissed] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -44,13 +47,49 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 py-1.5 px-2.5 sm:py-3 sm:px-6 lg:px-8 transition-all duration-300">
-      <div className="max-w-7xl mx-auto">
-        <div className={`rounded-full px-3 py-2 sm:px-5 sm:py-3 transition-all duration-300 flex items-center justify-between border ${
-          scrolled 
-            ? 'bg-[#07070b]/90 backdrop-blur-2xl border-amber-500/40 shadow-[0_10px_35px_rgba(0,0,0,0.9)]' 
-            : 'bg-[#0a0a0f]/80 backdrop-blur-xl border-amber-500/25 shadow-2xl'
-        }`}>
+    <header className="sticky top-0 z-50 transition-all duration-300">
+      {/* Top CMS Announcement Banner */}
+      {announcement.enabled && announcement.text.trim() && !announcementDismissed && (
+        <div className="bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500 text-gray-950 px-3 py-1.5 text-[11px] sm:text-xs font-black shadow-md border-b border-amber-400/40">
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2 truncate">
+              {announcement.badge && (
+                <span className="bg-gray-950 text-amber-400 text-[9px] uppercase font-black px-2 py-0.5 rounded-full shrink-0 shadow-sm">
+                  {announcement.badge}
+                </span>
+              )}
+              <span className="truncate">{announcement.text}</span>
+            </div>
+            
+            <div className="flex items-center gap-2.5 shrink-0">
+              {announcement.linkText && (
+                <Link
+                  to={announcement.linkUrl || '/menu'}
+                  className="bg-gray-950 hover:bg-gray-900 text-amber-400 text-[10px] sm:text-xs uppercase px-2.5 py-0.5 rounded-full transition-transform hover:scale-105"
+                >
+                  {announcement.linkText} &rarr;
+                </Link>
+              )}
+              <button
+                type="button"
+                onClick={() => setAnnouncementDismissed(true)}
+                className="text-gray-900 hover:text-black p-0.5"
+                title="Dismiss"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="py-1.5 px-2.5 sm:py-3 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className={`rounded-full px-3 py-2 sm:px-5 sm:py-3 transition-all duration-300 flex items-center justify-between border ${
+            scrolled 
+              ? 'bg-[#07070b]/90 backdrop-blur-2xl border-amber-500/40 shadow-[0_10px_35px_rgba(0,0,0,0.9)]' 
+              : 'bg-[#0a0a0f]/80 backdrop-blur-xl border-amber-500/25 shadow-2xl'
+          }`}>
           
           {/* Brand Favicon Logo */}
           <Link to="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
@@ -149,6 +188,7 @@ export const Header: React.FC = () => {
 
         </div>
       </div>
+    </div>
 
       {/* Mobile Drawer with overlay */}
       {mobileMenuOpen && (

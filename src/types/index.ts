@@ -32,6 +32,7 @@ export interface MenuItem {
   supportsExtraToppings?: boolean;
   isPopular?: boolean;
   isSpecial?: boolean;
+  isAvailable?: boolean;
 }
 
 export interface DealItem {
@@ -44,6 +45,7 @@ export interface DealItem {
   image: string;
   isPopular?: boolean;
   isSpecial?: boolean;
+  isAvailable?: boolean;
 }
 
 export interface ExtraTopping {

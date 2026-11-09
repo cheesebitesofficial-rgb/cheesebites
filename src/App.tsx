@@ -7,6 +7,7 @@ import { OrderProvider } from './context/OrderContext';
 import { MenuProvider } from './context/MenuContext';
 import { AuthProvider } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
+import { SiteSettingsProvider } from './context/SiteSettingsContext';
 
 // Protected Route Guard
 import { ProtectedRoute } from './components/common/ProtectedRoute';
@@ -34,6 +35,7 @@ import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { AdminOrders } from './pages/admin/AdminOrders';
 import { AdminOrderDetails } from './pages/admin/AdminOrderDetails';
 import { AdminProducts } from './pages/admin/AdminProducts';
+import { AdminCMS } from './pages/admin/AdminCMS';
 
 // Scroll to top helper on navigation
 const ScrollToTop: React.FC = () => {
@@ -61,144 +63,159 @@ const CustomerLayout: React.FC<{ children: React.ReactNode }> = ({ children }) =
 export function App() {
   return (
     <LanguageProvider>
-    <AuthProvider>
-      <MenuProvider>
-        <OrderProvider>
-          <CartProvider>
-            <Router>
-              <ScrollToTop />
-              <Routes>
-                
-                {/* CUSTOMER FACING ROUTES (PUBLIC ACCESS) */}
-                <Route
-                  path="/"
-                  element={
-                    <CustomerLayout>
-                      <Home />
-                    </CustomerLayout>
-                  }
-                />
-                <Route
-                  path="/menu"
-                  element={
-                    <CustomerLayout>
-                      <MenuPage />
-                    </CustomerLayout>
-                  }
-                />
-                <Route
-                  path="/deals"
-                  element={
-                    <CustomerLayout>
-                      <DealsPage />
-                    </CustomerLayout>
-                  }
-                />
-                <Route
-                  path="/cart"
-                  element={
-                    <CustomerLayout>
-                      <CartPage />
-                    </CustomerLayout>
-                  }
-                />
-                <Route
-                  path="/checkout"
-                  element={
-                    <CustomerLayout>
-                      <CheckoutPage />
-                    </CustomerLayout>
-                  }
-                />
-                <Route
-                  path="/confirmation/:orderId"
-                  element={
-                    <CustomerLayout>
-                      <OrderConfirmationPage />
-                    </CustomerLayout>
-                  }
-                />
-                <Route
-                  path="/tracking/:orderId"
-                  element={
-                    <CustomerLayout>
-                      <OrderTrackingPage />
-                    </CustomerLayout>
-                  }
-                />
-                <Route
-                  path="/about"
-                  element={
-                    <CustomerLayout>
-                      <AboutPage />
-                    </CustomerLayout>
-                  }
-                />
-                <Route
-                  path="/contact"
-                  element={
-                    <CustomerLayout>
-                      <ContactPage />
-                    </CustomerLayout>
-                  }
-                />
+      <SiteSettingsProvider>
+        <AuthProvider>
+          <MenuProvider>
+            <OrderProvider>
+              <CartProvider>
+                <Router>
+                  <ScrollToTop />
+                  <Routes>
+                    
+                    {/* CUSTOMER FACING ROUTES (PUBLIC ACCESS) */}
+                    <Route
+                      path="/"
+                      element={
+                        <CustomerLayout>
+                          <Home />
+                        </CustomerLayout>
+                      }
+                    />
+                    <Route
+                      path="/menu"
+                      element={
+                        <CustomerLayout>
+                          <MenuPage />
+                        </CustomerLayout>
+                      }
+                    />
+                    <Route
+                      path="/deals"
+                      element={
+                        <CustomerLayout>
+                          <DealsPage />
+                        </CustomerLayout>
+                      }
+                    />
+                    <Route
+                      path="/cart"
+                      element={
+                        <CustomerLayout>
+                          <CartPage />
+                        </CustomerLayout>
+                      }
+                    />
+                    <Route
+                      path="/checkout"
+                      element={
+                        <CustomerLayout>
+                          <CheckoutPage />
+                        </CustomerLayout>
+                      }
+                    />
+                    <Route
+                      path="/confirmation/:orderId"
+                      element={
+                        <CustomerLayout>
+                          <OrderConfirmationPage />
+                        </CustomerLayout>
+                      }
+                    />
+                    <Route
+                      path="/tracking/:orderId"
+                      element={
+                        <CustomerLayout>
+                          <OrderTrackingPage />
+                        </CustomerLayout>
+                      }
+                    />
+                    <Route
+                      path="/about"
+                      element={
+                        <CustomerLayout>
+                          <AboutPage />
+                        </CustomerLayout>
+                      }
+                    />
+                    <Route
+                      path="/contact"
+                      element={
+                        <CustomerLayout>
+                          <ContactPage />
+                        </CustomerLayout>
+                      }
+                    />
 
-                {/* PUBLIC ADMIN LOGIN ROUTE */}
-                <Route path="/admin/login" element={<AdminLogin />} />
+                    {/* PUBLIC ADMIN LOGIN ROUTE */}
+                    <Route path="/admin/login" element={<AdminLogin />} />
 
-                {/* PROTECTED ADMIN & POS PORTAL ROUTES */}
-                <Route
-                  path="/admin"
-                  element={
-                    <ProtectedRoute>
-                      <AdminLayout />
-                    </ProtectedRoute>
-                  }
-                >
-                  <Route index element={<AdminDashboard />} />
-                  <Route path="orders" element={<AdminOrders />} />
-                  <Route path="orders/:orderId" element={<AdminOrderDetails />} />
-                  <Route path="products" element={<AdminProducts />} />
-                </Route>
+                    {/* PROTECTED ADMIN & POS PORTAL ROUTES */}
+                    <Route
+                      path="/admin"
+                      element={
+                        <ProtectedRoute>
+                          <AdminLayout />
+                        </ProtectedRoute>
+                      }
+                    >
+                      <Route index element={<AdminDashboard />} />
+                      <Route path="cms" element={<AdminCMS />} />
+                      <Route path="products" element={<AdminProducts />} />
+                      <Route path="orders" element={<AdminOrders />} />
+                      <Route path="orders/:orderId" element={<AdminOrderDetails />} />
+                    </Route>
 
-                {/* PROTECTED ROUTE ALIASES: /pos, /dashboard */}
-                <Route
-                  path="/pos"
-                  element={
-                    <ProtectedRoute>
-                      <AdminLayout />
-                    </ProtectedRoute>
-                  }
-                >
-                  <Route index element={<AdminDashboard />} />
-                </Route>
-                <Route
-                  path="/dashboard"
-                  element={
-                    <ProtectedRoute>
-                      <AdminLayout />
-                    </ProtectedRoute>
-                  }
-                >
-                  <Route index element={<AdminDashboard />} />
-                </Route>
+                    {/* DEDICATED DIRECT CMS ROUTE */}
+                    <Route
+                      path="/cms"
+                      element={
+                        <ProtectedRoute>
+                          <AdminLayout />
+                        </ProtectedRoute>
+                      }
+                    >
+                      <Route index element={<AdminCMS />} />
+                    </Route>
 
-                {/* FALLBACK REDIRECT FOR UNKNOWN ROUTES */}
-                <Route
-                  path="*"
-                  element={
-                    <CustomerLayout>
-                      <Home />
-                    </CustomerLayout>
-                  }
-                />
+                    {/* PROTECTED ROUTE ALIASES: /pos, /dashboard */}
+                    <Route
+                      path="/pos"
+                      element={
+                        <ProtectedRoute>
+                          <AdminLayout />
+                        </ProtectedRoute>
+                      }
+                    >
+                      <Route index element={<AdminDashboard />} />
+                    </Route>
+                    <Route
+                      path="/dashboard"
+                      element={
+                        <ProtectedRoute>
+                          <AdminLayout />
+                        </ProtectedRoute>
+                      }
+                    >
+                      <Route index element={<AdminDashboard />} />
+                    </Route>
 
-              </Routes>
-            </Router>
-          </CartProvider>
-        </OrderProvider>
-      </MenuProvider>
-    </AuthProvider>
+                    {/* FALLBACK REDIRECT FOR UNKNOWN ROUTES */}
+                    <Route
+                      path="*"
+                      element={
+                        <CustomerLayout>
+                          <Home />
+                        </CustomerLayout>
+                      }
+                    />
+
+                  </Routes>
+                </Router>
+              </CartProvider>
+            </OrderProvider>
+          </MenuProvider>
+        </AuthProvider>
+      </SiteSettingsProvider>
     </LanguageProvider>
   );
 }

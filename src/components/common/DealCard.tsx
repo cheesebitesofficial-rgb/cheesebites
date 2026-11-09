@@ -12,8 +12,10 @@ interface DealCardProps {
 export const DealCard: React.FC<DealCardProps> = ({ deal }) => {
   const { addToCart } = useCart();
   const { t } = useLanguage();
+  const isAvailable = deal.isAvailable !== false;
 
   const handleAddToCart = () => {
+    if (!isAvailable) return;
     addToCart(deal, undefined, undefined, 1, true);
   };
 
@@ -90,13 +92,18 @@ export const DealCard: React.FC<DealCardProps> = ({ deal }) => {
           </div>
 
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={isAvailable ? { scale: 1.05 } : {}}
+            whileTap={isAvailable ? { scale: 0.95 } : {}}
             onClick={handleAddToCart}
-            className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 px-5 py-3 rounded-2xl font-black text-xs tracking-wider flex items-center gap-2 shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all duration-300 uppercase cursor-pointer"
+            disabled={!isAvailable}
+            className={`${
+              isAvailable
+                ? 'bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-300 hover:to-orange-300 text-gray-950 shadow-[0_0_20px_rgba(245,158,11,0.4)] cursor-pointer'
+                : 'bg-gray-800 text-gray-500 border border-gray-700 cursor-not-allowed'
+            } px-5 py-3 rounded-2xl font-black text-xs tracking-wider flex items-center gap-2 transition-all duration-300 uppercase`}
           >
             <ShoppingBag className="w-4 h-4" />
-            <span>{t('deal.addToCart')}</span>
+            <span>{isAvailable ? t('deal.addToCart') : 'Unavailable'}</span>
           </motion.button>
         </div>
       </div>

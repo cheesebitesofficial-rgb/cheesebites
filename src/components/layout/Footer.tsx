@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Clock, Heart } from 'lucide-react';
+import { Phone, MapPin, Clock, Heart, Shield } from 'lucide-react';
 import { RESTAURANT_INFO } from '../../data/menuData';
 import { useLanguage } from '../../context/LanguageContext';
+import { useSiteSettings } from '../../context/SiteSettingsContext';
 
 const SOCIAL_LINKS = {
   instagram: 'https://www.instagram.com/cheesebites_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
@@ -30,6 +31,7 @@ const YouTubeIcon = () => (
 
 export const Footer: React.FC = () => {
   const { t, dir } = useLanguage();
+  const { storeInfo } = useSiteSettings();
 
   return (
     <footer 
@@ -202,7 +204,7 @@ export const Footer: React.FC = () => {
             <div className="space-y-3.5 text-xs">
               {/* Call to Order */}
               <a 
-                href={`tel:${RESTAURANT_INFO.phone}`}
+                href={`tel:${storeInfo.phone || RESTAURANT_INFO.phone}`}
                 className="flex items-center gap-3 bg-amber-500/10 hover:bg-amber-500/20 p-2.5 rounded-xl border border-amber-500/30 text-white transition-all group cursor-pointer shadow-sm"
               >
                 <div className="w-8 h-8 rounded-lg bg-amber-500 text-gray-950 flex items-center justify-center font-black shrink-0 group-hover:scale-105 transition-transform shadow-md">
@@ -210,7 +212,7 @@ export const Footer: React.FC = () => {
                 </div>
                 <div className="text-start">
                   <span className="block text-[10px] text-amber-400 font-bold uppercase tracking-wider">{t('footer.callToOrder')}</span>
-                  <span className="text-sm font-black text-amber-300 font-mono tracking-wider">{RESTAURANT_INFO.phone}</span>
+                  <span className="text-sm font-black text-amber-300 font-mono tracking-wider">{storeInfo.phone || RESTAURANT_INFO.phone}</span>
                 </div>
               </a>
 
@@ -221,7 +223,7 @@ export const Footer: React.FC = () => {
                 </div>
                 <div className="text-start">
                   <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">{t('footer.deliveryHours')}</span>
-                  <span className="text-xs font-bold text-white tracking-wide block mt-0.5">{RESTAURANT_INFO.hours}</span>
+                  <span className="text-xs font-bold text-white tracking-wide block mt-0.5">{storeInfo.hours || RESTAURANT_INFO.hours}</span>
                 </div>
               </div>
 
@@ -232,7 +234,7 @@ export const Footer: React.FC = () => {
                 </div>
                 <div className="text-start">
                   <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">{t('footer.storeLocation')}</span>
-                  <span className="text-xs font-medium text-white leading-relaxed block mt-0.5">{RESTAURANT_INFO.address}</span>
+                  <span className="text-xs font-medium text-white leading-relaxed block mt-0.5">{storeInfo.address || RESTAURANT_INFO.address}</span>
                 </div>
               </div>
             </div>
@@ -243,10 +245,16 @@ export const Footer: React.FC = () => {
         {/* Footer Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 text-center sm:text-start">
           <p>© {new Date().getFullYear()} Cheese Bites Islamabad. {t('footer.rights')}</p>
-          <div className="flex items-center justify-center gap-1.5 text-gray-400">
-            <span>{t('footer.madeWith')}</span>
-            <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 inline" />
-            <span>{t('footer.forLovers')}</span>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-gray-400">
+            <Link to="/cms" className="hover:text-amber-400 flex items-center gap-1 transition-colors text-[11px] font-bold">
+              <Shield className="w-3.5 h-3.5 text-amber-500" />
+              <span>Staff CMS Portal</span>
+            </Link>
+            <div className="flex items-center gap-1.5">
+              <span>{t('footer.madeWith')}</span>
+              <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 inline" />
+              <span>{t('footer.forLovers')}</span>
+            </div>
           </div>
         </div>
       </div>
