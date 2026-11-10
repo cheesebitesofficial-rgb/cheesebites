@@ -31,7 +31,14 @@ const YouTubeIcon = () => (
 
 export const Footer: React.FC = () => {
   const { t, dir } = useLanguage();
-  const { storeInfo } = useSiteSettings();
+  const { storeInfo, brand, footer } = useSiteSettings();
+
+  const socialLinks = {
+    instagram: footer.instagram || SOCIAL_LINKS.instagram,
+    facebook: footer.facebook || SOCIAL_LINKS.facebook,
+    tiktok: footer.tiktok || SOCIAL_LINKS.tiktok,
+    youtube: footer.youtube || SOCIAL_LINKS.youtube,
+  };
 
   return (
     <footer 
@@ -46,23 +53,23 @@ export const Footer: React.FC = () => {
             <div className="h-8 flex items-center">
               <Link to="/" className="inline-flex items-center gap-2.5 group">
                 <img
-                  src="/logo.png"
-                  alt="Cheese Bites Logo"
+                  src={brand.logoUrl || '/logo.png'}
+                  alt={`${brand.brandName || 'Cheese'} ${brand.brandHighlight || 'Bites'} Logo`}
                   className="w-8 h-8 object-contain rounded-xl border border-amber-500/40 shadow-sm shadow-amber-500/20 group-hover:scale-105 transition-transform"
                 />
                 <span className="text-xl font-black text-white uppercase tracking-tight font-sans">
-                  Cheese <span className="text-[#FF6B00]">Bites</span>
+                  {brand.brandName || 'Cheese'} <span className="text-[#FF6B00]">{brand.brandHighlight || 'Bites'}</span>
                 </span>
               </Link>
             </div>
             
             <p className="text-xs text-gray-400 leading-relaxed max-w-sm">
-              {t('footer.desc')}
+              {footer.desc || t('footer.desc')}
             </p>
             
             <div>
               <span className="inline-block bg-amber-500/10 text-amber-400 text-xs font-semibold px-3 py-1.5 rounded-full border border-amber-500/20">
-                {RESTAURANT_INFO.closingMessage || 'Thank You for Choosing Cheesy Bites'}
+                {brand.tagline || RESTAURANT_INFO.closingMessage || 'Thank You for Choosing Cheesy Bites'}
               </span>
             </div>
 
@@ -73,7 +80,7 @@ export const Footer: React.FC = () => {
               </span>
               <div className="flex items-center gap-2">
                 <a 
-                  href={SOCIAL_LINKS.instagram} 
+                  href={socialLinks.instagram} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-pink-500/50 hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 flex items-center justify-center transition-all shadow-sm"
@@ -83,7 +90,7 @@ export const Footer: React.FC = () => {
                   <InstagramIcon />
                 </a>
                 <a 
-                  href={SOCIAL_LINKS.facebook} 
+                  href={socialLinks.facebook} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-blue-500 hover:bg-blue-600 flex items-center justify-center transition-all shadow-sm"
@@ -93,7 +100,7 @@ export const Footer: React.FC = () => {
                   <FacebookIcon />
                 </a>
                 <a 
-                  href={SOCIAL_LINKS.tiktok} 
+                  href={socialLinks.tiktok} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-white/50 hover:bg-black flex items-center justify-center transition-all shadow-sm"
@@ -103,7 +110,7 @@ export const Footer: React.FC = () => {
                   <TikTokIcon />
                 </a>
                 <a 
-                  href={SOCIAL_LINKS.youtube} 
+                  href={socialLinks.youtube} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-red-500 hover:bg-red-600 flex items-center justify-center transition-all shadow-sm"
@@ -244,7 +251,7 @@ export const Footer: React.FC = () => {
 
         {/* Footer Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 text-center sm:text-start">
-          <p>© {new Date().getFullYear()} Cheese Bites Islamabad. {t('footer.rights')}</p>
+          <p>{footer.copyrightText || `© ${new Date().getFullYear()} Cheese Bites Islamabad. ${t('footer.rights')}`}</p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-gray-400">
             <Link to="/cms" className="hover:text-amber-400 flex items-center gap-1 transition-colors text-[11px] font-bold">
               <Shield className="w-3.5 h-3.5 text-amber-500" />

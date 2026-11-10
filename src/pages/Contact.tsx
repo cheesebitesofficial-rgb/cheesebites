@@ -3,10 +3,12 @@ import { motion } from 'framer-motion';
 import { Phone, MapPin, Clock, Send, CheckCircle2, MessageSquare } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/menuData';
 import { useLanguage } from '../context/LanguageContext';
+import { useSiteSettings } from '../context/SiteSettingsContext';
 import { SEO } from '../components/common/SEO';
 
 export const ContactPage: React.FC = () => {
   const { t, dir } = useLanguage();
+  const { storeInfo, footer } = useSiteSettings();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
@@ -53,13 +55,13 @@ export const ContactPage: React.FC = () => {
 
             <div className="space-y-4 text-xs font-medium">
               <a
-                href={`tel:${RESTAURANT_INFO.phone}`}
+                href={`tel:${storeInfo.phone || RESTAURANT_INFO.phone}`}
                 className="flex items-start space-x-3 p-4 bg-amber-500/10 rounded-2xl border border-amber-500/30 hover:border-amber-400 transition-all block shadow-[0_0_15px_rgba(245,158,11,0.15)]"
               >
                 <Phone className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <span className="text-[10px] text-amber-400 font-black uppercase block">{t('contact.orderHotline')}</span>
-                  <span className="text-xl font-black text-amber-300 font-mono tracking-wider">{RESTAURANT_INFO.phone}</span>
+                  <span className="text-xl font-black text-amber-300 font-mono tracking-wider">{storeInfo.phone || RESTAURANT_INFO.phone}</span>
                 </div>
               </a>
 
@@ -67,7 +69,7 @@ export const ContactPage: React.FC = () => {
                 <Clock className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <span className="text-[10px] text-slate-400 font-black uppercase block">{t('contact.deliveryHours')}</span>
-                  <span className="text-sm font-black text-white">{RESTAURANT_INFO.hours}</span>
+                  <span className="text-sm font-black text-white">{storeInfo.hours || RESTAURANT_INFO.hours}</span>
                 </div>
               </div>
 
@@ -75,7 +77,7 @@ export const ContactPage: React.FC = () => {
                 <MapPin className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <span className="text-[10px] text-slate-400 font-black uppercase block">{t('contact.restaurantAddress')}</span>
-                  <span className="text-sm font-bold text-white leading-relaxed block">{RESTAURANT_INFO.address}</span>
+                  <span className="text-sm font-bold text-white leading-relaxed block">{storeInfo.address || RESTAURANT_INFO.address}</span>
                 </div>
               </div>
 
@@ -86,7 +88,7 @@ export const ContactPage: React.FC = () => {
                 </span>
                 <div className="grid grid-cols-2 gap-2">
                   <a
-                    href="https://www.facebook.com/profile.php?id=61595736367068"
+                    href={footer.facebook || "https://www.facebook.com/profile.php?id=61595736367068"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 p-2.5 bg-blue-600/15 hover:bg-blue-600/30 border border-blue-500/30 text-blue-400 hover:text-white rounded-xl text-xs font-bold transition-all"
@@ -94,7 +96,7 @@ export const ContactPage: React.FC = () => {
                     <span>Facebook</span>
                   </a>
                   <a
-                    href="https://www.instagram.com/cheesebites_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    href={footer.instagram || "https://www.instagram.com/cheesebites_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 p-2.5 bg-gradient-to-r from-purple-600/15 to-pink-600/15 hover:from-purple-600/30 hover:to-pink-600/30 border border-pink-500/30 text-pink-400 hover:text-white rounded-xl text-xs font-bold transition-all"

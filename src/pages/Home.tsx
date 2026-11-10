@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { useMenu } from '../context/MenuContext';
 import { useLanguage } from '../context/LanguageContext';
+import { useSiteSettings } from '../context/SiteSettingsContext';
 import { ProductCard } from '../components/common/ProductCard';
 import { ProductDetailsModal } from '../components/common/ProductDetailsModal';
 import { SEO } from '../components/common/SEO';
@@ -17,6 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const Home: React.FC = () => {
   const { menuItems, deals } = useMenu();
   const { t, dir } = useLanguage();
+  const { hero, campaign, storeInfo } = useSiteSettings();
   const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
   const navigate = useNavigate();
 
@@ -107,41 +109,49 @@ export const Home: React.FC = () => {
             {/* LEFT COLUMN: HEADLINE, DESCRIPTION & BUTTONS */}
             <div className="lg:col-span-6 text-center lg:text-left space-y-4 sm:space-y-7 flex flex-col items-center lg:items-start justify-center">
               
+              {/* Closed Kitchen Banner Notice if store is closed */}
+              {!storeInfo.isOpen && (
+                <div className="w-full bg-red-950/80 border border-red-500/50 text-red-200 px-4 py-2.5 rounded-2xl text-xs font-bold shadow-lg flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shrink-0" />
+                  <span>{storeInfo.closedNotice || 'Kitchen is currently closed for preparation. We will resume taking orders shortly!'}</span>
+                </div>
+              )}
+
               {/* Badge Pill */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark border border-[#FF6B00]/40 text-[#FF6B00] text-xs font-black uppercase tracking-wider shadow-[0_0_20px_rgba(255,107,0,0.3)] bg-black/60 backdrop-blur-md">
                 <Flame className="w-4 h-4 text-[#FF6B00] fill-[#FF6B00] animate-pulse" />
-                <span>{t('home.badge')}</span>
+                <span>{hero.badge || t('home.badge')}</span>
               </div>
 
               {/* Main Headline matching reference */}
               <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black uppercase tracking-tight leading-[1.08] text-white drop-shadow-lg font-sans">
-                {t('home.headline1')} <br />
-                <span className="text-[#FF6B00] font-sans">{t('home.headline2')}</span>
+                {hero.headline1 || t('home.headline1')} <br />
+                <span className="text-[#FF6B00] font-sans">{hero.headline2 || t('home.headline2')}</span>
               </h1>
 
               {/* Subtitle Paragraph matching reference */}
               <p className="text-amber-100/90 text-xs sm:text-base max-w-lg font-medium leading-relaxed drop-shadow-md">
-                {t('home.subtitle')}
+                {hero.subtitle || t('home.subtitle')}
               </p>
 
               {/* Dual Action Buttons matching reference styling */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-3 w-full sm:w-auto">
-                {/* ORDER NOW: Dark translucent glass button with amber glow and border */}
+                {/* Button 1: e.g. Order Now */}
                 <Link
-                  to="/menu"
+                  to={hero.btn1Link || '/menu'}
                   className="w-full sm:w-auto px-7 py-3.5 rounded-full text-xs font-black uppercase tracking-wider text-amber-400 hover:text-white bg-[#14120e]/85 hover:bg-[#1a1712] border border-amber-500/50 hover:border-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.25)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer backdrop-blur-md"
                 >
                   <ShoppingBag className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
-                  <span>{t('home.orderNow')}</span>
+                  <span>{hero.btn1Text || t('home.orderNow')}</span>
                   <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
-                {/* SEE THE MENU: Prominent glass button with matching gold styling and glow */}
+                {/* Button 2: e.g. See The Menu */}
                 <Link
-                  to="/menu"
+                  to={hero.btn2Link || '/menu'}
                   className="w-full sm:w-auto px-7 py-3.5 rounded-full text-xs font-black uppercase tracking-wider text-amber-400 hover:text-white bg-[#14120e]/85 hover:bg-[#1a1712] border border-amber-500/50 hover:border-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.25)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer backdrop-blur-md"
                 >
-                  <span>{t('home.seeMenu')}</span>
+                  <span>{hero.btn2Text || t('home.seeMenu')}</span>
                   <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -170,8 +180,8 @@ export const Home: React.FC = () => {
                 {/* Pizza Main Image */}
                 <div className="relative">
                   <img
-                    src="/images/hero-pizza-user.jpg"
-                    alt="Fresh Baked Crown Crust Pizza"
+                    src={hero.pizzaImage || '/images/hero-pizza-user.jpg'}
+                    alt={hero.pizzaTag || 'Fresh Baked Crown Crust Pizza'}
                     className="w-full max-w-[480px] h-[250px] sm:h-[420px] object-cover object-center rounded-3xl border-2 border-orange-500/40 shadow-[0_25px_60px_rgba(0,0,0,0.95)]"
                     decoding="async"
                   />
@@ -359,15 +369,15 @@ export const Home: React.FC = () => {
             
             <div className="lg:col-span-6 space-y-4 sm:space-y-6">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 text-gray-950 font-black text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
-                <Sparkles className="w-4 h-4" /> {t('home.featuredDeal')}
+                <Sparkles className="w-4 h-4" /> {campaign.badge || t('home.featuredDeal')}
               </div>
 
               <h2 className="text-4xl sm:text-6xl font-black tracking-tighter text-white uppercase leading-none font-sans">
-                {t('home.theBig')} <span className="text-amber-400">{t('home.flex')}</span>
+                {campaign.title1 || t('home.theBig')} <span className="text-amber-400">{campaign.title2 || t('home.flex')}</span>
               </h2>
 
               <p className="text-amber-100/90 text-sm sm:text-base font-medium leading-relaxed">
-                {t('home.bigFlexDesc')}
+                {campaign.desc || t('home.bigFlexDesc')}
               </p>
 
               {/* Meal Contents Checklist */}

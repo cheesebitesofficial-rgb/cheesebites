@@ -8,7 +8,7 @@ import { useSiteSettings } from '../../context/SiteSettingsContext';
 export const Header: React.FC = () => {
   const { cartCount } = useCart();
   const { t, toggleLang, isUrdu } = useLanguage();
-  const { announcement } = useSiteSettings();
+  const { announcement, brand } = useSiteSettings();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [scrolled, setScrolled] = useState(false);
@@ -95,14 +95,14 @@ export const Header: React.FC = () => {
           <Link to="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-amber-500 via-orange-500 to-amber-300 p-[2px] shadow-[0_0_15px_rgba(245,158,11,0.5)] group-hover:scale-105 transition-transform overflow-hidden">
               <img
-                src="/logo.png"
-                alt="Cheese Bites Logo"
+                src={brand.logoUrl || '/logo.png'}
+                alt={`${brand.brandName || 'Cheese'} ${brand.brandHighlight || 'Bites'} Logo`}
                 className="w-full h-full object-cover rounded-full bg-[#07070b]"
                 decoding="async"
               />
             </div>
             <span className="text-sm sm:text-lg md:text-2xl font-black tracking-tight text-white uppercase font-sans whitespace-nowrap">
-              CHEESE <span className="text-amber-400 font-extrabold">BITES</span>
+              {brand.brandName || 'CHEESE'} <span className="text-amber-400 font-extrabold">{brand.brandHighlight || 'BITES'}</span>
             </span>
           </Link>
 

@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Flame, Star, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useSiteSettings } from '../context/SiteSettingsContext';
 import { SEO } from '../components/common/SEO';
 
 export const AboutPage: React.FC = () => {
   const { dir } = useLanguage();
+  const { about } = useSiteSettings();
 
   return (
     <div className="bg-[#07070b] text-gray-100 font-sans selection:bg-amber-400 selection:text-black overflow-hidden" dir={dir}>
@@ -36,17 +38,16 @@ export const AboutPage: React.FC = () => {
             {/* Outlined Orange Label */}
             <div>
               <span className="inline-block px-4 py-1.5 rounded-full border border-amber-500/60 bg-amber-500/10 text-amber-400 font-black text-[11px] sm:text-xs tracking-[0.25em] uppercase shadow-[0_0_15px_rgba(245,158,11,0.2)]">
-                ABOUT CHEESE BITES
+                {about.badge || 'ABOUT CHEESE BITES'}
               </span>
             </div>
 
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem] font-black uppercase tracking-tight leading-[1.08] text-white">
-              Good Food.{' '}
-              <span className="block sm:inline">Great Taste.</span>
+              {about.heading1 || 'Good Food. Great Taste.'}{' '}
               <span className="block mt-2 relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 drop-shadow-[0_4px_25px_rgba(245,158,11,0.4)]">
-                  Unforgettable Cravings.
+                  {about.heading2 || 'Unforgettable Cravings.'}
                 </span>
                 {/* Subtle Orange Underline */}
                 <span className="absolute -bottom-2 left-0 w-36 sm:w-48 h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-transparent rounded-full shadow-[0_0_10px_#f59e0b]" />
@@ -55,7 +56,7 @@ export const AboutPage: React.FC = () => {
 
             {/* Description */}
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-medium pt-2 max-w-xl">
-              At Cheese Bites, every bite brings together delicious flavors, quality ingredients and a love for great food.
+              {about.desc || 'At Cheese Bites, every bite brings together delicious flavors, quality ingredients and a love for great food.'}
             </p>
           </motion.div>
 
@@ -72,7 +73,7 @@ export const AboutPage: React.FC = () => {
             {/* Pizza Image Frame */}
             <div className="relative w-full max-w-lg lg:max-w-2xl rounded-3xl overflow-hidden border border-amber-500/25 bg-[#0c0d14]/90 shadow-[0_25px_70px_rgba(0,0,0,0.9),0_0_40px_rgba(245,158,11,0.15)] group hover:border-amber-400/50 transition-all duration-500">
               <img
-                src="/images/about/about-pizza.jpg"
+                src={about.heroImage || '/images/about/about-pizza.jpg'}
                 alt="Cheese Bites Cheesy Pizza"
                 className="w-full h-[320px] sm:h-[420px] lg:h-[480px] object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out filter brightness-[1.02] contrast-[1.05]"
                 loading="eager"
@@ -87,7 +88,7 @@ export const AboutPage: React.FC = () => {
               {/* Discreet Brand Stamp */}
               <div className="absolute bottom-4 left-5 sm:bottom-6 sm:left-7">
                 <span className="text-[11px] sm:text-xs font-black tracking-widest text-amber-400 uppercase bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-amber-500/30">
-                  Signature Cheesy Pizza
+                  {about.heroTag || 'Signature Cheesy Pizza'}
                 </span>
               </div>
             </div>
@@ -113,22 +114,21 @@ export const AboutPage: React.FC = () => {
             >
               <div className="flex items-center gap-2">
                 <Flame className="w-4 h-4 text-amber-400 fill-amber-400 flex-shrink-0" />
-                <span className="text-xs font-black uppercase tracking-[0.3em] text-amber-400">Our Story</span>
+                <span className="text-xs font-black uppercase tracking-[0.3em] text-amber-400">
+                  {about.storyBadge || 'Our Story'}
+                </span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white leading-tight">
-                We Craft Every Meal{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
-                  With Heart
-                </span>
+                {about.storyHeading || 'We Craft Every Meal With Heart'}
               </h2>
 
               <div className="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed font-medium">
                 <p>
-                  At Cheese Bites, we believe every meal should be a delicious experience. From cheesy favourites to crispy bites and flavour-packed meals, we bring together great taste, freshness and quality in every order.
+                  {about.storyText1 || 'At Cheese Bites, we believe every meal should be a delicious experience. From cheesy favourites to crispy bites and flavour-packed meals, we bring together great taste, freshness and quality in every order.'}
                 </p>
                 <p>
-                  Whether you're sharing a meal with friends, enjoying family time, or satisfying your cravings, Cheese Bites is here to make every bite worth it.
+                  {about.storyText2 || 'Whether you\'re sharing a meal with friends, enjoying family time, or satisfying your cravings, Cheese Bites is here to make every bite worth it.'}
                 </p>
               </div>
 
@@ -142,9 +142,9 @@ export const AboutPage: React.FC = () => {
               {/* Stat badges */}
               <div className="grid grid-cols-3 gap-3 pt-2">
                 {[
-                  { value: '20+',    label: 'Value Combos' },
-                  { value: '100%',   label: 'Real Mozzarella' },
-                  { value: '17 Hrs', label: 'Daily Service' },
+                  { value: about.stat1Value || '100%', label: about.stat1Label || 'Pure Mozzarella' },
+                  { value: about.stat2Value || '25+', label: about.stat2Label || 'Handcrafted Items' },
+                  { value: about.stat3Value || '15k+', label: about.stat3Label || 'Happy Cravings' },
                 ].map(({ value, label }) => (
                   <div
                     key={label}
